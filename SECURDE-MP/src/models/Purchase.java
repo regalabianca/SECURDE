@@ -1,24 +1,21 @@
 package models;
 
 public class Purchase {
-	public static final String COL_PURCHASEID = "";
-	public static final String COL_QUANTITY = "";
-	public static final String COL_PRODUCTID = "";
-	public static final String COL_UNITPRICE = "";
-	public static final String COL_TOTALPRICE = "";
+	public static final String TABLE_PURCHASE = "purchase";
+	
+	public static final String COL_PURCHASEID = "purchase_id";
+	public static final String COL_QUANTITY = "quantity";
+	public static final String COL_PRODUCTID = "product_id";
+	public static final String COL_UNITPRICE = "unit_price";
+	public static final String COL_TOTALPRICE = "total_price";
+	public static final String COL_TRANSACTIONID = "transaction_id";
 	
 	private int purchaseId;
 	private int quantity;
 	private int productId;
 	private float unitPrice;
 	private float totalPrice;
-	
-	public Purchase(int quantity, int productId, float unitPrice, float totalPrice) {
-		this.quantity = quantity;
-		this.productId = productId;
-		this.unitPrice = unitPrice;
-		this.totalPrice = totalPrice;
-	}
+	private int transactionId;
 	
 	public int getPurchaseId() {
 		return purchaseId;
@@ -58,5 +55,13 @@ public class Purchase {
 	
 	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+	
+	public int getTransactionId() {
+		return transactionId;
+	}
+	
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
 	}
 }

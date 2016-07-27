@@ -54,8 +54,18 @@ public class SignUpServlet extends HttpServlet {
 		int shippingAddress = Integer.parseInt(request.getParameter(User.COL_SHIPPING));
 	
 		if (password.equals(confirmPass)){
-			Account account = new Account(username, password, type);
-			User user = new User (firstName, lastName, middleInitial, email, billingAddress, shippingAddress);
+			Account account = new Account();
+			account.setUsername(username);
+			account.setPassword(password);
+			account.setType(type);
+			User user = new User();
+			user.setFirstName(firstName);
+			user.setLastName(lastName);
+			user.setMiddleInitial(middleInitial);
+			user.setEmail(email);
+			user.setBillingAddress(billingAddress);
+			user.setShippingAddress(shippingAddress);
+			
 			DBManager dbmanager = new DBManager();
 			account = dbmanager.signup(user, account);
 			

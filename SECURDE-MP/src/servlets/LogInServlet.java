@@ -40,7 +40,9 @@ public class LogInServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		Account account = new Account(username, password);
+		Account account = new Account();
+		account.setUsername(username);
+		account.setPassword(password);
 		DBManager dbmanager = new DBManager();
 		account = dbmanager.login(account);
 		

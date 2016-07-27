@@ -2,6 +2,9 @@ package models;
 
 public class Account {
 	
+	public static final String TABLE_ACCOUNT = "account";
+	
+	public static final String COL_ACCOUNTID = "account_id";
 	public static final String COL_USERID = "user_id";
 	public static final String COL_USERNAME = "username";
 	public static final String COL_PASSWORD = "password";
@@ -11,24 +14,7 @@ public class Account {
 	private String username;
 	private String password;
 	private int type;
-	
-	public Account(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
-	
-	public Account(String username, String password, int type) {
-		this.username = username;
-		this.password = password;
-		this.type = type;
-	}
-	
-	public Account(int userId, String username, String password, int type) {
-		this.userId = userId;
-		this.username = username;
-		this.password = password;
-		this.type = type;
-	}
+	private int accountId;
 	
 	public int getUserId() {
 		return userId;
@@ -60,5 +46,13 @@ public class Account {
 	
 	public void setType(int type) {
 		this.type = type;
+	}
+	
+	public int getAccountId() {
+		return accountId;
+	}
+	
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
 	}
 }

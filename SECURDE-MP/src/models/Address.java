@@ -1,6 +1,9 @@
 package models;
 
 public class Address {
+	
+	public static final String TABLE_ADDRESS = "address";
+	
 	public static String COL_ADDRESSID = "";
 	public static String COL_HOUSENUM = "";
 	public static String COL_STREET = "";
@@ -18,16 +21,6 @@ public class Address {
 	private String postalCode;
 	private String country;
 	private int type;
-	
-	public Address( int houseNum, String street, String subdivision, String city, String postalCode, String country, int type ) {
-		this.houseNum = houseNum;
-		this.street = street;
-		this.subdivision = subdivision;
-		this.city = city;
-		this.postalCode = postalCode;
-		this.country = country;
-		this.type = type;
-	}
 	
 	public int getAddressid() {
 		return addressid;

@@ -2,6 +2,8 @@ package models;
 
 public class User {
 	
+	public static final String TABLE_USER = "user";
+	
 	public static final String COL_USERID = "user_id";
 	public static final String COL_FNAME = "first_name";
 	public static final String COL_MINIT = "middle_initial";
@@ -17,15 +19,6 @@ public class User {
 	private String email;
 	private int billingAddress;
 	private int shippingAddress;
-
-	public User(String firstName, String middleInitial, String lastName, String email, int billingAddress, int shippingAddress){
-		this.firstName = firstName;
-		this.middleInitial = middleInitial;
-		this.lastName = lastName;
-		this.email = email;
-		this.billingAddress = billingAddress;
-		this.shippingAddress = shippingAddress;
-	}
 
 	public String getFirstName() {
 		return firstName;

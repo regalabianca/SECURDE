@@ -1,18 +1,17 @@
 package models;
 
 public class Product {
-	public static final String COL_PRODUCTID = "";
-	public static final String COL_DESCRIPTION = "";
-	public static final String COL_PRICE = "";
+	public static final String TABLE_PRODUCT = "product";
+	
+	public static final String COL_PRODUCTID = "product_id";
+	public static final String COL_DESCRIPTION = "price";
+	public static final String COL_PRICE = "price";
+	public static final String COL_CATEGORYID = "category_id";
 	
 	private int productId;
 	private String description;
 	private float price;
-	
-	public Product(String description, float price ) {
-		this.description = description;
-		this.price = price;
-	}
+	private int categoryId;
 	
 	public int getProductId() {
 		return productId;
@@ -38,4 +37,11 @@ public class Product {
 		this.price = price;
 	}
 	
+	public int getCategoryId() {
+		return categoryId;
+	}
+	
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
 }

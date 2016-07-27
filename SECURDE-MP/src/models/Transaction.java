@@ -2,37 +2,32 @@ package models;
 
 public class Transaction {
 
-	public static final String COL_ID = "";
-	public static final String COL_UID = "";
-	public static final String COL_CREDIT = "";
-	public static final String COL_TOTAL = "";
+	public static final String TABLE_TRANSACTION = "transaction";
 	
-	private int id;
-	private int userId;
+	public static final String COL_TRANSACTIONID = "transaction_id";
+	public static final String COL_ACCOUNTID = "account_id";
+	public static final String COL_CREDIT = "";
+	public static final String COL_TOTAL = "total_price";
+	
+	private int transactionId;
+	private int accountId;
 	private int creditCard;
 	private int totalPrice;
-	
-	public Transaction(int id, int userId, int creditCard, int totalPrice) {
-		this.id = id;
-		this.userId = userId;
-		this.creditCard = creditCard;
-		this.totalPrice = totalPrice;
-	}
 
-	public int getId() {
-		return id;
+	public int getTransactionId() {
+		return transactionId;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
 	}
 	
-	public int getUserId() {
-		return userId;
+	public int getAccountId() {
+		return accountId;
 	}
 	
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
 	}
 	
 	public int getCreditCard() {

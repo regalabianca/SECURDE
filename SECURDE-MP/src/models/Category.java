@@ -1,16 +1,13 @@
 package models;
 
 public class Category {
-	public static final String COL_ID = "";
-	public static final String COL_NAME = "";
+	public static final String TABLE_CATEGORY = "category";
+	
+	public static final String COL_CATEGORYID = "category_id";
+	public static final String COL_NAME = "name";
 	
 	private int id;
 	private String name;
-	
-	public Category(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
 
 	public int getId() {
 		return id;
