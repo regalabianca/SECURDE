@@ -16,6 +16,7 @@
   	<web-resource-collection>
   		<web-resource-name>User</web-resource-name>
  		
+ 		
  		<url-pattern>/*</url-pattern>
  		
  		<http-method>GET</http-method>
