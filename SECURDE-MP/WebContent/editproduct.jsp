@@ -236,6 +236,7 @@ $(window).load(function() {
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
 						<h4 id="name">Gucci</h4>
+						<input id="editName" type="text" style="display:none;">
 							<div class="star-on">
 								<ul class="star-footer">
 										<li><a href="#"><i> </i></a></li>
@@ -246,6 +247,8 @@ $(window).load(function() {
 									</ul>
 								<div class="review">
 								<p id="description">Description</p>
+								<input id="editDesc" type="text" style="display:none;">
+								<br>
 									<a href="#"> 1 customer review </a>
 									
 								</div>
@@ -255,6 +258,7 @@ $(window).load(function() {
 							<div>
 								<h5 class="item_price" style="display:inline-block;">P</h5>
 								<h5 id="price" class="item_price" style="display:inline-block;"> 95.00</h5>
+								<input id="editPrice" type="text" style="display:none;">
 							</div>
 							<div class="available">
 						</div>
@@ -345,36 +349,50 @@ $(window).load(function() {
 		
 		$("#btnEdit").click(function(){
 			var text = $('#name').text();
-			var input = $('<input type="text" value="' + text + '" />')
-			 $('#name').text('').append(input);
+			var textbox = document.getElementById('editName');
+			textbox.value=text;
+			$('#editName').show();
+			$('#name').hide();
+			//$('#editName').text('').append(input);
 			
-			var text = $('#description').text();
-			var input = $('<input type="text" value="' + text + '" />')
-			 $('#description').text('').append(input);
+			var text1 = $('#description').text();
+			var textbox1 = document.getElementById('editDesc');
+			textbox1.value=text1;
+			$('#editDesc').show();
+			$('#description').hide();
+			//$('#editDesc').text('').append(input);
 			
-			var text = $('#price').text();
-			var input = $('<input type="text" value="' + text + '" />')
-			 $('#price').text('').append(input);
+			var text2 = $('#price').text();
+			var textbox2 = document.getElementById('editPrice');
+			textbox2.value=text2;
+			$('#editPrice').show();
+			$('#price').hide();
+			//$('#editPrice').text('').append(input);
 			
 			$("#btnEdit").hide();
 			$("#btnSave").show();
 			$("#btnCancel").show();
+			
+			$("#btnSave").click(function(){
+				 $('#name').show();
+				 $('#name').text('').append(textbox.value);
+				 $('#editName').hide();
+
+				 $('#description').show();
+				 $('#description').text('').append(textbox1.value);
+				 $('#editDesc').hide();
+				 
+				 $('#price').show();
+				 $('#price').text('').append(textbox2.value);
+				 $('#editPrice').hide();
+				
+				$("#btnEdit").show();
+				$("#btnSave").hide();
+				$("#btnCancel").hide();
+		    }); 
 	    }); 
 		
-		$("#btnSave").click(function(){
-			var input = $('<input type="text" value="' + text + '" />')
-			 $('#name').text('').append(input);
-			
-			var input = $('<input type="text" value="' + text + '" />')
-			 $('#description').text('').append(input);
-			
-			var input = $('<input type="text" value="' + text + '" />')
-			 $('#price').text('').append(input);
-			
-			$("#btnEdit").hide();
-			$("#btnSave").show();
-			$("#btnCancel").show();
-	    }); 
+		
 		
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
