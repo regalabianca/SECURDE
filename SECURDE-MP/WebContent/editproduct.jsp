@@ -235,7 +235,7 @@ $(window).load(function() {
 					</div>	
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
-						<h4>Gucci</h4>
+						<h4 id="name">Gucci</h4>
 							<div class="star-on">
 								<ul class="star-footer">
 										<li><a href="#"><i> </i></a></li>
@@ -245,18 +245,22 @@ $(window).load(function() {
 										<li><a href="#"><i> </i></a></li>
 									</ul>
 								<div class="review">
-								<p>Description</p>
+								<p id="description">Description</p>
 									<a href="#"> 1 customer review </a>
 									
 								</div>
 							<div class="clearfix"> </div>
 							</div>
 							
-							<h5 class="item_price">$ 95.00</h5>
+							<div>
+								<h5 class="item_price" style="display:inline-block;">P</h5>
+								<h5 id="price" class="item_price" style="display:inline-block;"> 95.00</h5>
+							</div>
 							<div class="available">
 						</div>
-								<a href="#" class="add-cart item_add">ADD TO CART</a>
-							
+								<a href="#" id="btnEdit" class="add-cart item_add">EDIT PRODUCT INFORMATION</a>
+								<a href="#" id="btnSave" style="display:none;" class="add-cart item_add">SAVE</a>
+								<a href="#" id="btnCancel" style="display:none;" class="add-cart item_add">CANCEL</a>
 						</div>
 					</div>
 				<div class="clearfix"> </div>
@@ -338,6 +342,40 @@ $(window).load(function() {
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
 });
+		
+		$("#btnEdit").click(function(){
+			var text = $('#name').text();
+			var input = $('<input type="text" value="' + text + '" />')
+			 $('#name').text('').append(input);
+			
+			var text = $('#description').text();
+			var input = $('<input type="text" value="' + text + '" />')
+			 $('#description').text('').append(input);
+			
+			var text = $('#price').text();
+			var input = $('<input type="text" value="' + text + '" />')
+			 $('#price').text('').append(input);
+			
+			$("#btnEdit").hide();
+			$("#btnSave").show();
+			$("#btnCancel").show();
+	    }); 
+		
+		$("#btnSave").click(function(){
+			var input = $('<input type="text" value="' + text + '" />')
+			 $('#name').text('').append(input);
+			
+			var input = $('<input type="text" value="' + text + '" />')
+			 $('#description').text('').append(input);
+			
+			var input = $('<input type="text" value="' + text + '" />')
+			 $('#price').text('').append(input);
+			
+			$("#btnEdit").hide();
+			$("#btnSave").show();
+			$("#btnCancel").show();
+	    }); 
+		
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!----> 
