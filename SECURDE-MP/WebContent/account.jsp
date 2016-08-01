@@ -81,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</li>
 					<li class="grid"><a href="product.jsp">Sandals</a>
 					</li>
-					<li class="grid"><a href="typography.jsp">Slippers</a>
+					<li class="grid"><a href="product.jsp">Slippers</a>
 					</li>
 				</ul>
 				</ul>

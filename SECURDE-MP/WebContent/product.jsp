@@ -41,11 +41,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header-info">
 			<div class="container">
 					<div class="header-top-in">
-						
-						<ul class="support">
-							<li><a href="mailto:info@example.com"><i class="glyphicon glyphicon-envelope"> </i>info@example.com</a></li>
-							<li><span><i class="glyphicon glyphicon-earphone" class="tele-in"> </i>0 462 261 61 61</span></li>			
-						</ul>
 						<ul class=" support-right">
 							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
 							<li><a href="register.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>			
@@ -63,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h1><a href="index.jsp">I-<span>wear</span></a></h1>
 				</div>
 				
-				
+				 
 			<div class="top-nav">
 				<ul class="memenu skyblue"><li><a href="index.jsp">Home</a></li>
 					<li class="grid"><a href="product.jsp">Boots</a>
@@ -72,7 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</li>
 					<li class="grid"><a href="product.jsp">Sandals</a>
 					</li>
-					<li class="grid"><a href="typography.jsp">Slippers</a>
+					<li class="grid"><a href="product.jsp">Slippers</a>
 					</li>
 				</ul>
 				<div class="clearfix"> </div>
@@ -115,7 +110,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <p>
                       <label for="amount" class="amount">Range:</label>
                      <input type="text" id="amount" style="border: 0; color: #ff5d56; font-weight: bold;" />
-                         
 						  </p>
                 
                    <div id="slider-range"></div>
