@@ -4,14 +4,14 @@ public class Address {
 	
 	public static final String TABLE_ADDRESS = "address";
 	
-	public static String COL_ADDRESSID = "";
-	public static String COL_HOUSENUM = "";
-	public static String COL_STREET = "";
-	public static String COL_SUBDIVISION = "";
-	public static String COL_CITY = "";
-	public static String COL_POSTAL = "";
-	public static String COL_COUNTRY = "";
-	public static String COL_TYPE = "";
+	public static String COL_ADDRESSID = "address_id";
+	public static String COL_HOUSENUM = "house_num";
+	public static String COL_STREET = "street";
+	public static String COL_SUBDIVISION = "subdivision";
+	public static String COL_CITY = "city";
+	public static String COL_POSTAL = "postal_code";
+	public static String COL_COUNTRY = "country";
+	public static String COL_TYPE = "type";
 	
 	private int addressid;
 	private int houseNum;

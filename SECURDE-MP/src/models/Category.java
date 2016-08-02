@@ -6,22 +6,22 @@ public class Category {
 	public static final String COL_CATEGORYID = "category_id";
 	public static final String COL_NAME = "name";
 	
-	private int id;
-	private String name;
-
-	public int getId() {
-		return id;
+	private int categoryId;
+	private String categoryName;
+	
+	public int getCategoryId() {
+		return categoryId;
 	}
-
-	public void setId(int id) {
-		this.id = id;
+	
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
-
-	public String getName() {
-		return name;
+	
+	public String getCategoryName() {
+		return categoryName;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 }
