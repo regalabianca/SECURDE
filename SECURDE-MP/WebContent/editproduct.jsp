@@ -390,6 +390,23 @@ $(window).load(function() {
 				$("#btnSave").hide();
 				$("#btnCancel").hide();
 		    }); 
+			$("#btnCancel").click(function(){
+				 $('#name').show();
+				 //$('#name').text('').append(textbox.value);
+				 $('#editName').hide();
+
+				 $('#description').show();
+				 //$('#description').text('').append(textbox1.value);
+				 $('#editDesc').hide();
+				 
+				 $('#price').show();
+				 //$('#price').text('').append(textbox2.value);
+				 $('#editPrice').hide();
+				
+				$("#btnEdit").show();
+				$("#btnSave").hide();
+				$("#btnCancel").hide();
+		    }); 
 	    }); 
 		
 		
