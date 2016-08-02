@@ -103,9 +103,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 product-price">
 					  <div class="price-grid">
 					    <div class="of-left">
-						<h3 class="cate cate-on">PRICE</h3>
+						<h3 class="cate cate-on">SEARCH</h3>
+						<input placeholder="Search" type="text"></input>
+						<a  class="go" href="single.jsp">GO</a>
 					</div>
-	  <ul class="dropdown-menu1">
+	  <!-- <ul class="dropdown-menu1">
             <li><a href="#">
                 <p>
                       <label for="amount" class="amount">Range:</label>
@@ -115,8 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                    <div id="slider-range"></div>
                 </a></li>
 				
-          </ul>
-		  <a  class="go" href="single.jsp">GO</a>
+          </ul> -->
 		  	<div class="clearfix"> </div>
 <!---->
  <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -143,47 +144,6 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 <!---->
 		</div>
 				<div class=" rsidebar span_1_of_left">
-					<div class="of-left">
-						<h3 class="cate">CATEGORIES</h3>
-					</div>
-		 <ul class="menu">
-		<li class="item1"><a href="#">Men </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.jsp">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.jsp">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.jsp">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item2"><a href="#">Women </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.jsp">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.jsp">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.jsp">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item3"><a href="#">Kids</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.jsp">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.jsp">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.jsp">Automatic Fails</a></li>
-			</ul>
-		</li>
-		<li class="item4"><a href="#">Accesories</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.jsp">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.jsp">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.jsp">Automatic Fails</a></li>
-			</ul>
-		</li>
-				
-		<li class="item4"><a href="#">Shoes</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.jsp">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.jsp">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.jsp">Automatic Fails </a></li>
-			</ul>
-		</li>
-	</ul>
 					</div>
 				<!--initiate accordion-->
 		<script type="text/javascript">
