@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import database.DBConnection;
 import modelAccess.PurchaseDao;
-import models.Address;
 import models.Purchase;
 
 public class PurchaseDaoImpl implements PurchaseDao {
