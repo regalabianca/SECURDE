@@ -42,7 +42,7 @@ public class SignUpServlet extends HttpServlet {
 		// account
 		String username = request.getParameter(Account.COL_USERNAME);
 		String password = request.getParameter(Account.COL_PASSWORD);
-		int type = Integer.parseInt(request.getParameter(Account.COL_TYPE));
+//		int type = Integer.parseInt(request.getParameter(Account.COL_TYPE));
 		String confirmPass = request.getParameter("confirmPass");
 		
 		// user
@@ -50,21 +50,21 @@ public class SignUpServlet extends HttpServlet {
 		String lastName = request.getParameter(User.COL_LNAME);
 		String middleInitial = request.getParameter(User.COL_MINIT);
 		String email = request.getParameter(User.COL_EMAIL);
-		int billingAddress = Integer.parseInt(request.getParameter(User.COL_BILLING));
-		int shippingAddress = Integer.parseInt(request.getParameter(User.COL_SHIPPING));
+//		int billingAddress = Integer.parseInt(request.getParameter(User.COL_BILLING));
+//		int shippingAddress = Integer.parseInt(request.getParameter(User.COL_SHIPPING));
 	
 		if (password.equals(confirmPass)){
 			Account account = new Account();
 			account.setUsername(username);
 			account.setPassword(password);
-			account.setType(type);
+//			account.setType(type);
 			User user = new User();
 			user.setFirstName(firstName);
 			user.setLastName(lastName);
 			user.setMiddleInitial(middleInitial);
 			user.setEmail(email);
-			user.setBillingAddress(billingAddress);
-			user.setShippingAddress(shippingAddress);
+//			user.setBillingAddress(billingAddress);
+//			user.setShippingAddress(shippingAddress);
 			
 			DBManager dbmanager = new DBManager();
 			account = dbmanager.signup(user, account);

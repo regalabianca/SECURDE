@@ -64,6 +64,33 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	@Override
+	public Account getAccount(String username, String password) {
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Account.TABLE_ACCOUNT + 
+														" WHERE " + Account.COL_USERNAME + " = ?"
+														+ " AND " + Account.COL_PASSWORD + " = ?");
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()){
+				Account account = new Account();
+				account.setAccountId(rs.getInt(Account.COL_ACCOUNTID));
+				account.setUsername(rs.getString(Account.COL_USERNAME));
+				account.setPassword(rs.getString(Account.COL_PASSWORD));
+				account.setType(rs.getInt(Account.COL_TYPE));
+				account.setUserId(rs.getInt(Account.COL_USERID));
+				return account;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
 	public void updateAccount(Account account) {
 		String username = account.getUsername();
 		String password = account.getPassword();
