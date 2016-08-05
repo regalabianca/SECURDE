@@ -1,9 +1,5 @@
 package database;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import modelAccess.AccountDao;
 import modelAccess.UserDao;
 import modelAccessImpl.AccountDaoImpl;
@@ -27,14 +23,19 @@ public class DBManager {
 	public Account signup(User user, Account account){
 		Account acc = null;
 		
-		boolean addSuccess = userDao.addUser(user);
-		if (addSuccess){
-			int userId = userDao.getIdOfUser(user);
-			account.setUserId(userId);
-			accountDao.addAccount(account);
-			acc = login(accountDao.getAccount(account.getUserId()));
+		boolean usernameExists = accountDao.checkIfUsernameExists(account.getUsername());
+		
+		if(!usernameExists){
+			boolean addSuccess = userDao.addUser(user);
+			System.out.println("addSuccess = " +addSuccess);
+			if (addSuccess){
+				int userId = userDao.getIdOfUser(user);
+				account.setUserId(userId);
+				accountDao.addAccount(account);
+				acc = login(accountDao.getAccount(account.getUserId()));
+			}
 		}
-	
+		
 		return acc;	
 	}
 	

@@ -12,11 +12,30 @@ import models.Account;
 public class AccountDaoImpl implements AccountDao {
 	
 	@Override
+	public boolean checkIfUsernameExists (String username){
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Account.TABLE_ACCOUNT + 
+														" WHERE " + Account.COL_USERNAME + " = ?");
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next())
+				return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	@Override
 	public boolean addAccount(Account account) {
 		String username = account.getUsername();
 		String password = account.getPassword();
 		int type = account.getType();
 		int userid = account.getUserId();
+		
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO " + Account.TABLE_ACCOUNT + 
