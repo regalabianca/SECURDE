@@ -12,7 +12,7 @@ public class Transaction {
 	private int transactionId;
 	private int accountId;
 	private int creditCard;
-	private int totalPrice;
+	private float totalPrice;
 
 	public int getTransactionId() {
 		return transactionId;
@@ -38,11 +38,11 @@ public class Transaction {
 		this.creditCard = creditCard;
 	}
 	
-	public int getTotalPrice() {
+	public float getTotalPrice() {
 		return totalPrice;
 	}
 	
-	public void setTotalPrice(int totalPrice) {
+	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 }
