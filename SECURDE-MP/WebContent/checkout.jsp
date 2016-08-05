@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>I-wear A Ecommerce Category Flat Bootstarp Resposive Website Template | Checkout :: w3layouts</title>
+<title>I-wear</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -58,8 +58,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h1><a href="index.jsp">I-<span>wear</span></a></h1>
 				</div>
 				
-				
-				
 		 
 			<div class="top-nav">
 				<ul class="memenu skyblue"><li><a href="index.jsp">Home</a></li>
@@ -106,59 +104,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					  
 				
 				<!---->
-				<div class="product-bottom">
-					<div class="of-left-in">
-								<h3 class="best">BEST SELLERS</h3>
-							</div>
-					<div class="product-go">
-						<div class=" fashion-grid">
-									<a href="single.jsp"><img class="img-responsive " src="images/f1.jpg" alt=""></a>
-									
-								</div>
-							<div class=" fashion-grid1">
-								<h6 class="best2"><a href="single.jsp">Lorem ipsum dolor sit
-amet consectetuer  </a></h6>
-								
-								<span class=" price-in1"> $40.00</span>
-							</div>
-								
-							<div class="clearfix"> </div>
-							</div>
-							<div class="product-go">
-						<div class=" fashion-grid">
-									<a href="single.jsp"><img class="img-responsive " src="images/f2.jpg" alt=""></a>
-									
-								</div>
-							<div class="fashion-grid1">
-								<h6 class="best2"><a href="single.jsp">Lorem ipsum dolor sit
-amet consectetuer </a></h6>
-								
-								<span class=" price-in1"> $40.00</span>
-							</div>
-								
-							<div class="clearfix"> </div>
-							</div>
-							<div class="product-go">
-						<div class=" fashion-grid">
-									<a href="single.jsp"><img class="img-responsive " src="images/f3.jpg" alt=""></a>
-									
-								</div>
-							<div class=" fashion-grid1">
-								<h6 class="best2"><a href="single.jsp">Lorem ipsum dolor sit
-amet consectetuer </a></h6>
-								<ul class="star-footer">
-									<li><a href="#"><i> </i></a></li>
-									<li><a href="#"><i> </i></a></li>
-									<li><a href="#"><i> </i></a></li>
-									<li><a href="#"><i> </i></a></li>
-									<li><a href="#"><i> </i></a></li>
-								</ul>
-								<span class=" price-in1"><small>$70.00</small> $40.00</span>
-							</div>
-								
-							<div class="clearfix"> </div>
-							</div>
-				</div>
 				</div>
 				<!---->
 				<div class="col-md-9 product-price1">
@@ -220,16 +165,6 @@ amet consectetuer </a></h6>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
-			<!---->
-				<div class="bottom-grid1">
-					
-					<div class="fit1">
-						<h3>HAPPY SHOPPING</h3>
-						<p>Lorem Ipsum sit amet consectuer adipiscing elit
-sed diam nonummy nibh euismod</p>
-					</div>
-				</div>
-<!---->
 	
 				 <!---->
 <script type="text/javascript">

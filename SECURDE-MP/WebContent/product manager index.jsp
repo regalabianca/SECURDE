@@ -13,7 +13,7 @@
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="I-wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="I wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script type="text/javascript" src="js/move-top.js"></script>
@@ -23,9 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='//fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
 <!--//fonts-->
 <!-- start menu -->
-
 <!--//slider-script-->
-
 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 		    <script type="text/javascript">
 			    $(document).ready(function () {
@@ -43,7 +41,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- js -->
 		 <script src="js/bootstrap.js"></script>
 	<!-- js -->
-
 <script src="js/simpleCart.min.js"> </script>
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
@@ -56,11 +53,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header-info">
 			<div class="container">
 					<div class="header-top-in">
-						
-						<ul class="support">
-							<li><a href="mailto:info@example.com"><i class="glyphicon glyphicon-envelope"> </i>info@example.com</a></li>
-							<li><span><i class="glyphicon glyphicon-earphone" class="tele-in"> </i>0 462 261 61 61</span></li>			
-						</ul>
 						<ul class=" support-right">
 							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
 							<li><a href="register.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>			
@@ -68,8 +60,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="clearfix"> </div>
 					</div>
 				</div>
-			</div>		
-<div class="header header5">
+			</div>	
+<div class="header">
 	<div class="header-top">
 
 			<div class="header-bottom">
@@ -80,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <!---->
 		 
 			<div class="top-nav">
-				<ul class="memenu skyblue"><li  class="active"><a href="index.jsp">Home</a></li>
+				<ul class="memenu skyblue"><li class="active"><a href="index.jsp">Home</a></li>
 					<li class="grid"><a href="boots page.jsp">Boots</a>
 					</li>
 					<li class="grid"><a href="shoes page.jsp">Shoes</a>
@@ -89,6 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</li>
 					<li class="grid"><a href="slippers page.jsp">Slippers</a>
 					</li>
+				</ul>
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
@@ -108,103 +101,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			<div class="clearfix"> </div>
 		</div>
-		</div>	
+		</div>
+
+	<div class="banner">
+		<div class="banner-top">
+	         <h2>THIS IS I-WEAR</h2>
+	         <p>Goggles or safety glasses are forms of protective eyewear<span>fthat usually enclose or protect the area surrounding the eye in order to prevent particulates.</span></p>
+</div>
+	<div class="now">
+	         <a class="morebtn" href="shoes page.jsp">Explore</a>
+	         <a class="morebtn at-in" href="single.jsp">Shop Now</a>
+	         <div class="clearfix"> </div>
+	         </div>
+ 	</div>	
  				<div class="clearfix"> </div>	
 			</div>
 <!---->
-<div class="back">
-	<h2>Register</h2>
-</div>
 		<!---->
-		<div class="container">
-		<div class="register">
-		<h3>PERSONAL INFORMATION</h3>
-		  	  <form action="SignUpServlet" method="post"> 
-					<div class="mation">
-						<div>
-							<span>First Name</span>
-							<input type="text" name="first_name"> 
-						</div>
-						<div>
-							<span>Middle Initial</span>
-							<input type="text" name="middle_initial"> 
-						</div>
-						<div>
-							<span>Last Name</span>
-							<input type="text" name="last_name"> 
-						 </div>
-						 <div>
-							 <span>Email Address</span>
-							 <input type="text" name="email">
-						</div>
-						<h3>BILLING ADDRESS</h3>
-						<div>
-							<span>House Number</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Street</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Subdivision</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>City</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Postal Code</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Country</span>
-							<input type="text" name="">						 
-						</div>
-						<h3>SHIPPING ADDRESS</h3>
-						<div>
-							<span>House Number</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Street</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Subdivision</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>City</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Postal Code</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Country</span>
-							<input type="text" name="">						 
-						</div>
-						<h3>ACCOUNT DETAILS<h3>
-						<div>
-							<span>Username</span>
-							<input type="text" name="username">						 
-						</div>
-						<div>
-							<span>Password</span>
-							<input type="password" name="password">						 
-						</div>
-						<div>
-							<span>Confirm Password</span>
-							<input type="password" name="confirmPass">						 
-						</div>
-					 </div>
-				     <input type="submit" value="submit">
-				</form>
-	</div>
-				 <!---->
+		
+
+	<!---->
+	
+			 <!---->
 <script type="text/javascript">
 		$(document).ready(function() {
 				/*
@@ -220,6 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!----> 
+
 <!---->
 </body>
 </html>

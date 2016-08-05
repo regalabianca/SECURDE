@@ -13,7 +13,7 @@
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="I-wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="I wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script type="text/javascript" src="js/move-top.js"></script>
@@ -49,20 +49,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- /start menu -->
 </head>
 <body> 
-<!--header-->	
+<!--header-->
 		<div class="header-info">
 			<div class="container">
 					<div class="header-top-in">
 						
+						
 						<ul class=" support-right">
-							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
-							<li><a href="register.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>			
+							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
+							<li><a href="registermanager.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create Manager Account</a></li>			
 						</ul>
 						<div class="clearfix"> </div>
 					</div>
 				</div>
 			</div>	
-<div class="header header5">
+<div class="header">
 	<div class="header-top">
 
 			<div class="header-bottom">
@@ -73,73 +74,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <!---->
 		 
 			<div class="top-nav">
-				<ul class="memenu skyblue"><li class="active"><a href="index.jsp">Home</a></li>
-					<li class="grid"><a href="boots page.jsp">Boots</a>
-					</li>
-					<li class="grid"><a href="shoes page.jsp">Shoes</a>
-					</li>
-					<li class="grid"><a href="sandals page.jsp">Sandals</a>
-					</li>
-					<li class="grid"><a href="slippers page.jsp">Slippers</a>
-					</li>
-				</ul>
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
 					<!---->
-					<div class="cart box_1">
-						<a href="checkout.jsp">
-						<h3> <div class="total">
-							<span class="simpleCart_total"> </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> </span>)</div>
-							<img src="images/cart2-2.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-						<div class="clearfix"> </div>
-					</div>
-
-<div class="clearfix"> </div>
 					<!---->
 				</div>
 			<div class="clearfix"> </div>
 		</div>
-		</div>	
+		</div>
+
+	<div class="banner">
+		<div class="banner-top">
+	         <h2>THIS IS I-WEAR</h2>
+	         <p>Goggles or safety glasses are forms of protective eyewear<span>fthat usually enclose or protect the area surrounding the eye in order to prevent particulates.</span></p>
+</div>
+	<div class="now">
+	         <div class="clearfix"> </div>
+	         </div>
+ 	</div>	
  				<div class="clearfix"> </div>	
 			</div>
 <!---->
-<div class="back">
-	<h2>Login</h2>
-</div>
 		<!---->
-		<div class="container">
-		<div class="account_grid">
-			   <div class=" login-right">
-			  	<h3>REGISTERED CUSTOMERS</h3>
-				<p>If you have an account with us, please log in.</p>
-				<form action="LogInServlet" method="post">
-				  <div>
-					<span>Username</span>
-					<input type="text" name="username"> 
-				  </div>
-				  <div>
-					<span>Password</span>
-					<input type="text" name="password"> 
-				  </div>
-				  <a class="forgot" href="#">Forgot Your Password?</a>
-				  <input type="submit" value="Login">
-			    </form>
-			   </div>	
-			    <div class=" login-left">
-			  	 <h3>NEW CUSTOMERS</h3>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-				 <a class="acount-btn" href="register.jsp">Create an Account</a>
-			   </div>
-			
-			 </div>
 		
-			</div>
+
 	<!---->
 	
-				 <!---->
+			 <!---->
 <script type="text/javascript">
 		$(document).ready(function() {
 				/*
@@ -155,6 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!----> 
+
 <!---->
 </body>
 </html>

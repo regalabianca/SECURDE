@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>I wear A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
+<title>I-wear</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	         <p>Goggles or safety glasses are forms of protective eyewear<span>fthat usually enclose or protect the area surrounding the eye in order to prevent particulates.</span></p>
 </div>
 	<div class="now">
-	         <a class="morebtn" href="product.jsp">Explore</a>
+	         <a class="morebtn" href="shoes page.jsp">Explore</a>
 	         <a class="morebtn at-in" href="single.jsp">Shop Now</a>
 	         <div class="clearfix"> </div>
 	         </div>

@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>I-wear A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
+<title>I-wear</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -121,50 +121,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="product">
 			<div class="container">
 				<div class="col-md-3 product-price">
-					  
-				<div class=" rsidebar span_1_of_left">
-					<div class="of-left">
-						<h3 class="cate">CATEGORIES</h3>
-					</div>
-		 <ul class="menu">
-		<li class="item1"><a href="#">Men </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="#">Cute Kittens </a></li>
-				<li class="subitem2"><a href="#">Strange Stuff </a></li>
-				<li class="subitem3"><a href="#">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item2"><a href="#">Women </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="#">Cute Kittens </a></li>
-				<li class="subitem2"><a href="#">Strange Stuff </a></li>
-				<li class="subitem3"><a href="#">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item3"><a href="#">Kids</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="#">Cute Kittens </a></li>
-				<li class="subitem2"><a href="#">Strange Stuff </a></li>
-				<li class="subitem3"><a href="#">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item4"><a href="#">Accesories</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="#">Cute Kittens </a></li>
-				<li class="subitem2"><a href="#">Strange Stuff </a></li>
-				<li class="subitem3"><a href="#">Automatic Fails </a></li>
-			</ul>
-		</li>
-				
-		<li class="item4"><a href="#">Shoes</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="#">Cute Kittens </a></li>
-				<li class="subitem2"><a href="#">Strange Stuff </a></li>
-				<li class="subitem3"><a href="#">Automatic Fails </a></li>
-			</ul>
-		</li>
-	</ul>
-					</div>
 				<!--initiate accordion-->
 		<script type="text/javascript">
 			$(function() {

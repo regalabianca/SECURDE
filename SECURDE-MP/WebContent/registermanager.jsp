@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>I-wear A Ecommerce Category Flat Bootstarp Resposive Website Template | Register :: w3layouts</title>
+<title>I-wear</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -56,14 +56,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header-info">
 			<div class="container">
 					<div class="header-top-in">
-						
-						<ul class="support">
-							<li><a href="mailto:info@example.com"><i class="glyphicon glyphicon-envelope"> </i>info@example.com</a></li>
-							<li><span><i class="glyphicon glyphicon-earphone" class="tele-in"> </i>0 462 261 61 61</span></li>			
-						</ul>
 						<ul class=" support-right">
-							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
-							<li><a href="register.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>			
+							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
+							<li><a href="registermanager.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create Manager Account</a></li>			
 						</ul>
 						<div class="clearfix"> </div>
 					</div>
@@ -75,35 +70,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-bottom">
 			<div class="container">			
 				<div class="logo">
-					<h1><a href="index.jsp">I-<span>wear</span></a></h1>
+					<h1><a href="admin index.jsp">I-<span>wear</span></a></h1>
 				</div>
 		 <!---->
 		 
 			<div class="top-nav">
-				<ul class="memenu skyblue"><li  class="active"><a href="index.jsp">Home</a></li>
-					<li class="grid"><a href="boots page.jsp">Boots</a>
-					</li>
-					<li class="grid"><a href="shoes page.jsp">Shoes</a>
-					</li>
-					<li class="grid"><a href="sandals page.jsp">Sandals</a>
-					</li>
-					<li class="grid"><a href="slippers page.jsp">Slippers</a>
-					</li>
-				</ul>
 				<div class="clearfix"> </div>
 			</div>
 					<!---->
-					<div class="cart box_1">
-						<a href="checkout.jsp">
-						<h3> <div class="total">
-							<span class="simpleCart_total"> </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> </span>)</div>
-							<img src="images/cart2-2.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-						<div class="clearfix"> </div>
-					</div>
-
-<div class="clearfix"> </div>
 					<!---->
 				</div>
 			<div class="clearfix"> </div>
@@ -149,6 +123,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div>
 							<span>Confirm Password</span>
 							<input type="password" name="confirmPass">						 
+						</div>
+						<div>
+							<span>Type</span>
+							<select name="type">
+  								<option value="shoes">Product Manager</option>
+ 								<option value="sandals">Accounting Manager</option>
+							</select>					 
 						</div>
 					 </div>
 				     <input type="submit" value="submit">
