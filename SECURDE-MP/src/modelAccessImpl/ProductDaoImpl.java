@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import database.DBConnection;
 import modelAccess.ProductDao;
@@ -54,6 +55,34 @@ public class ProductDaoImpl implements ProductDao {
 				product.setCategoryId(rs.getInt(Product.COL_CATEGORYID));
 				return product;
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	@Override
+	public ArrayList<Product> getProducts(int categoryId) {
+		ArrayList<Product> products = new ArrayList<>();
+		
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Product.TABLE_PRODUCT + 
+														" WHERE " + Product.COL_CATEGORYID + " = ?");
+			ps.setInt(1, categoryId);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()){
+				Product product = new Product();
+				product.setProductId(rs.getInt(Product.COL_PRODUCTID));
+				product.setDescription(rs.getString(Product.COL_DESCRIPTION));
+				product.setPrice(rs.getFloat(Product.COL_PRICE));
+				product.setCategoryId(rs.getInt(Product.COL_CATEGORYID));
+				products.add(product);
+			}
+			return products;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
