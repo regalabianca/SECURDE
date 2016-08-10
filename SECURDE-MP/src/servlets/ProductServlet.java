@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.DBManager;
-import models.Account;
+import models.Product;
 
 /**
- * Servlet implementation class LogInServlet
+ * Servlet implementation class ProductServlet
  */
-@WebServlet("/LogInServlet")
-public class LogInServlet extends HttpServlet {
+@WebServlet("/ProductServlet")
+public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogInServlet() {
+    public ProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,34 +37,28 @@ public class LogInServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		// TODO Auto-generated method stub
+		String command = request.getParameter("command");
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		String description = request.getParameter("description");
+		float price = Float.parseFloat(request.getParameter("price"));
+		int categoryId = Integer.parseInt("categoryId");
 		
-		Account account = new Account();
-		account.setUsername(username);
-		account.setPassword(password);
+		Product product = new Product();
+		product.setProductId(productId);
+		product.setDescription(description);
+		product.setPrice(price);
+		product.setCategoryId(categoryId);
+		
 		DBManager dbmanager = new DBManager();
-		account = dbmanager.login(account);
 		
-		System.out.println("account = "+account);
-		
-		if (account != null){
-			request.getSession().setAttribute("account", account);
-			String homepage = "";
-			switch (account.getType()){
-				case 1: homepage = "registermanager.jsp";
+		switch(command){
+			case "add":	dbmanager.addProduct(product);
 						break;
-				case 2: homepage = "product manager index.jsp";
-						break;
-				case 3: homepage = "accounting manager index.jsp";
-						break;
-				default: homepage = "index.jsp";
-			}
-			request.getRequestDispatcher(homepage).forward(request, response);
-		} else {
-			response.sendRedirect("account.jsp");
+			case "update":	dbmanager.updateProduct(product);
+							break;
+			case "delete":	dbmanager.deleteProduct(productId);
 		}
-		
 	}
 
 }

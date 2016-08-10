@@ -4,7 +4,7 @@ public class Product {
 	public static final String TABLE_PRODUCT = "product";
 	
 	public static final String COL_PRODUCTID = "product_id";
-	public static final String COL_DESCRIPTION = "price";
+	public static final String COL_DESCRIPTION = "description";
 	public static final String COL_PRICE = "price";
 	public static final String COL_CATEGORYID = "category_id";
 	

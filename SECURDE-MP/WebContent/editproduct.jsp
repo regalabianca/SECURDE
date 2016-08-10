@@ -219,8 +219,9 @@ $(window).load(function() {
 							<div class="available">
 						</div>
 								<a href="#" id="btnEdit" class="add-cart item_add">EDIT PRODUCT INFORMATION</a>
-								<a href="#" id="btnSave" style="display:none;" class="add-cart item_add">SAVE</a>
+								<a href="#" id="btnSave" type="submit" style="display:none;" class="add-cart item_add">SAVE</a>
 								<a href="#" id="btnCancel" style="display:none;" class="add-cart item_add">CANCEL</a>
+
 						</div>
 					</div>
 				<div class="clearfix"> </div>
@@ -330,21 +331,32 @@ $(window).load(function() {
 			$("#btnCancel").show();
 			
 			$("#btnSave").click(function(){
-				 $('#name').show();
-				 $('#name').text('').append(textbox.value);
-				 $('#editName').hide();
-
-				 $('#description').show();
-				 $('#description').text('').append(textbox1.value);
-				 $('#editDesc').hide();
-				 
-				 $('#price').show();
-				 $('#price').text('').append(textbox2.value);
-				 $('#editPrice').hide();
 				
-				$("#btnEdit").show();
-				$("#btnSave").hide();
-				$("#btnCancel").hide();
+				var params = {
+					//productId: 
+					description: document.getElementById("editDesc").value,
+					price: document.getElementById("editPrice").value//,
+					//categoryId: document.getElementById("editCateg").value
+				};
+				
+				$.post("UpdateProductServlet", $.param(params), function(response){
+					 $('#name').show();
+					 $('#name').text('').append(textbox.value);
+					 $('#editName').hide();
+
+					 $('#description').show();
+					 $('#description').text('').append(textbox1.value);
+					 $('#editDesc').hide();
+					 
+					 $('#price').show();
+					 $('#price').text('').append(textbox2.value);
+					 $('#editPrice').hide();
+					
+					$("#btnEdit").show();
+					$("#btnSave").hide();
+					$("#btnCancel").hide();
+				});
+				
 		    }); 
 			$("#btnCancel").click(function(){
 				 $('#name').show();

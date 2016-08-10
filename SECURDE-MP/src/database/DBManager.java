@@ -1,10 +1,13 @@
 package database;
 
 import modelAccess.AccountDao;
+import modelAccess.ProductDao;
 import modelAccess.UserDao;
 import modelAccessImpl.AccountDaoImpl;
+import modelAccessImpl.ProductDaoImpl;
 import modelAccessImpl.UserDaoImpl;
 import models.Account;
+import models.Product;
 import models.User;
 
 public class DBManager {
@@ -12,12 +15,14 @@ public class DBManager {
 	DBConnection connection;
 	AccountDao accountDao;
 	UserDao userDao;
+	ProductDao productDao;
 	
 	public DBManager(){
 		connection = DBConnection.getConnection();
 		System.out.println("xxxxxxxx -- DBManager has been contacted! xo");
 		accountDao = new AccountDaoImpl();
 		userDao = new UserDaoImpl();
+		productDao = new ProductDaoImpl();
 	}
 	
 	public Account signup(User user, Account account){
@@ -46,6 +51,18 @@ public class DBManager {
 		Account acc = accountDao.getAccount(username, password);
 		
 		return acc;
+	}
+	
+	public boolean addProduct(Product product){
+		return productDao.addProduct(product);
+	}
+	
+	public void updateProduct(Product product){
+		productDao.updateProduct(product);
+	}
+	
+	public void deleteProduct(int productId){
+		productDao.deleteProduct(productId);
 	}
 	
 }
