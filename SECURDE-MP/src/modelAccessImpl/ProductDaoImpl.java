@@ -97,8 +97,7 @@ public class ProductDaoImpl implements ProductDao {
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Product.TABLE_PRODUCT + 
-														" WHERE " + Product.COL_DESCRIPTION + " LIKE ? AND "
-														+ Product.COL_CATEGORYID +" = ?");
+														" WHERE " + Product.COL_DESCRIPTION + " LIKE ?");
 			ps.setString(1, "%"+search+"%");
 			ResultSet rs = ps.executeQuery();
 			
