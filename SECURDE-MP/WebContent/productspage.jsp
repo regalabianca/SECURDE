@@ -62,13 +62,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				 
 			<div class="top-nav">
 				<ul class="memenu skyblue"><li><a href="index.jsp">Home</a></li>
-					<li class="grid"><a href="boots page.jsp">Boots</a>
+					<li class="grid"><a href="ViewBootsServlet">Boots</a>
 					</li>
-					<li class="grid"><a href="shoes page.jsp">Shoes</a>
+					<li class="grid"><a href="ViewShoesServlet">Shoes</a>
 					</li>
-					<li class="grid"><a href="sandals page.jsp">Sandals</a>
+					<li class="grid"><a href="ViewSandalsServlet">Sandals</a>
 					</li>
-					<li class="grid"><a href="slippers page.jsp">Slippers</a>
+					<li class="grid"><a href="ViewSlippersServlet">Slippers</a>
 					</li>
 				</ul>
 				<div class="clearfix"> </div>
@@ -96,7 +96,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---->
 <!---->
 <div class="back">
-	<h2>Boots</h2>
 </div>
 		<!---->
 		<div class="product">
@@ -171,37 +170,23 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 	</div>
 				
 				<div class="col-md-9 product-price1">
-					<div class="mens-toolbar">
-						<p class="showing">Showing 1–9 of 21 results</p>
-	                 <div class="sort">
-			            <select>
-			                  <option value=""> Sorting By Rate</option>
-			                    <option value="">Sorting By Color </option>
-			                    <option value="">Sorting By Price </option>
-			            </select>
-			          
-	    		     </div>
-    	      
-                	<div class="clearfix"></div>		
-		        </div>
 		        <div class="product-right-top">
 		        	<div class="top-product">
 		        	
 		        		<div class="col-md-4 chain-grid  simpleCart_shelfItem">
 		        			<div class="grid-span-1">
-		        			<c:forEach var="p" items="${products}" varStatus="counter"> 
+		        			<c:forEach var="p" items="${viewproductslist}" varStatus="counter"> 
 	   		     		<a  href="single.jsp"><img class="img-responsive " src="images/n1.jpg" alt=" ">
 	   		     			<div class="link">
 	   		     			<ul >
 										<li><i class="glyphicon glyphicon-search"> </i></li>
-										
 							</ul>
 	   		     		</div>
 	   		     		</a>
 	   		     	</div>
 	   		     		<div class="grid-chain-bottom ">
 	   		     		
-	   		     			<a href="single.jsp">${p.description}</a>
+	   		     			<a href="ViewSingleProductServlet">${p.description}</a>
 	   		     			<div class="star-price">
 	   		     				<div class="price-at">
 		   		     				<ul class="star-footer">
@@ -213,7 +198,7 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 									</ul>
 									</div>
 									<div class="price-at-bottom ">
-										<span class="item_price">${p.price}</span>
+										<span class="item_price">P${p.price}</span>
 									</div>
 									
 	   		     				<div class="clearfix"> </div>
@@ -231,15 +216,6 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 	   		     	<div class="col-md-4 chain-grid simpleCart_shelfItem">
 					
 	   		     		
-		        <ul class="start">
-					<li><a href="#"><i> </i></a></li>
-					<li><span>1</span></li>
-					<li class="arrow"><a href="#">2</a></li>
-					<li class="arrow"><a href="#">3</a></li>
-					
-					
-					<li><a href="#"><i class="next"> </i></a></li>
-				</ul>
 				<div class="clearfix"> </div>
 				</div>
 					

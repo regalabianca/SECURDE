@@ -16,7 +16,7 @@ import models.Product;
 /**
  * Servlet implementation class ViewProductsServlet
  */
-@WebServlet("/ViewProductsServlet")
+@WebServlet(urlPatterns = {"/ViewProductsServlet","/ViewBootsServlet","/ViewShoesServlet","/ViewSandalsServlet","/ViewSlippersServlet"})
 public class ViewProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,42 +41,36 @@ public class ViewProductsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("HELLO DOPOST VIEW PRODUCTS " +request.getParameter("categoryId"));
-		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-		ArrayList<Product> products = new ArrayList<>();
-		
-		DBManager dbmanager = new DBManager();
-		products = dbmanager.getProducts(categoryId);
-		
-		request.getSession().setAttribute("products", products);	
-		request.getRequestDispatcher("viewproducts.jsp").forward(request, response);
-	}
-	
-	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		/*System.out.println("ange");
 		ArrayList<Product> p = new ArrayList();
-		//request.removeAttribute("requestlist");
-		//Profile prof = (Profile) request.getSession().getAttribute("profile");
-		//r = new Manager().getAllProfRequest(p.getIdNo(), "All", "All","All");
 		ProductDaoImpl pd = new ProductDaoImpl();
-		p = pd.getProducts(1);
-		System.out.println("desc:"+p.get(0).getDescription());
-		System.out.println("price:"+p.get(0).getPrice());
-		request.getSession().setAttribute("viewbootslist", p);
-
-//		notif = new Manager().getAllProfNotif(p.getIdNo());
-//		request.getSession().setAttribute("notif", notif);
-
-//		ArrayList<String> s = new Manager()
-//				.getAllStudentOfProf(p.getIdNo());
-//		request.getSession().setAttribute("students", s);
-//
-//		c = new Manager().getAllProfessorCourses(p.getIdNo());
-//		request.getSession().setAttribute("courses", c);
-
-		request.getRequestDispatcher("boots page.jsp").forward(
-				request, response);*/
+		//request.removeAttribute("requestlist");
+				//Profile prof = (Profile) request.getSession().getAttribute("profile");
+				//r = new Manager().getAllProfRequest(p.getIdNo(), "All", "All","All");
+		switch (request.getServletPath()){
+			case "/ViewBootsServlet":
+			p = pd.getProducts(1);
+			request.getSession().setAttribute("viewproductslist", p);
+			request.getRequestDispatcher("productspage.jsp").forward(
+					request, response);
+			break;
+			case "/ViewShoesServlet":
+				p = pd.getProducts(2);
+				request.getSession().setAttribute("viewproductslist", p);
+				request.getRequestDispatcher("productspage.jsp").forward(
+						request, response);
+			break;
+			case "/ViewSandalsServlet":
+				p = pd.getProducts(3);
+				request.getSession().setAttribute("viewproductslist", p);
+				request.getRequestDispatcher("productspage.jsp").forward(
+						request, response);
+			break;
+			case "/ViewSlippersServlet":
+				p = pd.getProducts(4);
+				request.getSession().setAttribute("viewproductslist", p);
+				request.getRequestDispatcher("productspage.jsp").forward(
+						request, response);
+			break;
+		}
 	}
-
 }
