@@ -33,39 +33,28 @@ public class ViewProductsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		process(request,response);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("ange");
-		ArrayList<Product> p = new ArrayList();
-		//request.removeAttribute("requestlist");
-		//Profile prof = (Profile) request.getSession().getAttribute("profile");
-		//r = new Manager().getAllProfRequest(p.getIdNo(), "All", "All","All");
-		ProductDaoImpl pd = new ProductDaoImpl();
-		p = pd.getProducts(1);
-		request.getSession().setAttribute("viewbootslist", p);
-
-//		notif = new Manager().getAllProfNotif(p.getIdNo());
-//		request.getSession().setAttribute("notif", notif);
-
-//		ArrayList<String> s = new Manager()
-//				.getAllStudentOfProf(p.getIdNo());
-//		request.getSession().setAttribute("students", s);
-//
-//		c = new Manager().getAllProfessorCourses(p.getIdNo());
-//		request.getSession().setAttribute("courses", c);
-
-		request.getRequestDispatcher("boots page.jsp").forward(
-				request, response);
+		System.out.println("HELLO DOPOST VIEW PRODUCTS " +request.getParameter("categoryId"));
+		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		ArrayList<Product> products = new ArrayList<>();
+		
+		DBManager dbmanager = new DBManager();
+		products = dbmanager.getProducts(categoryId);
+		
+		request.getSession().setAttribute("products", products);	
+		request.getRequestDispatcher("viewproducts.jsp").forward(request, response);
 	}
+	
 	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("ange");
+		
+		/*System.out.println("ange");
 		ArrayList<Product> p = new ArrayList();
 		//request.removeAttribute("requestlist");
 		//Profile prof = (Profile) request.getSession().getAttribute("profile");
@@ -87,7 +76,7 @@ public class ViewProductsServlet extends HttpServlet {
 //		request.getSession().setAttribute("courses", c);
 
 		request.getRequestDispatcher("boots page.jsp").forward(
-				request, response);
+				request, response);*/
 	}
 
 }

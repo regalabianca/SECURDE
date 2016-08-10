@@ -1,5 +1,7 @@
 package database;
 
+import java.util.ArrayList;
+
 import modelAccess.AccountDao;
 import modelAccess.ProductDao;
 import modelAccess.UserDao;
@@ -51,6 +53,10 @@ public class DBManager {
 		Account acc = accountDao.getAccount(username, password);
 		
 		return acc;
+	}
+	
+	public ArrayList<Product> getProducts(int categoryId){
+		return productDao.getProducts(categoryId);
 	}
 	
 	public boolean addProduct(Product product){

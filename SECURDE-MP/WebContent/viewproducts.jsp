@@ -62,9 +62,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				 
 			<div class="top-nav">
 				<ul class="memenu skyblue"><li><a href="index.jsp">Home</a></li>
-					<li class="grid"><a href="boots page.jsp">Boots</a>
+					<li class="grid"><a href="ViewProductsServlet?categoryId=1">Boots</a>
 					</li>
-					<li class="grid"><a href="shoes page.jsp">Shoes</a>
+					<li class="grid"><a href="ViewProductsServlet?categoryId=2">Shoes</a>
 					</li>
 					<li class="grid"><a href="sandals page.jsp">Sandals</a>
 					</li>
