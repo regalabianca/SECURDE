@@ -127,8 +127,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div>
 							<span>Type</span>
 							<select name="type">
-  								<option value="shoes">Product Manager</option>
- 								<option value="sandals">Accounting Manager</option>
+  								<option value="2">Product Manager</option>
+ 								<option value="3">Accounting Manager</option>
 							</select>					 
 						</div>
 					 </div>
