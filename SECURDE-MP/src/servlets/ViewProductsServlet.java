@@ -16,7 +16,7 @@ import models.Product;
 /**
  * Servlet implementation class ViewProductsServlet
  */
-@WebServlet(urlPatterns = {"/ViewProductsServlet","/ViewBootsServlet","/ViewShoesServlet","/ViewSandalsServlet","/ViewSlippersServlet"})
+@WebServlet(urlPatterns = {"/ViewProductsServlet","/ViewBootsServlet","/ViewShoesServlet","/ViewSandalsServlet","/ViewSlippersServlet","/SearchServlet"})
 public class ViewProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -67,6 +67,12 @@ public class ViewProductsServlet extends HttpServlet {
 			break;
 			case "/ViewSlippersServlet":
 				p = pd.getProducts(4);
+				request.getSession().setAttribute("viewproductslist", p);
+				request.getRequestDispatcher("productspage.jsp").forward(
+						request, response);
+			break;
+			case "/SearchServlet":
+				p = pd.getSearchProducts(request.getParameter("search"));
 				request.getSession().setAttribute("viewproductslist", p);
 				request.getRequestDispatcher("productspage.jsp").forward(
 						request, response);

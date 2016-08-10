@@ -104,8 +104,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					  <div class="price-grid">
 					    <div class="of-left">
 						<h3 class="cate cate-on">SEARCH</h3>
-						<input placeholder="Search" type="text"></input>
-						<a  class="go" href="single.jsp">GO</a>
+						<form action="SearchServlet" method="post">
+						<input placeholder="Search" name="search" type="text"></input>
+						<button class="go">GO</button>
+						</form>
 					</div>
 	  <!-- <ul class="dropdown-menu1">
             <li><a href="#">
@@ -113,7 +115,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                       <label for="amount" class="amount">Range:</label>
                      <input type="text" id="amount" style="border: 0; color: #ff5d56; font-weight: bold;" />
 						  </p>
-                
                    <div id="slider-range"></div>
                 </a></li>
 				

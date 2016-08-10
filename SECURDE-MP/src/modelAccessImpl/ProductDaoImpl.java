@@ -90,6 +90,34 @@ public class ProductDaoImpl implements ProductDao {
 		
 		return null;
 	}
+	
+	public ArrayList<Product> getSearchProducts(String search) {
+		ArrayList<Product> products = new ArrayList<>();
+		
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Product.TABLE_PRODUCT + 
+														" WHERE " + Product.COL_DESCRIPTION + " LIKE ? AND "
+														+ Product.COL_CATEGORYID +" = ?");
+			ps.setString(1, "%"+search+"%");
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()){
+				Product product = new Product();
+				product.setProductId(rs.getInt(Product.COL_PRODUCTID));
+				product.setDescription(rs.getString(Product.COL_DESCRIPTION));
+				product.setPrice(rs.getFloat(Product.COL_PRICE));
+				product.setCategoryId(rs.getInt(Product.COL_CATEGORYID));
+				products.add(product);
+			}
+			return products;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 
 	@Override
 	public void updateProduct(Product product) {
