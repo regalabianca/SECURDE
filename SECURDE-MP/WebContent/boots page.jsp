@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>I-wear</title>
+<title>I-wear A Ecommerce Category Flat Bootstarp Resposive Website Template | Product :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -185,8 +186,10 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 		        </div>
 		        <div class="product-right-top">
 		        	<div class="top-product">
+		        	
 		        		<div class="col-md-4 chain-grid  simpleCart_shelfItem">
 		        			<div class="grid-span-1">
+		        			<c:forEach var="p" items="${viewbootslist}" varStatus="counter"> 
 	   		     		<a  href="single.jsp"><img class="img-responsive " src="images/n1.jpg" alt=" ">
 	   		     			<div class="link">
 	   		     			<ul >
@@ -197,7 +200,8 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 	   		     		</a>
 	   		     	</div>
 	   		     		<div class="grid-chain-bottom ">
-	   		     			<a href="single.jsp">Sun Glasses #1</a>
+	   		     		
+	   		     			<a href="single.jsp">${p.description}</a>
 	   		     			<div class="star-price">
 	   		     				<div class="price-at">
 		   		     				<ul class="star-footer">
@@ -209,304 +213,24 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 									</ul>
 									</div>
 									<div class="price-at-bottom ">
-										<span class="item_price">$ 75.00</span>
+										<span class="item_price">${p.price}</span>
 									</div>
+									
 	   		     				<div class="clearfix"> </div>
 							</div>
+							
 							<div class="cart-add">
 								<a class="add1 item_add" href="#">ADD TO CART <i> </i></a>
 								<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
 								<div class="clearfix"> </div>
 							</div>
+							</c:forEach>
 	   		     		</div>
 	   		     		
 	   		     	</div>
 	   		     	<div class="col-md-4 chain-grid simpleCart_shelfItem">
-					<div class="grid-span-1">
-	   		     		<a href="single.jsp"><img class="img-responsive " src="images/n2.jpg" alt=" ">
-						<div class="link">
-	   		     			<ul >
-										<li><i class="glyphicon glyphicon-search"> </i></li>
-										
-							</ul>
-	   		     		</div></a>
-	   		     		</div>
-	   		     		<div class="grid-chain-bottom ">
-	   		     			<a href="single.jsp">Sun Glasses #1</a>
-	   		     			<div class="star-price">
-	   		     				<div class="price-at">
-		   		     				<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									</div>
-									<div class="price-at-bottom ">
-										<span class="item_price">$ 75.00</span>
-									</div>
-	   		     				<div class="clearfix"> </div>
-							</div>
-							<div class="cart-add">
-								<a class="add1 item_add" href="#">ADD TO CART <i> </i></a>
-							<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
-								<div class="clearfix"> </div>
-							</div>
-	   		     		</div>
-	   		     	</div>
-	   		     	<div class="col-md-4 chain-grid simpleCart_shelfItem">
-					<div class="grid-span-1">
-	   		     		<a href="single.jsp"><img class="img-responsive " src="images/n3.jpg" alt=" ">
-						<div class="link">
-	   		     			<ul >
-										<li><i class="glyphicon glyphicon-search"> </i></li>
-										
-							</ul>
-	   		     		</div></a>
-	   		     		</div>
-	   		     		<div class="grid-chain-bottom ">
-	   		     			<a href="single.jsp">Sun Glasses #1</a>
-	   		     			<div class="star-price">
-	   		     				<div class="price-at">
-		   		     				<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									</div>
-									<div class="price-at-bottom ">
-										<span class="item_price">$ 75.00</span>
-									</div>
-	   		     				<div class="clearfix"> </div>
-							</div>
-							<div class="cart-add">
-								<a class="add1 item_add" href="#">ADD TO CART <i> </i></a>
-								<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
-								<div class="clearfix"> </div>
-							</div>
-	   		     		</div>
-	   		     	</div>
-	   		     	<div class="clearfix"> </div>
-		        	</div>
-		        	<div class="top-product">
 					
-		        		<div class="col-md-4 chain-grid simpleCart_shelfItem">
-						<div class="grid-span-1">
-	   		     		<a href="single.jsp"><img class="img-responsive " src="images/n4.jpg" alt=" ">
-						<div class="link">
-	   		     			<ul >
-										<li><i class="glyphicon glyphicon-search"> </i></li>
-										
-							</ul>
-	   		     		</div><span>NEW</span></a>
-	   		     		</div>
-	   		     		<div class="grid-chain-bottom ">
-	   		     			<a href="single.jsp">Sun Glasses #1</a>
-	   		     			<div class="star-price">
-	   		     				<div class="price-at">
-		   		     				<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									</div>
-									<div class="price-at-bottom ">
-										<span class="item_price">$ 75.00</span>
-									</div>
-	   		     				<div class="clearfix"> </div>
-							</div>
-							<div class="cart-add">
-								<a class="add1 item_add" href="#">ADD TO CART <i> </i></a>
-								<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
-								<div class="clearfix"> </div>
-							</div>
-	   		     		</div>
-	   		     	</div>
-	   		     	<div class="col-md-4 chain-grid simpleCart_shelfItem">
-					
-					<div class="grid-span-1">
-	   		     		<a href="single.jsp"><img class="img-responsive " src="images/n5.jpg" alt=" ">
-						<div class="link">
-	   		     			<ul >
-										<li><i class="glyphicon glyphicon-search"> </i></li>
-										
-							</ul>
-	   		     		</div></a>
-	   		     		</div>
-	   		     		<div class="grid-chain-bottom ">
-	   		     			<a href="single.jsp">Sun Glasses #1</a>
-	   		     			<div class="star-price">
-	   		     				<div class="price-at">
-		   		     				<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									</div>
-									<div class="price-at-bottom ">
-										<span class="item_price">$ 75.00</span>
-									</div>
-	   		     				<div class="clearfix"> </div>
-							</div>
-							<div class="cart-add">
-								<a class="add1 item_add" href="#">ADD TO CART <i> </i></a>
-								<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
-								<div class="clearfix"> </div>
-							</div>
-	   		     		</div>
-	   		     	</div>
-	   		     	<div class="col-md-4 chain-grid simpleCart_shelfItem">
-					<div class="grid-span-1">
-	   		     		<a href="single.jsp"><img class="img-responsive " src="images/n6.jpg" alt=" ">
-						<div class="link">
-	   		     			<ul >
-										<li><i class="glyphicon glyphicon-search"> </i></li>
-										
-							</ul>
-	   		     		</div></a>
-	   		     		</div>
-	   		     		<div class="grid-chain-bottom ">
-	   		     			<a href="single.jsp">Sun Glasses #1</a>
-	   		     			<div class="star-price">
-	   		     				<div class="price-at">
-		   		     				<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									</div>
-									<div class="price-at-bottom ">
-										<span class="item_price">$ 75.00</span>
-									</div>
-	   		     				<div class="clearfix"> </div>
-							</div>
-							<div class="cart-add">
-								<a class="add1 item_add" href="#">ADD TO CART <i> </i></a>
-								<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
-								<div class="clearfix"> </div>
-							</div>
-	   		     		</div>
-	   		     	</div>
-	   		     	<div class="clearfix"> </div>
-		        	</div>
-		        	<div class="top-product">
-				
-		        		<div class="col-md-4 chain-grid simpleCart_shelfItem">
-						<div class="grid-span-1">
-	   		     		<a href="single.jsp"><img class="img-responsive " src="images/n7.jpg" alt=" ">
-						<div class="link">
-	   		     			<ul >
-										<li><i class="glyphicon glyphicon-search"> </i></li>
-										
-							</ul>
-	   		     		</div><span>NEW</span></a>
-	   		     		</div>
-	   		     		<div class="grid-chain-bottom ">
-	   		     			<a href="single.jsp">Sun Glasses #1</a>
-	   		     			<div class="star-price">
-	   		     				<div class="price-at">
-		   		     				<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									</div>
-									<div class="price-at-bottom ">
-										<span class="item_price">$ 75.00</span>
-									</div>
-	   		     				<div class="clearfix"> </div>
-							</div>
-							<div class="cart-add">
-								<a class="add1 item_add" href="#">ADD TO CART <i> </i></a>
-								<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
-								<div class="clearfix"> </div>
-							</div>
-	   		     		</div>
-	   		     	</div>
-	   		     	<div class="col-md-4 chain-grid simpleCart_shelfItem">
-					<div class="grid-span-1">
-	   		     		<a href="single.jsp"><img class="img-responsive " src="images/n8.jpg" alt=" ">
-						<div class="link">
-	   		     			<ul >
-										<li><i class="glyphicon glyphicon-search"> </i></li>
-										
-							</ul>
-	   		     		</div>
-						<span>NEW</span></a>
-	   		     		</div>
-	   		     		<div class="grid-chain-bottom ">
-	   		     			<a href="single.jsp">Sun Glasses #1</a>
-	   		     			<div class="star-price">
-	   		     				<div class="price-at">
-		   		     				<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									</div>
-									<div class="price-at-bottom ">
-										<span class="item_price">$ 75.00</span>
-									</div>
-	   		     				<div class="clearfix"> </div>
-							</div>
-							<div class="cart-add">
-								<a class="add1 item_add" href="#">ADD TO CART <i> </i></a>
-							<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
-								<div class="clearfix"> </div>
-							</div>
-	   		     		</div>
-	   		     	</div>
-	   		     	<div class="col-md-4 chain-grid simpleCart_shelfItem">
-					<div class="grid-span-1">
-	   		     		<a href="single.jsp"><img class="img-responsive " src="images/n1.jpg" alt=" ">
-						<div class="link">
-	   		     			<ul >
-										<li><i class="glyphicon glyphicon-search"> </i></li>
-										
-							</ul>
-	   		     		</div>
-						<span>NEW</span></a>
-	   		     		</div>
-	   		     		<div class="grid-chain-bottom ">
-	   		     			<a href="single.jsp">Sun Glasses #1</a>
-	   		     			<div class="star-price">
-	   		     				<div class="price-at">
-		   		     				<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									</div>
-									<div class="price-at-bottom ">
-										<span class="item_price">$ 75.00</span>
-									</div>
-	   		     				<div class="clearfix"> </div>
-							</div>
-							<div class="cart-add">
-								<a class="add1 item_add" href="#">ADD TO CART <i> </i></a>
-								<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
-								<div class="clearfix"> </div>
-							</div>
-	   		     		</div>
-	   		     	</div>
-	   		     	<div class="clearfix"> </div>
-		        	</div>
-		        </div>
+	   		     		
 		        <ul class="start">
 					<li><a href="#"><i> </i></a></li>
 					<li><span>1</span></li>
