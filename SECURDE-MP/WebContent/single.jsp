@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -81,13 +82,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 
 			<div class="top-nav">
 				<ul class="memenu skyblue"><li><a href="index.jsp">Home</a></li>
-					<li class="grid"><a href="boots page.jsp">Boots</a>
+					<li class="grid"><a href="ViewBootsServlet">Boots</a>
 					</li>
-					<li class="grid"><a href="shoes page.jsp">Shoes</a>
+					<li class="grid"><a href="ViewShoesServlet">Shoes</a>
 					</li>
-					<li class="grid"><a href="sandals page.jsp">Sandals</a>
+					<li class="grid"><a href="ViewSandalsServlet">Sandals</a>
 					</li>
-					<li class="grid"><a href="slippers page.jsp">Slippers</a>
+					<li class="grid"><a href="ViewSlippersServlet">Slippers</a>
 					</li>
 				</ul>
 				<div class="clearfix"> </div>
@@ -192,7 +193,8 @@ $(window).load(function() {
 					</div>	
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
-						<h4>Gucci</h4>
+						<c:set var="p" value="${product}" scope="request"></c:set>
+						<h4>${p.description}</h4>
 							<div class="star-on">
 								<ul class="star-footer">
 										<li><a href="#"><i> </i></a></li>
@@ -202,14 +204,12 @@ $(window).load(function() {
 										<li><a href="#"><i> </i></a></li>
 									</ul>
 								<div class="review">
-								<p>Description</p>
 									<a href="#"> 1 customer review </a>
 									
 								</div>
 							<div class="clearfix"> </div>
 							</div>
-							
-							<h5 class="item_price">$ 95.00</h5>
+							<h5 class="item_price">P ${p.price}</h5>
 							<div class="available">
 						</div>
 								<a href="#" class="add-cart item_add">ADD TO CART</a>

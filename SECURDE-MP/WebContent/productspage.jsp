@@ -186,8 +186,11 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 	   		     		</a>
 	   		     	</div>
 	   		     		<div class="grid-chain-bottom ">
-	   		     		
-	   		     			<a href="ViewSingleProductServlet">${p.description}</a>
+	   		     		<form method="post" action="ViewSingleProductServlet">
+	   		     			<a>${p.description}</a>
+	   		     			<input type="hidden" name="index" value = "${counter.index}"></input>
+	   		     			<input type="submit" value="VIEW DETAILS"></input>
+	   		     			</form>
 	   		     			<div class="star-price">
 	   		     				<div class="price-at">
 		   		     				<ul class="star-footer">
@@ -206,7 +209,7 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 							</div>
 							
 							<div class="cart-add">
-								<a class="add1 item_add" href="#">ADD TO CART <i> </i></a>
+								<a class="add1 item_add" href="AddCartServlet">ADD TO CART <i> </i></a>
 								<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
 								<div class="clearfix"> </div>
 							</div>
