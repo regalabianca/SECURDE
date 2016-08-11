@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelAccessImpl.ProductDaoImpl;
+import models.Account;
 import models.Product;
 
 /**
@@ -41,10 +42,9 @@ public class ViewSingleProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Account acct = (Account) request.getSession().getAttribute("account");
+		request.setAttribute("account", acct);
 		Product p = new Product();
-		//request.removeAttribute("requestlist");
-		//Profile prof = (Profile) request.getSession().getAttribute("profile");
-		//r = new Manager().getAllProfRequest(p.getIdNo(), "All", "All","All");
 		ArrayList<Product> products = (ArrayList<Product>) request.getSession().getAttribute("viewproductslist");
 		int index = Integer.parseInt(request.getParameter("index"));
 		ProductDaoImpl pd = new ProductDaoImpl();
