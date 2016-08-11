@@ -60,6 +60,7 @@ public class LogInServlet extends HttpServlet {
 							break;
 					default: homepage = "index.jsp";
 				}
+				request.setAttribute("account", account);
 				request.getRequestDispatcher(homepage).forward(request, response);
 			} else {
 				response.sendRedirect("account.jsp");
