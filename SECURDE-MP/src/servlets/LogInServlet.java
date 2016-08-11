@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.DBManager;
 import models.Account;
+import models.Password;
 
 /**
  * Servlet implementation class LogInServlet
@@ -40,30 +41,33 @@ public class LogInServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		Account account = new Account();
-		account.setUsername(username);
-		account.setPassword(password);
+		Password pass = new Password();
+	
 		DBManager dbmanager = new DBManager();
-		account = dbmanager.login(account);
-		
-		System.out.println("account = "+account);
-		
-		if (account != null){
-			request.getSession().setAttribute("account", account);
-			String homepage = "";
-			switch (account.getType()){
-				case 1: homepage = "registermanager.jsp";
-						break;
-				case 2: homepage = "product manager index.jsp";
-						break;
-				case 3: homepage = "accounting manager index.jsp";
-						break;
-				default: homepage = "index.jsp";
+		if(pass.checkPassword(password, dbmanager.getPassword(username))){
+			Account account = dbmanager.login(username);
+			
+			System.out.println("account = "+account);
+			if (account != null){
+				request.getSession().setAttribute("account", account);
+				String homepage = "";
+				switch (account.getType()){
+					case 1: homepage = "index.jsp";
+							break;
+					case 2: homepage = "product manager index.jsp";
+							break;
+					case 3: homepage = "accounting manager index.jsp";
+							break;
+					default: homepage = "index.jsp";
+				}
+				request.getRequestDispatcher(homepage).forward(request, response);
+			} else {
+				response.sendRedirect("account.jsp");
 			}
-			request.getRequestDispatcher(homepage).forward(request, response);
-		} else {
+		}else{
 			response.sendRedirect("account.jsp");
 		}
+		
 		
 	}
 

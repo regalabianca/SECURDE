@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.DBManager;
 import models.Account;
+import models.Password;
 import models.User;
 
 /**
@@ -42,7 +43,7 @@ public class SignUpServlet extends HttpServlet {
 		// account
 		String username = request.getParameter(Account.COL_USERNAME);
 		String password = request.getParameter(Account.COL_PASSWORD);
-		int type = Integer.parseInt(request.getParameter(Account.COL_TYPE));
+		int type = 1;
 		String confirmPass = request.getParameter("confirmPass");
 		
 		if (type != 2 && type != 3){
@@ -56,10 +57,13 @@ public class SignUpServlet extends HttpServlet {
 		String email = request.getParameter(User.COL_EMAIL);
 	
 		if (password.equals(confirmPass)){
+			
 			Account account = new Account();
 			account.setUsername(username);
-			account.setPassword(password);
 			account.setType(type);
+			Password pass = new Password();
+			password = pass.hashPassword(password);
+			
 			User user = new User();
 			user.setFirstName(firstName);
 			user.setLastName(lastName);
@@ -67,7 +71,7 @@ public class SignUpServlet extends HttpServlet {
 			user.setEmail(email);
 			
 			DBManager dbmanager = new DBManager();
-			account = dbmanager.signup(user, account);
+			account = dbmanager.signup(user, account, password);
 			
 			if(account != null){
 				request.getSession().setAttribute("account", account);

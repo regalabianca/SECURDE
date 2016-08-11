@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import database.DBConnection;
 import modelAccess.AccountDao;
 import models.Account;
+import models.Password;
 
 public class AccountDaoImpl implements AccountDao {
 	
@@ -30,9 +31,8 @@ public class AccountDaoImpl implements AccountDao {
 	}
 	
 	@Override
-	public boolean addAccount(Account account) {
+	public boolean addAccount(Account account, String password) {
 		String username = account.getUsername();
-		String password = account.getPassword();
 		int type = account.getType();
 		int userid = account.getUserId();
 		
@@ -70,7 +70,6 @@ public class AccountDaoImpl implements AccountDao {
 				Account account = new Account();
 				account.setAccountId(rs.getInt(Account.COL_ACCOUNTID));
 				account.setUsername(rs.getString(Account.COL_USERNAME));
-				account.setPassword(rs.getString(Account.COL_PASSWORD));
 				account.setType(rs.getInt(Account.COL_TYPE));
 				account.setUserId(rs.getInt(Account.COL_USERID));
 				return account;
@@ -83,21 +82,18 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	@Override
-	public Account getAccount(String username, String password) {
+	public Account getAccount(String username) {
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Account.TABLE_ACCOUNT + 
-														" WHERE " + Account.COL_USERNAME + " = ?"
-														+ " AND " + Account.COL_PASSWORD + " = ?");
+														" WHERE " + Account.COL_USERNAME + " = ?");
 			ps.setString(1, username);
-			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 			
 			if (rs.next()){
 				Account account = new Account();
 				account.setAccountId(rs.getInt(Account.COL_ACCOUNTID));
 				account.setUsername(rs.getString(Account.COL_USERNAME));
-				account.setPassword(rs.getString(Account.COL_PASSWORD));
 				account.setType(rs.getInt(Account.COL_TYPE));
 				account.setUserId(rs.getInt(Account.COL_USERID));
 				return account;
@@ -109,10 +105,33 @@ public class AccountDaoImpl implements AccountDao {
 		return null;
 	}
 	
+	public String getPassword(String username) {
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Account.TABLE_ACCOUNT + 
+														" WHERE " + Account.COL_USERNAME + " = ?");
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()){
+				Account account = new Account();
+				account.setAccountId(rs.getInt(Account.COL_ACCOUNTID));
+				account.setUsername(rs.getString(Account.COL_USERNAME));
+				account.setType(rs.getInt(Account.COL_TYPE));
+				account.setUserId(rs.getInt(Account.COL_USERID));
+				return rs.getString(Account.COL_PASSWORD);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
 	@Override
 	public void updateAccount(Account account) {
-		String username = account.getUsername();
-		String password = account.getPassword();
+		/*String username = account.getUsername();
 		int type = account.getType();
 		int userid = account.getUserId();
 		int accountId = account.getAccountId();
@@ -133,7 +152,7 @@ public class AccountDaoImpl implements AccountDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	@Override
