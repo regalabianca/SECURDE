@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -191,8 +192,9 @@ $(window).load(function() {
 					</div>	
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
-						<h4 id="name">Gucci</h4>
-						<input id="editName" type="text" style="display:none;">
+						<c:set var="p" value="${product}" scope="request"></c:set>
+						<h4 id="description">${p.description}</h4>
+						<input id="editDesc" type="text" style="display:none;">
 							<div class="star-on">
 								<ul class="star-footer">
 										<li><a href="#"><i> </i></a></li>
@@ -202,8 +204,8 @@ $(window).load(function() {
 										<li><a href="#"><i> </i></a></li>
 									</ul>
 								<div class="review">
-								<p id="description">Description</p>
-								<input id="editDesc" type="text" style="display:none;">
+								<p id="category">${p.categoryId}</p>
+								<input id="editCateg" type="text" style="display:none;">
 								<br>
 									<a href="#"> 1 customer review </a>
 									
@@ -213,7 +215,7 @@ $(window).load(function() {
 							
 							<div>
 								<h5 class="item_price" style="display:inline-block;">P</h5>
-								<h5 id="price" class="item_price" style="display:inline-block;"> 95.00</h5>
+								<h5 id="price" class="item_price" style="display:inline-block;">P ${p.price}</h5>
 								<input id="editPrice" type="text" style="display:none;">
 							</div>
 							<div class="available">
@@ -305,19 +307,19 @@ $(window).load(function() {
 });
 		
 		$("#btnEdit").click(function(){
-			var text = $('#name').text();
-			var textbox = document.getElementById('editName');
+			var text = $('#description').text();
+			var textbox = document.getElementById('editDesc');
 			textbox.value=text;
-			$('#editName').show();
-			$('#name').hide();
-			//$('#editName').text('').append(input);
-			
-			var text1 = $('#description').text();
-			var textbox1 = document.getElementById('editDesc');
-			textbox1.value=text1;
 			$('#editDesc').show();
 			$('#description').hide();
 			//$('#editDesc').text('').append(input);
+			
+			var text1 = $('#category').text();
+			var textbox1 = document.getElementById('editCateg');
+			textbox1.value=text1;
+			$('#editCateg').show();
+			$('#category').hide();
+			//$('#editCateg').text('').append(input);
 			
 			var text2 = $('#price').text();
 			var textbox2 = document.getElementById('editPrice');
@@ -333,20 +335,20 @@ $(window).load(function() {
 			$("#btnSave").click(function(){
 				
 				var params = {
-					//productId: 
+					//productId: 	 
 					description: document.getElementById("editDesc").value,
-					price: document.getElementById("editPrice").value//,
-					//categoryId: document.getElementById("editCateg").value
+					category: document.getElementById("editCateg").value,
+					price: document.getElementById("editPrice").value
 				};
 				
 				$.post("UpdateProductServlet", $.param(params), function(response){
-					 $('#name').show();
-					 $('#name').text('').append(textbox.value);
-					 $('#editName').hide();
-
 					 $('#description').show();
-					 $('#description').text('').append(textbox1.value);
+					 $('#description').text('').append(textbox.value);
 					 $('#editDesc').hide();
+
+					 $('#category').show();
+					 $('#category').text('').append(textbox1.value);
+					 $('#editCateg').hide();
 					 
 					 $('#price').show();
 					 $('#price').text('').append(textbox2.value);
@@ -359,13 +361,13 @@ $(window).load(function() {
 				
 		    }); 
 			$("#btnCancel").click(function(){
-				 $('#name').show();
-				 //$('#name').text('').append(textbox.value);
-				 $('#editName').hide();
-
 				 $('#description').show();
-				 //$('#description').text('').append(textbox1.value);
+				 //$('#description').text('').append(textbox.value);
 				 $('#editDesc').hide();
+
+				 $('#category').show();
+				 //$('#category').text('').append(textbox1.value);
+				 $('#editCateg').hide();
 				 
 				 $('#price').show();
 				 //$('#price').text('').append(textbox2.value);
