@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>s
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -116,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<!---->
 				<div class="col-md-9 product-price1">
-				<div class="check-out">	 
+		<div class="check-out">	 
 			
 		 <div class=" cart-items">
 			 <h3>My Shopping Bag (2)</h3>
@@ -137,12 +138,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					});
 			   </script>
 				
-				  <div class="in-check" >
+		<div class="in-check" >
+		<c:forEach var="p" items="${cart}" varStatus="counter"> </c:forEach>
 		  <ul class="unit">
 			<li><span>Item</span></li>
 			<li><span>Product Name</span></li>		
 			<li><span>Unit Price</span></li>
-			<li><span>Stock Status</span></li>
 			<li> </li>
 			<div class="clearfix"> </div>
 		  </ul>
@@ -150,9 +151,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		   <div class="close1"> </div>
 			<li class="ring-in"><a href="single.jsp" ><img src="images/f1.jpg" class="img-responsive" alt=""></a>
 			</li>
-			<li><span>Woo Dress</span></li>
-			<li><span>$ 60.00</span></li>
-			<li><span>In Stock</span></li>
+			<li><span>${p.description}</span></li>
+			<li><span>${p.price}</span></li>
 			<div class="clearfix"> </div>
 			</ul>
 		</div>
