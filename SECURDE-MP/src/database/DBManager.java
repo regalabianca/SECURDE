@@ -38,6 +38,8 @@ public class DBManager {
 			if (addSuccess){
 				int userId = userDao.getIdOfUser(user);
 				account.setUserId(userId);
+				System.out.println("account = "+account);
+				System.out.println("password = "+password);
 				accountDao.addAccount(account, password);
 				acc = login(accountDao.getAccount(account.getUserId()).getUsername());
 			}
