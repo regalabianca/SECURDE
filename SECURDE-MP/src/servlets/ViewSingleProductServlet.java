@@ -50,7 +50,10 @@ public class ViewSingleProductServlet extends HttpServlet {
 		ProductDaoImpl pd = new ProductDaoImpl();
 		p = pd.getProduct(products.get(index).getProductId());
 		request.getSession().setAttribute("product", p);
-		request.getRequestDispatcher("single.jsp").forward(request, response);
+		if(acct.getType() == 2)
+			request.getRequestDispatcher("editproduct.jsp").forward(request, response);
+		else
+			request.getRequestDispatcher("single.jsp").forward(request, response);
 	}
 	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

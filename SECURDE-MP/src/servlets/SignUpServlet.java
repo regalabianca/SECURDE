@@ -75,7 +75,17 @@ public class SignUpServlet extends HttpServlet {
 			
 			if(account != null){
 				request.getSession().setAttribute("account", account);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				String homepage = "";
+				switch (account.getType()){
+					case 1: homepage = "index.jsp";
+							break;
+					case 2: homepage = "product manager index.jsp";
+							break;
+					case 3: homepage = "accounting manager index.jsp";
+							break;
+					default: homepage = "index.jsp";
+				}
+				request.getRequestDispatcher(homepage).forward(request, response);
 			} else{
 				response.sendRedirect("register.jsp");
 			}
