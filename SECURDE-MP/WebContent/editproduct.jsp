@@ -336,7 +336,6 @@ $(window).load(function() {
 			
 			$("#btnSave").click(function(){
 				var params = {
-					productId: document.getElementById('productId').value,
 					description: document.getElementById('editDesc').value,
 					price: document.getElementById('editPrice').value
 				};
