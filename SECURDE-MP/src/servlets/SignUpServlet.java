@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.DBManager;
+import modelAccess.AccountDao;
+import modelAccessImpl.AccountDaoImpl;
 import models.Account;
 import models.Password;
 import models.User;
@@ -52,7 +54,9 @@ public class SignUpServlet extends HttpServlet {
 		String middleInitial = request.getParameter(User.COL_MINIT);
 		String email = request.getParameter(User.COL_EMAIL);
 	
-		if (password.equals(confirmPass)){
+		AccountDao ad = new AccountDaoImpl();
+		
+		if (password.equals(confirmPass) && ad.isPasswordValid(password)){
 			
 			Account account = new Account();
 			account.setUsername(username);

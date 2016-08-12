@@ -30,6 +30,32 @@ public class AccountDaoImpl implements AccountDao {
 		return false;
 	}
 	
+	@Override
+	public boolean isPasswordValid (String password){
+		int min = 8;
+		int up, down, digit, special;
+		up = down = digit = special = 0;
+		
+		int len = password.length();
+		
+		if(len >= min){
+			for(int i=0; i<len; i++){
+				char c = password.charAt(i);
+				if(Character.isUpperCase(c))
+					up++;
+				if(Character.isLowerCase(c))
+					down++;
+				if(Character.isDigit(c))
+					digit++;
+				if(c>=33 && c<=46 || c==64)
+					special++;
+			}
+			if(up>0 && down>0 && digit>0 && special>0)
+				return true;
+		}
+		return false;
+	}
+	
 	public void updateLastAttempt(String username){
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
