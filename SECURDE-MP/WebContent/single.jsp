@@ -46,6 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   			$('#carbonads-container').hide();
   		});
   	});
+  	
 </script>	
 <script src="js/simpleCart.min.js"> </script>
 		  		 <!-- Bootstrap core JavaScript
@@ -109,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="simpleCart_total"> </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> </span>)</div>
 							<img src="images/cart2-2.png" alt=""/></h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						<p><a id="emptycart" onclick="emptyCartFunction();" href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 						<div class="clearfix"> </div>
 					</div>
 
@@ -305,6 +306,11 @@ $(window).load(function() {
 				};
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
+				
+		$('#emptycart').click(function emptyCartFunction()
+	  	{
+	  		document.location.href = '${pageContext.request.contextPath}/EmptyCartServlet';
+	  	});
 });
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
