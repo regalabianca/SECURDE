@@ -75,4 +75,16 @@ public class DBManager {
 		productDao.deleteProduct(productId);
 	}
 	
+	public int getAttempts(String username){
+		return accountDao.getAttempts(username);
+	}
+
+	public void setAttempts(String username) {
+		accountDao.setAttempts(username);
+	}
+
+	public void increaseAttempts(String username) {
+		accountDao.updateLastAttempt(username);
+	}
+	
 }
