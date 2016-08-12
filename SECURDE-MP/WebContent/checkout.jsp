@@ -117,48 +117,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<!---->
 				<div class="col-md-9 product-price1">
-		<div class="check-out">	 
-			
-		 <div class=" cart-items">
-			 <h3>My Shopping Bag (2)</h3>
-				<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
-			<script>$(document).ready(function(c) {
-					$('.close2').on('click', function(c){
-						$('.cart-header1').fadeOut('slow', function(c){
-							$('.cart-header1').remove();
-						});
-						});	  
-					});
-			   </script>
 				
-		<div class="in-check" >
-		<c:forEach var="p" items="${cart}" varStatus="counter"> </c:forEach>
-		  <ul class="unit">
-			<li><span>Item</span></li>
-			<li><span>Product Name</span></li>		
-			<li><span>Unit Price</span></li>
-			<li> </li>
-			<div class="clearfix"> </div>
-		  </ul>
-		  <ul class="cart-header">
-		   <div class="close1"> </div>
-			<li class="ring-in"><a href="single.jsp" ><img src="images/f1.jpg" class="img-responsive" alt=""></a>
-			</li>
-			<li><span>${p.description}</span></li>
-			<li><span>${p.price}</span></li>
-			<div class="clearfix"> </div>
-			</ul>
-		</div>
-			 </div>
-					  
-		 </div>		
+				<div class="check-out">	 
+					
+				 <div class=" cart-items">
+					 <h3>My Shopping Bag (2)</h3>
+						<script>$(document).ready(function(c) {
+							$('.close1').on('click', function(c){
+								$('.cart-header').fadeOut('slow', function(c){
+									$('.cart-header').remove();
+								});
+								});	  
+							});
+					   </script>
+					<script>$(document).ready(function(c) {
+							$('.close2').on('click', function(c){
+								$('.cart-header1').fadeOut('slow', function(c){
+									$('.cart-header1').remove();
+								});
+								});	  
+							});
+					   </script>
+						
+					
+					<div class="in-check" >
+					
+					  <ul class="unit">
+						<li><span>Item</span></li>
+						<li><span>Product Name</span></li>		
+						<li><span>Unit Price</span></li>
+						<li> </li>
+						<div class="clearfix"> </div>
+					  </ul>
+					  <c:forEach var="p" items="${cart}" varStatus="counter"> 
+					  <ul class="cart-header">
+					   <div class="close1"> </div>
+					   
+						<li class="ring-in"><a href="single.jsp" ><img src="images/f1.jpg" class="img-responsive" alt=""></a>
+						</li>
+						<li><span>${p.description}</span></li>
+						<li><span>${p.price}</span></li>
+						<div class="clearfix"> </div>
+						</ul>
+					</c:forEach>
+					</div>
+					
+					 </div>
+		 		</div>	
+		 			
 				</div>
 				<div class="clearfix"> </div>
 			</div>

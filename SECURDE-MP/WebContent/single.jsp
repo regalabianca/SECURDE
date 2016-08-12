@@ -104,7 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 					<!---->
 					<div class="cart box_1">
-						<a href="checkout.jsp">
+						<a href="${pageContext.request.contextPath}/ViewCartServlet">
 						<h3> <div class="total">
 							<span class="simpleCart_total"> </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> </span>)</div>
 							<img src="images/cart2-2.png" alt=""/></h3>
@@ -198,11 +198,10 @@ $(window).load(function() {
   });
 });
 </script>
-
 					</div>	
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
-						<form action ="AddCartServlet" method="post"> 
+						<form action ="AddCartServlet"> 
 						<c:set var="p" value="${product}" scope="request"></c:set>
 						<h4>${p.description}</h4>
 							<div class="star-on">
@@ -223,7 +222,7 @@ $(window).load(function() {
 							<div class="available">
 						</div>
 							<div class="cart-add">
-								<input type = "submit" class="add1 item_add" value ="ADD TO CART">ADD TO CART <i> </i></a>
+								<input type = "submit" class="add1 item_add" value ="ADD TO CART">
 								<div class="clearfix"> </div>
 							</div>
 							</form>
