@@ -33,12 +33,13 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public boolean isPasswordValid (String password){
 		int min = 8;
+		int max = 30;
 		int up, down, digit, special;
 		up = down = digit = special = 0;
 		
 		int len = password.length();
 		
-		if(len >= min){
+		if(len >= min && len <= max){
 			for(int i=0; i<len; i++){
 				char c = password.charAt(i);
 				if(Character.isUpperCase(c))
