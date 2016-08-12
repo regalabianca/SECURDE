@@ -50,7 +50,6 @@ public class LogInServlet extends HttpServlet {
 				Account account = dbmanager.login(username);
 				dbmanager.setAttempts(username);
 				System.out.println("account = "+account);
-				if (account != null){
 					request.getSession().setAttribute("account", account);
 					String homepage = "";
 					switch (account.getType()){
@@ -63,9 +62,6 @@ public class LogInServlet extends HttpServlet {
 						default: homepage = "index.jsp";
 					}
 					request.getRequestDispatcher(homepage).forward(request, response);
-				} else {
-					response.sendRedirect("account.jsp");
-				}
 			}else{
 				dbmanager.increaseAttempts(username);
 				response.sendRedirect("account.jsp");
@@ -73,7 +69,6 @@ public class LogInServlet extends HttpServlet {
 		}else{
 			response.sendRedirect("account.jsp");
 		}
-		
 	}
 
 }

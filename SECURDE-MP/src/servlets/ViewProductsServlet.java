@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.DBManager;
 import modelAccessImpl.ProductDaoImpl;
+import models.Account;
 import models.Product;
 
 /**
@@ -43,9 +44,8 @@ public class ViewProductsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Product> p = new ArrayList();
 		ProductDaoImpl pd = new ProductDaoImpl();
-		//request.removeAttribute("requestlist");
-				//Profile prof = (Profile) request.getSession().getAttribute("profile");
-				//r = new Manager().getAllProfRequest(p.getIdNo(), "All", "All","All");
+		Account acct = (Account) request.getSession().getAttribute("account");
+		request.setAttribute("account", acct);
 		switch (request.getServletPath()){
 			case "/ViewBootsServlet":
 			p = pd.getProducts(1);

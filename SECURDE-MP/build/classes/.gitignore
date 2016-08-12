@@ -1,2 +1,5 @@
-/servlets/
 /database/
+/servlets/
+/modelAccess/
+/modelAccessImpl/
+/models/
