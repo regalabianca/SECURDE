@@ -42,7 +42,7 @@ public class ViewProductsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Product> p = new ArrayList();
+		ArrayList<Product> p = new ArrayList<>();
 		ProductDaoImpl pd = new ProductDaoImpl();
 		Account acct = (Account) request.getSession().getAttribute("account");
 		request.setAttribute("account", acct);
