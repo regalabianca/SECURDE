@@ -194,7 +194,7 @@ $(window).load(function() {
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
 						<c:set var="p" value="${product}" scope="request"></c:set>
-						<input type="hidden" name="productId" value = "${p.productId}"></input>
+						<input type="hidden" id="productId" value = "${p.productId}"></input>
 						<h4 id="description">${p.description}</h4>
 						<input id="editDesc" type="text" style="display:none;">
 							<div class="star-on">
@@ -336,6 +336,7 @@ $(window).load(function() {
 			
 			$("#btnSave").click(function(){
 				var params = {
+					productId: document.getElementById('productId').value,
 					description: document.getElementById('editDesc').value,
 					price: document.getElementById('editPrice').value
 				};
