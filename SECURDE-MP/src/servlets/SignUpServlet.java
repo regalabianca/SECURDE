@@ -43,12 +43,8 @@ public class SignUpServlet extends HttpServlet {
 		// account
 		String username = request.getParameter(Account.COL_USERNAME);
 		String password = request.getParameter(Account.COL_PASSWORD);
-		int type = 1;
+		int type = Integer.parseInt(request.getParameter(Account.COL_TYPE));
 		String confirmPass = request.getParameter("confirmPass");
-		
-		if (type != 2 && type != 3){
-			type = 0; //customer
-		}
 		
 		// user
 		String firstName = request.getParameter(User.COL_FNAME);
@@ -71,12 +67,28 @@ public class SignUpServlet extends HttpServlet {
 			user.setEmail(email);
 			
 			DBManager dbmanager = new DBManager();
-			account = dbmanager.signup(user, account, password);
+			boolean added = dbmanager.signup(user, account, password);
 			
-			if(account != null){
+			Account currentAccount  = (Account) request.getSession().getAttribute("account");
+			
+			if(added && currentAccount == null){
 				request.getSession().setAttribute("account", account);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			} else{
+				String homepage = "";
+				switch (account.getType()){
+					case 0: homepage = "index.jsp";
+							break;
+					case 1: homepage = "admin index.jsp";
+							break;
+					case 2: homepage = "product manager index.jsp";
+							break;
+					case 3:	homepage = "accounting manager index.jsp";
+							break;	
+					default: homepage = "index.jsp";
+				}
+				request.getRequestDispatcher(homepage).forward(request, response);
+			} else if(added && currentAccount.getType() == 1 ){
+				request.getRequestDispatcher("admin index.jsp").forward(request, response);
+			}else{
 				response.sendRedirect("register.jsp");
 			}
 		} else {

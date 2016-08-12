@@ -57,11 +57,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header-info">
 			<div class="container">
 					<div class="header-top-in">
-						
-						<ul class="support">
-							<li><a href="mailto:info@example.com"><i class="glyphicon glyphicon-envelope"> </i>info@example.com</a></li>
-							<li><span><i class="glyphicon glyphicon-earphone" class="tele-in"> </i>0 462 261 61 61</span></li>			
-						</ul>
 						<ul class=" support-right">
 							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
 							<li><a href="register.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>			
@@ -138,56 +133,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							 <span>Email Address</span>
 							 <input type="text" name="email">
 						</div>
-						<h3>BILLING ADDRESS</h3>
-						<div>
-							<span>House Number</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Street</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Subdivision</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>City</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Postal Code</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Country</span>
-							<input type="text" name="">						 
-						</div>
-						<h3>SHIPPING ADDRESS</h3>
-						<div>
-							<span>House Number</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Street</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Subdivision</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>City</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Postal Code</span>
-							<input type="text" name="">						 
-						</div>
-						<div>
-							<span>Country</span>
-							<input type="text" name="">						 
-						</div>
 						<h3>ACCOUNT DETAILS<h3>
 						<div>
 							<span>Username</span>
@@ -200,6 +145,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div>
 							<span>Confirm Password</span>
 							<input type="password" name="confirmPass">						 
+						</div>
+						<div>
+							<input type="hidden" name="type" value="0">		 
 						</div>
 					 </div>
 				     <input type="submit" value="submit">

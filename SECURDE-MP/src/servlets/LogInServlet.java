@@ -49,16 +49,17 @@ public class LogInServlet extends HttpServlet {
 			if(pass.checkPassword(password, hashpassword)){
 				Account account = dbmanager.login(username);
 				dbmanager.setAttempts(username);
-				System.out.println("account = "+account);
 					request.getSession().setAttribute("account", account);
 					String homepage = "";
 					switch (account.getType()){
-						case 1: homepage = "index.jsp";
+						case 0: homepage = "index.jsp";
+								break;
+						case 1: homepage = "admin index.jsp";
 								break;
 						case 2: homepage = "product manager index.jsp";
 								break;
-						case 3: homepage = "accounting manager index.jsp";
-								break;
+						case 3:	homepage = "accounting manager index.jsp";
+								break;	
 						default: homepage = "index.jsp";
 					}
 					request.getRequestDispatcher(homepage).forward(request, response);
