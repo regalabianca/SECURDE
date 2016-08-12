@@ -42,7 +42,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 					<div class="header-top-in">		
 						<ul class=" support-right">
-							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
+							<c:set var="a" value="${account}" scope="request"></c:set>
+							<c:choose>
+	    						<c:when test="${empty account}">
+	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
+	    						</c:when>
+	    						<c:otherwise>
+							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
+							    </c:otherwise>
+							</c:choose>
 							<li><a href="register.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>			
 						</ul>
 						<div class="clearfix"> </div>
@@ -61,13 +69,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 
 			<div class="top-nav">
 				<ul class="memenu skyblue"><li><a href="index.jsp">Home</a></li>
-					<li class="grid"><a href="boots page.jsp">Boots</a>
+					<li class="grid"><a href="ViewBootsServlet">Boots</a>
 					</li>
-					<li class="grid"><a href="shoes page.jsp">Shoes</a>
+					<li class="grid"><a href="ViewShoesServlet">Shoes</a>
 					</li>
-					<li class="grid"><a href="sandals page.jsp">Sandals</a>
+					<li class="grid"><a href="ViewSandalsServlet">Sandals</a>
 					</li>
-					<li class="grid"><a href="slippers page.jsp">Slippers</a>
+					<li class="grid"><a href="ViewSlippersServlet">Slippers</a>
 					</li>
 				</ul>
 				</ul>
@@ -144,17 +152,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><span>Woo Dress</span></li>
 			<li><span>$ 60.00</span></li>
 			<li><span>In Stock</span></li>
-			<li> <a href="single.jsp" class="add-cart cart-check">ADD TO CART</a></li>
-			<div class="clearfix"> </div>
-			</ul>
- <ul class=" cart-header1">
-		   <div class="close2"> </div>
-			<li class="ring-in"><a href="single.jsp" ><img src="images/f2.jpg" class="img-responsive" alt=""></a>
-			</li>
-			<li><span>Woo Dress</span></li>
-			<li><span>$ 60.00</span></li>
-			<li><span>In Stock</span></li>
-			<li> <a href="single.jsp" class="add-cart cart-check">ADD TO CART</a></li>
 			<div class="clearfix"> </div>
 			</ul>
 		</div>

@@ -201,6 +201,7 @@ $(window).load(function() {
 					</div>	
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
+						<form action ="AddCartServlet" method="post"> 
 						<c:set var="p" value="${product}" scope="request"></c:set>
 						<h4>${p.description}</h4>
 							<div class="star-on">
@@ -220,8 +221,11 @@ $(window).load(function() {
 							<h5 class="item_price">P ${p.price}</h5>
 							<div class="available">
 						</div>
-								<a href="#" class="add-cart item_add">ADD TO CART</a>
-							
+							<div class="cart-add">
+								<input type = "submit" class="add1 item_add" value ="ADD TO CART">ADD TO CART <i> </i></a>
+								<div class="clearfix"> </div>
+							</div>
+							</form>
 						</div>
 					</div>
 				<div class="clearfix"> </div>
