@@ -104,8 +104,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="product">
 			<div class="container">
 				<div class="col-md-3 product-price">
-					  
-				
 				<!---->
 				<div class="product-bottom">
 					<div class="of-left-in">
@@ -127,47 +125,50 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h4>Billing Address</h4>
 					<form>
 						House # : <br>
-						<input type ="text"><br>
+						<input id="houseNum0" type ="text"><br>
 						Street Name: <br>
-						<input type ="text"><br>
+						<input id="street0" type ="text"><br>
 						Subdivision: <br>
-						<input type ="text"><br>
+						<input id="subdivision0" type ="text"><br>
 						City: <br>
-						<input type ="text"><br>
+						<input id="city0" type ="text"><br>
 						Postal Code: <br>
-						<input type ="text"><br>
+						<input id="postalCode0" type ="text"><br>
 						Country: <br>
-						<input type ="text"><br>
+						<input id="country0" type ="text"><br>
 					</form>
 				 </div>
 				 <div>
 					<h4>Shipping Address</h4>
-					<form>
-						House # : <br>
-						<input type ="text"><br>
-						Street Name: <br>
-						<input type ="text"><br>
-						Subdivision: <br>
-						<input type ="text"><br>
-						City: <br>
-						<input type ="text"><br>
-						Postal Code: <br>
-						<input type ="text"><br>
-						Country: <br>
-						<input type ="text"><br>
-					</form>
+					<input type="checkbox" id="same-check" />
+					Same as billing address.
+					<div id="shipping-ad-form">
+						<form>
+							House # : <br>
+							<input id="houseNum1" type ="text"><br>
+							Street Name: <br>
+							<input id="street1" type ="text"><br>
+							Subdivision: <br>
+							<input id="subdivision1" type ="text"><br>
+							City: <br>
+							<input id="city1" type ="text"><br>
+							Postal Code: <br>
+							<input id="postalCode1" type ="text"><br>
+							Country: <br>
+							<input id="country1" type ="text"><br>
+						</form>
+					</div> <!--  shipping-ad-form -->
 				 </div>	
 				 <div>
 					<h4>Credit Card Information</h4>
 					<form>
-						Name: <br>
-						<input type ="text"><br>
+						Credit Card Name: <br>
+						<input id="cardName" type ="text"><br>
 						Credit Card Number: <br>
-						<input type ="text"><br>
+						<input id="cardNum" type="text"><br>
 					</form>
 				 </div>	
-				
-				 <a href="#" class="add-cart item_add">CONFIRM PAYMENT</a>
+				 <a href="#" id="confirmPayment" type="submit" class="add-cart item_add">CONFIRM PAYMENT</a>
 			</div>
 			 </div>
 					  
@@ -181,7 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 				 <!---->
 <script type="text/javascript">
-		$(document).ready(function() {
+	$(document).ready(function() {
 				/*
 				var defaults = {
 				containerID: 'toTop', // fading element id
@@ -191,7 +192,72 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				};
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
-});
+	});
+	
+	$("#same-check").click(function(){
+		if(document.getElementById('same-check').checked) 
+		    $("#shipping-ad-form").hide();
+		else 
+		    $("#shipping-ad-form").show();
+	});
+	
+	$("#confirmPayment").click(function(){
+		
+		var cardName = document.getElementById('cardName').value;
+		var cardNum = document.getElementById('cardNum').value;
+		
+		var houseNum0 = document.getElementById('houseNum0').value;
+		var street0 = document.getElementById('street0').value;
+		var subdivision0 = document.getElementById('subdivision0').value;
+		var city0 = document.getElementById('city0').value;
+		var postalCode0 = document.getElementById('postalCode0').value;
+		var country0 = document.getElementById('country0').value;
+		
+		var houseNum1;
+		var street1;
+		var subdivision1;
+		var city1;
+		var postalCode1;
+		var country1;
+		
+		if(document.getElementById('same-check').checked) {
+			houseNum1 = houseNum0;
+			street1 = street0;
+			subdivision1 = subdivision0;
+			city1 = city0;
+			postalCode1 = postalCode0;
+			country1 = country0;
+		}
+		else{ 
+			houseNum1 = document.getElementById('houseNum1').value;
+			street1 = document.getElementById('street1').value;
+			subdivision1 = document.getElementById('subdivision1').value;
+			city1 = document.getElementById('city1').value;
+			postalCode1 = document.getElementById('postalCode1').value;
+			country1 = document.getElementById('country1').value;
+		}
+		
+		var params = {
+			cardName: cardName,
+			cardNum: cardNum,
+			b_houseNum: houseNum0,
+			b_street: street0,
+			b_subdivision: subdivision0,
+			b_city: city0,
+			b_postalCode: postalCode0,
+			b_country: country0,
+			s_houseNum: houseNum1,
+			s_street: street1,
+			s_subdivision: subdivision1,
+			s_city: city1,
+			s_postalCode: postalCode1,
+			s_country: country1
+		};
+			
+		$.post("PaymentServlet", $.param(params), function(response){
+			alert("done with servlet");
+		});
+	});
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!----> 
