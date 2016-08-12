@@ -9,7 +9,8 @@ public class Account {
 	public static final String COL_USERNAME = "username";
 	public static final String COL_PASSWORD = "password";
 	public static final String COL_TYPE = "type";
-
+	public static final String COL_ATTEMPTS = "failedAttempts";
+	
 	private int userId;
 	private String username;
 	private int type;

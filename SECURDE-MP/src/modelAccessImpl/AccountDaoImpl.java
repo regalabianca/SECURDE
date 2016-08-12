@@ -30,6 +30,19 @@ public class AccountDaoImpl implements AccountDao {
 		return false;
 	}
 	
+	public void updateLastAttempt(String username){
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("UPDATE " + Account.TABLE_ACCOUNT + " SET failedAttempts = failedAttempts + 1 "
+														+ "WHERE " + Account.COL_USERNAME + " = ?");
+			ps.setString(1, username);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public boolean addAccount(Account account, String password) {
 		String username = account.getUsername();
@@ -167,6 +180,41 @@ public class AccountDaoImpl implements AccountDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public int getAttempts(String username) {
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Account.TABLE_ACCOUNT + 
+														" WHERE " + Account.COL_USERNAME + " = ?");
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()){
+				Account account = new Account();
+				return rs.getInt(Account.COL_ATTEMPTS);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	@Override
+	public void setAttempts(String username) {
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("UPDATE " + Account.TABLE_ACCOUNT + " SET failedAttempts = 0 "
+														+ "WHERE " + Account.COL_USERNAME + " = ?");
+			ps.setString(1, username);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }

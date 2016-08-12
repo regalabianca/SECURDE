@@ -10,4 +10,7 @@ public interface AccountDao {
 	public void updateAccount (Account account);
 	public void deleteAccount (int userId);
 	public String getPassword (String username);
+	public void updateLastAttempt(String username);
+	public int getAttempts(String username);
+	public void setAttempts(String username);
 }

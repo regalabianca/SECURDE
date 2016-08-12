@@ -44,32 +44,31 @@ public class LogInServlet extends HttpServlet {
 		Password pass = new Password();
 	
 		DBManager dbmanager = new DBManager();
-		if(pass.checkPassword(password, dbmanager.getPassword(username))){
-			Account account = dbmanager.login(username);
-			
-			System.out.println("account = "+account);
-			if (account != null){
-				request.getSession().setAttribute("account", account);
-				String homepage = "";
-				switch (account.getType()){
-					case 1: homepage = "index.jsp";
-							break;
-					case 2: homepage = "product manager index.jsp";
-							break;
-					case 3: homepage = "accounting manager index.jsp";
-							break;
-					default: homepage = "index.jsp";
-				}
-				request.setAttribute("account", account);
-				request.getRequestDispatcher(homepage).forward(request, response);
-			} else {
+		String hashpassword = dbmanager.getPassword(username);
+		if(hashpassword != null && dbmanager.getAttempts(username) < 5){
+			if(pass.checkPassword(password, hashpassword)){
+				Account account = dbmanager.login(username);
+				dbmanager.setAttempts(username);
+				System.out.println("account = "+account);
+					request.getSession().setAttribute("account", account);
+					String homepage = "";
+					switch (account.getType()){
+						case 1: homepage = "index.jsp";
+								break;
+						case 2: homepage = "product manager index.jsp";
+								break;
+						case 3: homepage = "accounting manager index.jsp";
+								break;
+						default: homepage = "index.jsp";
+					}
+					request.getRequestDispatcher(homepage).forward(request, response);
+			}else{
+				dbmanager.increaseAttempts(username);
 				response.sendRedirect("account.jsp");
 			}
 		}else{
 			response.sendRedirect("account.jsp");
 		}
-		
-		
 	}
 
 }
