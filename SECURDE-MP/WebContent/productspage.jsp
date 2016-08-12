@@ -184,9 +184,10 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 		        	<div class="top-product">
 		        	
 		        		<div class="col-md-4 chain-grid  simpleCart_shelfItem">
-		        			<div class="grid-span-1">
+		        			<div class="grid-span-1">	
 		        			<c:forEach var="p" items="${viewproductslist}" varStatus="counter"> 
-	   		     		<a  href="single.jsp"><img class="img-responsive " src="images/n1.jpg" alt=" ">
+		        					<a  href="/ViewSingleProductServlet">
+	   		     		<img class="img-responsive " src="images/n1.jpg" alt=" ">
 	   		     			<div class="link">
 	   		     			<ul >
 										<li><i class="glyphicon glyphicon-search"> </i></li>
@@ -195,6 +196,7 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 	   		     		</a>
 	   		     	</div>
 	   		     		<div class="grid-chain-bottom ">
+	   		     		
 	   		     		<form method="post" action="ViewSingleProductServlet">
 	   		     			<a>${p.description}</a>
 	   		     			<input type="hidden" name="index" value = "${counter.index}"></input>
@@ -215,6 +217,12 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 									</div>
 									
 	   		     				<div class="clearfix"> </div>
+							</div>
+							
+							<div class="cart-add">
+								<a class="add1 item_add" href="AddCartServlet">ADD TO CART <i> </i></a>
+								<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
+								<div class="clearfix"> </div>
 							</div>
 							</c:forEach>
 	   		     		</div>

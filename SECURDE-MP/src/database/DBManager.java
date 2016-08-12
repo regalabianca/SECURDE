@@ -27,7 +27,7 @@ public class DBManager {
 		productDao = new ProductDaoImpl();
 	}
 	
-	public Account signup(User user, Account account, String password){
+	public boolean signup(User user, Account account, String password){
 		Account acc = null;
 		
 		boolean usernameExists = accountDao.checkIfUsernameExists(account.getUsername());
@@ -40,12 +40,11 @@ public class DBManager {
 				account.setUserId(userId);
 				System.out.println("account = "+account);
 				System.out.println("password = "+password);
-				accountDao.addAccount(account, password);
-				acc = login(accountDao.getAccount(account.getUserId()).getUsername());
+				return accountDao.addAccount(account, password);
 			}
 		}
 		
-		return acc;	
+		return false;	
 	}
 	
 	public String getPassword(String username){

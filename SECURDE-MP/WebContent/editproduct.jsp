@@ -194,6 +194,7 @@ $(window).load(function() {
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
 						<c:set var="p" value="${product}" scope="request"></c:set>
+						<input type="hidden" name="productId" value = "${p.productId}"></input>
 						<h4 id="description">${p.description}</h4>
 						<input id="editDesc" type="text" style="display:none;">
 							<div class="star-on">
@@ -216,7 +217,7 @@ $(window).load(function() {
 							
 							<div>
 								<h5 class="item_price" style="display:inline-block;">P</h5>
-								<h5 id="price" class="item_price" style="display:inline-block;">P ${p.price}</h5>
+								<h5 id="price" class="item_price" style="display:inline-block;"> ${p.price}</h5>
 								<input id="editPrice" type="text" style="display:none;">
 							</div>
 							<div class="available">
@@ -334,12 +335,10 @@ $(window).load(function() {
 			$("#btnCancel").show();
 			
 			$("#btnSave").click(function(){
-				
 				var params = {
-					//productId: 	 
-					description: document.getElementById("editDesc").value,
-					category: document.getElementById("editCateg").value,
-					price: document.getElementById("editPrice").value
+					productId: document.getElementById('productId').value,
+					description: document.getElementById('editDesc').value,
+					price: document.getElementById('editPrice').value
 				};
 				
 				$.post("UpdateProductServlet", $.param(params), function(response){
@@ -359,7 +358,6 @@ $(window).load(function() {
 					$("#btnSave").hide();
 					$("#btnCancel").hide();
 				});
-				
 		    }); 
 			$("#btnCancel").click(function(){
 				 $('#description').show();
