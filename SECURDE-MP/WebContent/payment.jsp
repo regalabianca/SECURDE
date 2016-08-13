@@ -73,13 +73,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 
 			<div class="top-nav">
 				<ul class="memenu skyblue"><li><a href="index.jsp">Home</a></li>
-					<li class="grid"><a href="boots page.jsp">Boots</a>
+					<li class="grid"><a href="ViewBootsServlet">Boots</a>
 					</li>
-					<li class="grid"><a href="shoes page.jsp">Shoes</a>
+					<li class="grid"><a href="ViewShoesServlet">Shoes</a>
 					</li>
-					<li class="grid"><a href="sandals page.jsp">Sandals</a>
+					<li class="grid"><a href="ViewSandalsServlet">Sandals</a>
 					</li>
-					<li class="grid"><a href="slippers page.jsp">Slippers</a>
+					<li class="grid"><a href="ViewSlippersServlet">Slippers</a>
 					</li>
 				</ul>
 				</ul>
@@ -114,24 +114,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<div class="col-md-3 product-price">
 				<!---->
-				<div class="product-bottom">
-					<div class="of-left-in">
-								<h3 class="best">Payment Details</h3>
-					</div>
-					<p>Shipping Fee: </p>
-					<div class="clearfix"> </div>
-					<p>Total Price: </p>
-				</div>
+				
 				</div>
 				<!---->
 				<div class="col-md-9 product-price1">
-				<div class="check-out">	 
 			
-		 <div class=" cart-items">
-			 <h3>My Shopping Bag</h3>
+			 <h3>Payment Details</h3>
 			 <div class="in-check" >
-			 <form action="PaymentServlet" method="post">
-			 	
+			   <form action="PaymentServlet" method="post"> 
+			 	<div class="product-bottom">
+					<p>Shipping Fee: </p>
+					<div class="clearfix"> </div>
+					<p>Total Price: </p>
+					<input type="hidden" name="total_price" value ="${totalPrice}"></input>
+					<input type="hidden" name="purchase_list" value ="${purchaselist}"></input>
+				</div>
+				<br>
 				  <div>
 					<h4>Billing Address</h4>
 					
@@ -181,10 +179,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				 	<input type="submit" value="CONFIRM PAYMENT">
 			 	</form> 
 				 <!--<a href="#" id="confirmPayment" type="submit" class="add-cart item_add">CONFIRM PAYMENT</a>-->
-			</div>
-			 </div>
-					  
-		 </div>		
+			</div>	
 				</div>
 				<div class="clearfix"> </div>
 			</div>
