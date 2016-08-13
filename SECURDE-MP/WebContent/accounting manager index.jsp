@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,16 +10,19 @@
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <META HTTP-EQUIV="refresh" CONTENT="<%= session.getMaxInactiveInterval() %>; URL=account.jsp" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="I wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/datatable-manager.js"></script>
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
@@ -54,10 +58,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header-info">
 			<div class="container">
 					<div class="header-top-in">
-						
-						
 						<ul class=" support-right">
-							<c:set var="a" value="${account}" scope="request"></c:set>
+						<c:set var="a" value="${account}" scope="request"></c:set>
 							<c:choose>
 	    						<c:when test="${empty account}">
 	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
@@ -66,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
 							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
 							    </c:otherwise>
-							</c:choose>		
+							</c:choose>				
 						</ul>
 						<div class="clearfix"> </div>
 					</div>
@@ -83,50 +85,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <!---->
 		 
 			<div class="top-nav">
+				<ul class="memenu skyblue"><li class="active"><a href="index.jsp">Home</a></li>
+					<li class="grid"><a href="ViewBootsServlet">Boots</a>
+					</li>
+					<li class="grid"><a href="ViewShoesServlet">Shoes</a>
+					</li>
+					<li class="grid"><a href="ViewSandalsServlet">Sandals</a>
+					</li>
+					<li class="grid"><a href="ViewSlippersServlet">Slippers</a>
+					</li>
+				</ul>
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
 					<!---->
-					<!---->
+
+				<div class="clearfix"> </div>
+					<table id="acc-man-table" class="display" cellspacing="0" width="100%">
+					</table>
 				</div>
 			<div class="clearfix"> </div>
 		</div>
 		</div>
 
 	<div class="banner">
-		<div class="banner-top">
-	         <h2>THIS IS I-WEAR</h2>
-	         <p>Goggles or safety glasses are forms of protective eyewear<span>fthat usually enclose or protect the area surrounding the eye in order to prevent particulates.</span></p>
-</div>
-	<div class="now">
-	         <div class="clearfix"> </div>
-	         </div>
- 	</div>	
- 				<div class="clearfix"> </div>	
-			</div>
-<!---->
-		<!---->
 		
+ 	</div>	
+		<div class="clearfix"> </div>	
+	</div>
 
-	<!---->
-	
-			 <!---->
-<script type="text/javascript">
-		$(document).ready(function() {
-				/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-				};
-				*/
-		$().UItoTop({ easingType: 'easeOutQuart' });
-});
-</script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-<!----> 
-
-<!---->
 </body>
 </html>

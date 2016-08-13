@@ -89,7 +89,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="simpleCart_total"> </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> </span>)</div>
 							<img src="images/cart2-2.png" alt=""/></h3>
 						</a>
-						<p><a id="emptycart" href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						<form action="EmptyCartServlet">
+						<input type="hidden" name ="hidebtn" value="productspage.jsp"></input> 
+						<p><input type="submit" id="emptycart" name="ec" href="javascript:;" class="simpleCart_empty" value="Empty Cart"></input></p>
+						</form>
 						<div class="clearfix"> </div>
 					</div>
 
@@ -219,11 +222,6 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 	   		     				<div class="clearfix"> </div>
 							</div>
 							
-							<div class="cart-add">
-								<a class="add1 item_add" href="AddCartServlet">ADD TO CART <i> </i></a>
-								<a class="add2" href="#"><i class="glyphicon glyphicon-heart-empty"> </i></a>
-								<div class="clearfix"> </div>
-							</div>
 							</c:forEach>
 	   		     		</div>
 	   		     		
@@ -250,10 +248,6 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 				};
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
-		$('#emptycart').click(function emptyCartFunction()
-	  	{
-	  		document.location.href = '${pageContext.request.contextPath}/EmptyCartServlet';
-	  	});
 });
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
