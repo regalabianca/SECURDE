@@ -248,7 +248,7 @@ $(window).load(function() {
 				<c:when test="${canReview}">
 					<div id="canReview" class="facts">
 						<form action="AddReviewServlet" method="post">
-							<textarea class="add-re" cols="80" rows="10" value="" onfocus="this.value='';" 
+							<textarea name="reviewDesc" class="add-re" cols="80" rows="10" value="" onfocus="this.value='';" 
 								onblur="if(this.value == '') {this.value='ENTER YOUR MESSAGE*';}"> 
 								ENTER YOUR REVIEW*
 							</textarea>
