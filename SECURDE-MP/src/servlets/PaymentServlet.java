@@ -1,13 +1,18 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelAccess.AddressDao;
+import modelAccessImpl.AddressDaoImpl;
 import models.Account;
+import models.Address;
 
 /**
  * Servlet implementation class PaymentServlet
@@ -40,11 +45,19 @@ public class PaymentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		System.out.println("GGGGGGGGGGG // Hello from [PAYMENT SERVLET] doPOST!");
-		System.out.println("name = "+request.getParameter("cardName"));
-		System.out.println("num = "+request.getParameter("houseNum0"));
+		
+		boolean newAddr = false;
+		AddressDao ad = new AddressDaoImpl();
 		
 		Account acct = (Account) request.getSession().getAttribute("account");
 		request.setAttribute("account", acct);
+		int userId = acct.getUserId();
+		
+		if(ad.getAddress(userId).size() < 1)
+			newAddr = true;
+		
+		Address address = new Address();
+		address.setUserId(userId);
 		
 		String cardName = request.getParameter("cardName");
 		String cardNum = request.getParameter("cardNum");
@@ -56,29 +69,42 @@ public class PaymentServlet extends HttpServlet {
 		String postalCode0 = request.getParameter("postalCode0");
 		String country0 = request.getParameter("country0");
 		
-		int houseNum1;
-		String street1;
-		String subdivision1;
-		String city1;
-		String postalCode1;
-		String country1;
+		address.setHouseNum(houseNum0);
+		address.setStreet(street0);
+		address.setSubdivision(subdivision0);
+		address.setCity(city0);
+		address.setPostalCode(postalCode0);
+		address.setCountry(country0);
+		address.setType(0);
 		
-		if(request.getParameter("same-check") == null){
-			houseNum1 = Integer.parseInt(request.getParameter("houseNum1"));
-			street1 = request.getParameter("street1");
-			subdivision1 = request.getParameter("subdivision1");
-			city1 = request.getParameter("city1");
-			postalCode1 = request.getParameter("postalCode1");
-			country1 = request.getParameter("country1");
-		}else{
-			houseNum1 = houseNum0;
-			street1 = street0;
-			subdivision1 = subdivision0;
-			city1 = city0;
-			postalCode1 = postalCode0;
-			country1 = country0;
+		if(newAddr) 
+			ad.addAddress(address); // add billing address
+		else
+			ad.updateAddress(address);
+		
+		if(request.getParameter("same-check") == null){ // different billing and shipping
+			int houseNum1 = Integer.parseInt(request.getParameter("houseNum1"));
+			String street1 = request.getParameter("street1");
+			String subdivision1 = request.getParameter("subdivision1");
+			String city1 = request.getParameter("city1");
+			String postalCode1 = request.getParameter("postalCode1");
+			String country1 = request.getParameter("country1");
+			
+			address.setHouseNum(houseNum1);
+			address.setStreet(street1);
+			address.setSubdivision(subdivision1);
+			address.setCity(city1);
+			address.setPostalCode(postalCode1);
+			address.setCountry(country1);
 		}
 		
+			address.setType(1);
+			
+			if(newAddr)
+				ad.addAddress(address); //add shipping address
+			else
+				ad.updateAddress(address);
+			
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
