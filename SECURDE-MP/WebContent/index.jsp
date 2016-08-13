@@ -63,12 +63,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<c:choose>
 	    						<c:when test="${empty account}">
 	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
+	    							<li><a href="register.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>	
 	    						</c:when>
 	    						<c:otherwise>
 							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
+							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
 							    </c:otherwise>
-							</c:choose>
-							<li><a href="register.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>			
+							</c:choose>		
 						</ul>
 						<div class="clearfix"> </div>
 					</div>
@@ -122,8 +123,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	         <p>Goggles or safety glasses are forms of protective eyewear<span>fthat usually enclose or protect the area surrounding the eye in order to prevent particulates.</span></p>
 </div>
 	<div class="now">
-	         <a class="morebtn" href="shoes page.jsp">Explore</a>
-	         <a class="morebtn at-in" href="single.jsp">Shop Now</a>
+	
 	         <div class="clearfix"> </div>
 	         </div>
  	</div>	

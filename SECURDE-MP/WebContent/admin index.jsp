@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -57,7 +58,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 						
 						<ul class=" support-right">
-							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
+						
+						<c:set var="a" value="${account}" scope="request"></c:set>
+							<c:choose>
+	    						<c:when test="${empty account}">
+	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
+	    						</c:when>
+	    						<c:otherwise>
+							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
+							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
+							    </c:otherwise>
+							</c:choose>
 							<li><a href="registermanager.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create Manager Account</a></li>			
 						</ul>
 						<div class="clearfix"> </div>
@@ -75,7 +86,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <!---->
 		 
 			<div class="top-nav">
-				</ul>
 				<div class="clearfix"> </div>
 			</div>
 					<!---->
@@ -114,6 +124,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				};
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
+		$('#emptycart').click(function emptyCartFunction()
+	  	{
+	  		document.location.href = '${pageContext.request.contextPath}/EmptyCartServlet';
+	  	});
 });
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>

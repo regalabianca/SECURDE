@@ -32,6 +32,10 @@ public class LogInServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		if(request.getSession() != null){
+			request.getSession().invalidate();
+			response.sendRedirect("account.jsp");
+		}
 	}
 
 	/**
@@ -56,7 +60,7 @@ public class LogInServlet extends HttpServlet {
 								break;
 						case 1: homepage = "admin index.jsp";
 								break;
-						case 2: homepage = "product manager index.jsp";
+						case 2: homepage = "index.jsp";
 								break;
 						case 3:	homepage = "accounting manager index.jsp";
 								break;	

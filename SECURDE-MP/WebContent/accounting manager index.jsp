@@ -57,8 +57,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 						
 						<ul class=" support-right">
-							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
-							<li><a href="registermanager.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create Manager Account</a></li>			
+							<c:set var="a" value="${account}" scope="request"></c:set>
+							<c:choose>
+	    						<c:when test="${empty account}">
+	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
+	    						</c:when>
+	    						<c:otherwise>
+							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
+							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
+							    </c:otherwise>
+							</c:choose>		
 						</ul>
 						<div class="clearfix"> </div>
 					</div>
