@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Account;
+
 /**
  * Servlet implementation class PaymentServlet
  */
@@ -27,7 +29,8 @@ public class PaymentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -37,44 +40,46 @@ public class PaymentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		System.out.println("GGGGGGGGGGG // Hello from [PAYMENT SERVLET] doPOST!");
+		System.out.println("name = "+request.getParameter("cardName"));
+		System.out.println("num = "+request.getParameter("houseNum0"));
+		
+		Account acct = (Account) request.getSession().getAttribute("account");
+		request.setAttribute("account", acct);
 		
 		String cardName = request.getParameter("cardName");
 		String cardNum = request.getParameter("cardNum");
 		
-		int houseNum0 = Integer.parseInt(request.getParameter("b_houseNum"));
-		String street0 = request.getParameter("b_street");
-		String subdivision0 = request.getParameter("b_subdivision");
-		String city0 = request.getParameter("b_city");
-		String postalCode0 = request.getParameter("b_postalCode");
-		String country0 = request.getParameter("b_country");
+		int houseNum0 = Integer.parseInt(request.getParameter("houseNum0"));
+		String street0 = request.getParameter("street0");
+		String subdivision0 = request.getParameter("subdivision0");
+		String city0 = request.getParameter("city0");
+		String postalCode0 = request.getParameter("postalCode0");
+		String country0 = request.getParameter("country0");
 		
-		int houseNum1 = Integer.parseInt(request.getParameter("s_houseNum"));
-		String street1 = request.getParameter("s_street");
-		String subdivision1 = request.getParameter("s_subdivision");
-		String city1 = request.getParameter("s_city");
-		String postalCode1 = request.getParameter("s_postalCode");
-		String country1 = request.getParameter("s_country");
+		int houseNum1;
+		String street1;
+		String subdivision1;
+		String city1;
+		String postalCode1;
+		String country1;
 		
-//		System.out.println();
-//		System.out.println("name = "+cardName);
-//		System.out.println("num ="+cardNum);
-//		System.out.println();
-//		System.out.println("houseNum0 = "+houseNum0);
-//		System.out.println("street0 = "+street0);
-//		System.out.println("subdivision0 = "+subdivision0);
-//		System.out.println("city0 = "+city0);
-//		System.out.println("postalCode0 = "+postalCode0);
-//		System.out.println("country0 = "+country0);
-//		System.out.println();
-//		System.out.println("houseNum1 = "+houseNum1);
-//		System.out.println("street1 = "+street1);
-//		System.out.println("subdivision1 = "+subdivision1);
-//		System.out.println("city1 = "+city1);
-//		System.out.println("postalCode1 = "+postalCode1);
-//		System.out.println("country1 = "+country1);
-//		System.out.println();
+		if(request.getParameter("same-check") == null){
+			houseNum1 = Integer.parseInt(request.getParameter("houseNum1"));
+			street1 = request.getParameter("street1");
+			subdivision1 = request.getParameter("subdivision1");
+			city1 = request.getParameter("city1");
+			postalCode1 = request.getParameter("postalCode1");
+			country1 = request.getParameter("country1");
+		}else{
+			houseNum1 = houseNum0;
+			street1 = street0;
+			subdivision1 = subdivision0;
+			city1 = city0;
+			postalCode1 = postalCode0;
+			country1 = country0;
+		}
 		
-		
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }
