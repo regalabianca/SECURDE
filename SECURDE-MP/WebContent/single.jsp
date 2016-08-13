@@ -244,13 +244,13 @@ $(window).load(function() {
 			</nav>
 	<ul class="cd-tabs-content">
 		<li data-content="add-review" >
-		<form action="AddReviewServlet" method="post">
+		<!-- <form action="AddReviewServlet" method="post">
 							<textarea name="reviewDesc" class="add-re" cols="80" rows="10" value="" onfocus="this.value='';" 
 								onblur="if(this.value == '') {this.value='ENTER YOUR MESSAGE*';}"> 
 								ENTER YOUR REVIEW*
 							</textarea>
 							<input type="submit" value="submit">   
-						</form>
+						</form>-->
 			<c:choose>
 				<c:when test="${canReview}">
 					<div id="canReview" class="facts">
