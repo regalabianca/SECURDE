@@ -7,6 +7,7 @@ import models.Transaction;
 public interface TransactionDao {
 	public boolean addTransaction (Transaction transaction);
 	public Transaction getTransaction (int transactionId);
+	public Transaction getLastTransaction (int accountId);
 	public ArrayList<Transaction> getTransactions (int accountId);
 	public void updateTransaction (Transaction transaction);
 	public void deleteTransaction (int transactionId);

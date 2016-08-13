@@ -60,6 +60,31 @@ public class TransactionDaoImpl implements TransactionDao {
 	}
 
 	@Override
+	public Transaction getLastTransaction (int accountId){
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Transaction.TABLE_TRANSACTION + 
+														" WHERE " + Transaction.COL_ACCOUNTID + " = ?" +
+														" ORDER BY " + Transaction.COL_TRANSACTIONID + " DESC;");
+			ps.setInt(1, accountId);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()){
+				Transaction transaction = new Transaction();
+				transaction.setTransactionId(rs.getInt(Transaction.COL_TRANSACTIONID));
+				transaction.setAccountId(rs.getInt(Transaction.COL_ACCOUNTID));
+				transaction.setTotalPrice(rs.getFloat(Transaction.COL_TOTAL));
+				return transaction;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		return null;
+	}
+	
+	@Override
 	public ArrayList<Transaction> getTransactions(int accountId) {
 		ArrayList<Transaction> transactions = new ArrayList<>();
 		

@@ -127,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"> </div>
 					<p>Total Price: </p>
 					<input type="hidden" name="total_price" value ="${totalPrice}"></input>
-					<input type="hidden" name="purchase_list" value ="${purchaselist}"></input>
+					<!--<input type="hidden" name="purchase_list" value ="${purchaselist}"></input>-->
 				</div>
 				<br>
 				  <div>

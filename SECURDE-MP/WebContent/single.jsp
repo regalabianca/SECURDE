@@ -237,44 +237,36 @@ $(window).load(function() {
 					<div class="cd-tabs">
 			<nav>
 				<ul class="cd-tabs-navigation">
-					<li><a data-content="fashion"  href="#0">Description </a></li>
-					<li><a data-content="television" href="#0" class="selected ">Reviews (1)</a></li>
+					<li><a data-content="add-review"  href="#0">Add Review </a></li>
+					<li><a data-content="view-reviews" href="#0" class="selected ">Reviews (1)</a></li>
 					
 				</ul> 
 			</nav>
 	<ul class="cd-tabs-content">
-		<li data-content="fashion" >
-		<div class="facts">
-									  <p > There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined </p>
-										<ul>
-											<li>Research</li>
-											<li>Design and Development</li>
-											<li>Porting and Optimization</li>
-											<li>System integration</li>
-											<li>Verification, Validation and Testing</li>
-											<li>Maintenance and Support</li>
-										</ul>         
-							        </div>
+		<li data-content="add-review" >
+			<c:choose>
+				<c:when test="${canReview}">
+					<div id="canReview" class="facts">
+						<form action="AddReviewServlet" method="post">
+							<textarea name="reviewDesc" class="add-re" cols="80" rows="10" value="" onfocus="this.value='';" 
+								onblur="if(this.value == '') {this.value='ENTER YOUR MESSAGE*';}"> 
+								ENTER YOUR REVIEW*
+							</textarea>
+							<input type="submit" value="submit">   
+						</form>
+					</div>	
+				</c:when>
+				<c:otherwise>
+					<div id=cannotReview>
+						<br>Sorry. You have to purchase this product first before you can submit a review.
+						<br><br><br>
+					</div>
+				</c:otherwise>
+			</c:choose>
+		</li> <!-- add-review -->
 
-</li>
-<li data-content="cinema" >
-		<div class="facts1">
-					
-						<div class="color"><p>Color</p>
-							<span >Blue, Black, Red</span>
-							<div class="clearfix"></div>
-						</div>
-						<div class="color">
-							<p>Size</p>
-							<span >S, M, L, XL</span>
-							<div class="clearfix"></div>
-						</div>
-					        
-			 </div>
-
-</li>
-<li data-content="television" class="selected">
-	<div class="comments-top-top">
+	<li data-content="view-reviews" class="selected">
+		<div class="comments-top-top">
 				<div class="top-comment-left">
 					<img class="img-responsive" src="images/co.png" alt="">
 				</div>
@@ -290,10 +282,9 @@ $(window).load(function() {
 									<p>Wow nice!</p>
 				</div>
 				<div class="clearfix"> </div>
-				<a class="add-re" href="#">ADD REVIEW</a>
 			</div>
 
-</li>
+	</li>
 <div class="clearfix"></div>
 	</ul> 
 </div> 
