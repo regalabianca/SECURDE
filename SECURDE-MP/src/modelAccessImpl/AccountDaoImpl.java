@@ -181,7 +181,7 @@ public class AccountDaoImpl implements AccountDao {
 														Account.COL_USERNAME + " =?," +
 														Account.COL_PASSWORD + " =?," +
 														Account.COL_TYPE + " =?," +
-														Account.COL_USERID + " =?," +
+														Account.COL_USERID + " =?" +
 														" WHERE " + Account.COL_ACCOUNTID + "=?;");
 			ps.setString(1, username);
 			ps.setString(2, password);

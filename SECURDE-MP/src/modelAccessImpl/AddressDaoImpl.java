@@ -98,7 +98,7 @@ public class AddressDaoImpl implements AddressDao {
 														Address.COL_CITY + "  =?," +
 														Address.COL_POSTAL + "  =?," +
 														Address.COL_COUNTRY + "  =?," +
-														Address.COL_TYPE + " =?," +
+														Address.COL_TYPE + " =?" +
 														" WHERE " + Address.COL_ADDRESSID + "=?;");
 			ps.setInt(1, houseNum);
 			ps.setString(2, street);
