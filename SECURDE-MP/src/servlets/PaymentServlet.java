@@ -58,13 +58,6 @@ public class PaymentServlet extends HttpServlet {
 		
 		Account acct = (Account) request.getSession().getAttribute("account");
 		request.setAttribute("account", acct);
-		ArrayList<Product> p = new ArrayList<Product>();
-		p = (ArrayList<Product>) request.getSession().getAttribute("cart");
-		float totalamount=0;
-		for(int i = 0; i < p.size();i++)
-		{
-			totalamount += p.get(i).getPrice();
-		}
 		int userId = acct.getUserId();
 		
 		
@@ -127,9 +120,17 @@ public class PaymentServlet extends HttpServlet {
 			/*****************************************************************************************
 			 * 	FOR TRANSACTION TABLE
 			 ****************************************************************************************/
+			
+//			ArrayList<Product> cart = new ArrayList<Product>();
+//			cart = (ArrayList<Product>) request.getSession().getAttribute("cart");
+//			float total = 0;
+//			int cart_size = cart.size();
+//			for(int i = 0; i < cart_size; i++)
+//				total += cart.get(i).getPrice();
+			
 			Transaction transaction = new Transaction();
 			int accountId = acct.getAccountId();
-			float totalPrice = Float.parseFloat(request.getParameter(Transaction.COL_TOTAL));
+			float totalPrice = 1;//Float.parseFloat(request.getParameter(Transaction.COL_TOTAL));
 			transaction.setAccountId(accountId);
 			transaction.setTotalPrice(totalPrice);
 			
