@@ -4,12 +4,18 @@ import java.util.ArrayList;
 
 import modelAccess.AccountDao;
 import modelAccess.ProductDao;
+import modelAccess.PurchaseDao;
+import modelAccess.TransactionDao;
 import modelAccess.UserDao;
 import modelAccessImpl.AccountDaoImpl;
 import modelAccessImpl.ProductDaoImpl;
+import modelAccessImpl.PurchaseDaoImpl;
+import modelAccessImpl.TransactionDaoImpl;
 import modelAccessImpl.UserDaoImpl;
 import models.Account;
 import models.Product;
+import models.Purchase;
+import models.Transaction;
 import models.User;
 
 public class DBManager {
@@ -58,20 +64,31 @@ public class DBManager {
 		return acc;
 	}
 	
-	public ArrayList<Product> getProducts(int categoryId){
-		return productDao.getProducts(categoryId);
-	}
-	
-	public boolean addProduct(Product product){
-		return productDao.addProduct(product);
-	}
-	
-	public void updateProduct(Product product){
-		productDao.updateProduct(product);
-	}
-	
-	public void deleteProduct(int productId){
-		productDao.deleteProduct(productId);
+	public boolean checkIfValidForReview(int accountId, int productId){
+		
+		boolean valid = false;
+		
+		ArrayList<Purchase> purch = new ArrayList<>();
+		ArrayList<Integer> trans = new ArrayList<>();
+		
+		PurchaseDao pd = new PurchaseDaoImpl();
+		purch = pd.getPurchases(productId);
+		
+		for(int i=0; i<purch.size(); i++)
+			trans.add(purch.get(i).getTransactionId());
+		
+		TransactionDao td = new TransactionDaoImpl();
+		
+		for(int i=0; i<trans.size();i++){
+			Transaction t = new Transaction();
+			t = td.getTransaction(trans.get(i));
+			if(t.getAccountId() == accountId){
+				valid = true;
+				break;
+			}
+		}
+		
+		return valid;
 	}
 	
 	public int getAttempts(String username){

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -217,7 +218,7 @@ $(window).load(function() {
 										<li><a href="#"><i> </i></a></li>
 									</ul>
 								<div class="review">
-									<a href="#"> 1 customer review </a>
+									<a href="#"> ${fn:length(reviews)} customer review(s) </a>
 									
 								</div>
 							<div class="clearfix"> </div>
@@ -238,7 +239,7 @@ $(window).load(function() {
 			<nav>
 				<ul class="cd-tabs-navigation">
 					<li><a data-content="add-review"  href="#0">Add Review </a></li>
-					<li><a data-content="view-reviews" href="#0" class="selected ">Reviews (1)</a></li>
+					<li><a data-content="view-reviews" href="#0" class="selected ">Reviews (${fn:length(reviews)})</a></li>
 					
 				</ul> 
 			</nav>
@@ -273,18 +274,28 @@ $(window).load(function() {
 		</li> <!-- add-review -->
 
 	<li data-content="view-reviews" class="selected">
-		<div class="comments-top-top">
-			<c:forEach var="r" items="${reviews}" varStatus="counter">
-				<div class="top-comment-left">
-					<img class="img-responsive" src="images/co.png" alt="">
+		<c:choose>
+			<c:when test="${fn:length(reviews) gt 0}">
+				<div class="comments-top-top">
+					<c:forEach var="r" items="${reviews}" varStatus="counter">
+						<div class="top-comment-left">
+							<img class="img-responsive" src="images/co.png" alt="">
+						</div>
+						<div class="top-comment-right" style="margin-bottom:10px;margin-left:0px;">
+							<h5 style="color:red;">${r.username}</h5>
+							<h4>${r.description}</h4>
+						</div>
+					</c:forEach>
+					<div class="clearfix"> </div>
 				</div>
-				<div class="top-comment-right" style="margin-bottom:10px;margin-left:0px;">
-					<h5 style="color:red;">${r.username}</h5>
-					<h4>${r.description}</h4>
-				</div>
-			</c:forEach>
-				<div class="clearfix"> </div>
-			</div>
+			</c:when>
+			<c:otherwise>
+				<br>Sorry. There are no reviews yet for this product.
+				<br><br><br>
+			</c:otherwise>
+		</c:choose>
+		
+		
 
 	</li>
 <div class="clearfix"></div>

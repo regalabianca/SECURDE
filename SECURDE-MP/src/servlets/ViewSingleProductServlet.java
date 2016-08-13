@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import database.DBManager;
 import modelAccess.ReviewDao;
 import modelAccessImpl.ProductDaoImpl;
 import modelAccessImpl.ReviewDaoImpl;
@@ -62,6 +63,10 @@ public class ViewSingleProductServlet extends HttpServlet {
 		ArrayList<Review> reviews = new ArrayList<>();
 		reviews = rd.getReviews(productId);
 		request.getSession().setAttribute("reviews", reviews);
+		
+		DBManager dbm = new DBManager();
+		boolean valid = dbm.checkIfValidForReview(acct.getAccountId(), productId);
+		request.getSession().setAttribute("canReview", valid);
 		
 		if(acct!=null)
 			if(acct.getType() == 2)

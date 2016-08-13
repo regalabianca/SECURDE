@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import database.DBConnection;
 import modelAccess.PurchaseDao;
@@ -62,6 +63,36 @@ public class PurchaseDaoImpl implements PurchaseDao {
 				purchase.setTransactionId(rs.getInt(Purchase.COL_TRANSACTIONID));
 				return purchase;
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	@Override
+	public ArrayList<Purchase> getPurchases(int productId) {
+		ArrayList<Purchase> purchases = new ArrayList<>();
+		
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Purchase.TABLE_PURCHASE + 
+														" WHERE " + Purchase.COL_PRODUCTID + " = ?");
+			ps.setInt(1, productId);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()){
+				Purchase purchase = new Purchase();
+				purchase.setPurchaseId(rs.getInt(Purchase.COL_PURCHASEID));
+				purchase.setQuantity(rs.getInt(Purchase.COL_QUANTITY));
+				purchase.setProductId(rs.getInt(Purchase.COL_PRODUCTID));
+				purchase.setUnitPrice(rs.getFloat(Purchase.COL_UNITPRICE));
+				purchase.setTotalPrice(rs.getFloat(Purchase.COL_TOTALPRICE));
+				purchase.setTransactionId(rs.getInt(Purchase.COL_TRANSACTIONID));
+				purchases.add(purchase);
+			}
+			return purchases;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
