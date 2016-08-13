@@ -120,17 +120,18 @@ public class PaymentServlet extends HttpServlet {
 			/*****************************************************************************************
 			 * 	FOR TRANSACTION TABLE
 			 ****************************************************************************************/
+		
+			ArrayList<Product> cart = new ArrayList<Product>();
+			cart = (ArrayList<Product>) request.getSession().getAttribute("cart");
 			
-//			ArrayList<Product> cart = new ArrayList<Product>();
-//			cart = (ArrayList<Product>) request.getSession().getAttribute("cart");
-//			float total = 0;
-//			int cart_size = cart.size();
-//			for(int i = 0; i < cart_size; i++)
-//				total += cart.get(i).getPrice();
+			float totalPrice = 0;
+			int cart_size = cart.size();
+			for(int i = 0; i < cart_size; i++)
+				totalPrice += cart.get(i).getPrice();
 			
 			Transaction transaction = new Transaction();
 			int accountId = acct.getAccountId();
-			float totalPrice = Float.parseFloat(request.getParameter(Transaction.COL_TOTAL));
+			//float totalPrice = Float.parseFloat(request.getParameter(Transaction.COL_TOTAL));
 			transaction.setAccountId(accountId);
 			transaction.setTotalPrice(totalPrice);
 			
@@ -143,19 +144,29 @@ public class PaymentServlet extends HttpServlet {
 			
 			int transactionId = td.getLastTransaction(accountId).getTransactionId();
 			
-			ArrayList<Purchase> purchases = new ArrayList<>();
-			purchases = (ArrayList<Purchase>) request.getSession().getAttribute("purchase_list");
+//			ArrayList<Purchase> purchases = new ArrayList<>();
+//			purchases = (ArrayList<Purchase>) request.getSession().getAttribute("purchase_list");
 			
 			PurchaseDao pd = new PurchaseDaoImpl();
 			
-			int size = purchases.size();
-			
-			for(int i = 0; i < size; i++){
+			for(int i=0; i<cart_size; i++){
 				Purchase purchase = new Purchase();
-				purchase = purchases.get(i);
+				purchase.setQuantity(1);
+				purchase.setProductId(cart.get(i).getProductId());
+				purchase.setUnitPrice(cart.get(i).getPrice());
+				purchase.setTotalPrice(cart.get(i).getPrice());
 				purchase.setTransactionId(transactionId);
 				pd.addPurchase(purchase);
 			}
+			
+//			int size = purchases.size();
+//			
+//			for(int i = 0; i < size; i++){
+//				Purchase purchase = new Purchase();
+//				purchase = purchases.get(i);
+//				purchase.setTransactionId(transactionId);
+//				pd.addPurchase(purchase);
+//			}
 			
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
