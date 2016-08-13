@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelAccess.AddressDao;
+import modelAccess.PurchaseDao;
 import modelAccess.TransactionDao;
 import modelAccessImpl.AddressDaoImpl;
+import modelAccessImpl.PurchaseDaoImpl;
 import modelAccessImpl.TransactionDaoImpl;
 import models.Account;
 import models.Address;
 import models.Product;
+import models.Purchase;
 import models.Transaction;
 
 /**
@@ -132,6 +135,26 @@ public class PaymentServlet extends HttpServlet {
 			
 			TransactionDao td = new TransactionDaoImpl();
 			td.addTransaction(transaction);
+			
+			/*****************************************************************************************
+			 * 	FOR PURCHASE TABLE
+			 ****************************************************************************************/
+			
+			int transactionId = td.getLastTransaction(accountId).getTransactionId();
+			
+			ArrayList<Purchase> purchases = new ArrayList<>();
+			purchases = (ArrayList<Purchase>) request.getSession().getAttribute("purchase_list");
+			
+			PurchaseDao pd = new PurchaseDaoImpl();
+			
+			int size = purchases.size();
+			
+			for(int i = 0; i < size; i++){
+				Purchase purchase = new Purchase();
+				purchase = purchases.get(i);
+				purchase.setTransactionId(transactionId);
+				pd.addPurchase(purchase);
+			}
 			
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
