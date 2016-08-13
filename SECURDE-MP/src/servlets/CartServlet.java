@@ -49,9 +49,9 @@ public class CartServlet extends HttpServlet {
 			break;
 		case "/EmptyCartServlet":
 			request.getSession().removeAttribute("cart");
-			RequestDispatcher dispatcher =
-					getServletContext().getRequestDispatcher("/checkout.jsp");
-					dispatcher.forward(request,response);
+			String path = request.getParameter("hidebtn");
+			System.out.println("helo "+path);
+			request.getRequestDispatcher(path).forward(request, response);
 			break;
 		case "/ViewCartServlet":
 			p = (ArrayList<Product>)request.getSession().getAttribute("cart");
