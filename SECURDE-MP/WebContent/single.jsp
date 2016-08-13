@@ -110,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="simpleCart_total"> </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> </span>)</div>
 							<img src="images/cart2-2.png" alt=""/></h3>
 						</a>
-						<p><button id="emptycart" href="javascript:;" class="simpleCart_empty">Empty Cart</button></p>
+						<p><a id="emptycart" onclick="emptyCartFunction();" href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 						<div class="clearfix"> </div>
 					</div>
 
