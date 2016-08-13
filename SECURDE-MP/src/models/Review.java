@@ -7,12 +7,12 @@ public class Review {
 	public static final String COL_REVIEWID = "review_id";
 	public static final String COL_DESCRIPTION = "description";
 	public static final String COL_PRODUCTID = "product_id";
-	public static final String COL_ACCOUNTID = "account_id";
+	public static final String COL_USERNAME = "username";
 	
 	private int reviewId;
 	private String description;
 	private int productId;
-	private int accountId;
+	private String username;
 	
 	public int getReviewId() {
 		return reviewId;
@@ -38,11 +38,11 @@ public class Review {
 		this.productId = productId;
 	}
 	
-	public int getAccountId() {
-		return accountId;
+	public String getUsername() {
+		return username;
 	}
 	
-	public void setAccountId(int accountId) {
-		this.accountId = accountId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

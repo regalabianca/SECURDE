@@ -16,18 +16,18 @@ public class ReviewDaoImpl implements ReviewDao {
 	public boolean addReview(Review review) {
 		String description = review.getDescription();
 		int productId = review.getProductId();
-		int accountId = review.getAccountId();
+		String username = review.getUsername();
 		
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO " + Review.TABLE_REVIEW + 
 														"(" + Review.COL_DESCRIPTION + " ," +
 														Review.COL_PRODUCTID + " ," +
-														Review.COL_ACCOUNTID + " )" + "VALUES(?,?,?);");
+														Review.COL_USERNAME + " )" + "VALUES(?,?,?);");
 						
 			ps.setString(1, description);
 			ps.setInt(2, productId);
-			ps.setInt(3, accountId);
+			ps.setString(3, username);
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -52,7 +52,7 @@ public class ReviewDaoImpl implements ReviewDao {
 				review.setReviewId(rs.getInt(Review.COL_REVIEWID));
 				review.setDescription(rs.getString(Review.COL_DESCRIPTION));
 				review.setProductId(rs.getInt(Review.COL_PRODUCTID));
-				review.setAccountId(rs.getInt(Review.COL_ACCOUNTID));
+				review.setUsername(rs.getString(Review.COL_USERNAME));
 				return review;
 			}
 		} catch (SQLException e) {
@@ -79,7 +79,7 @@ public class ReviewDaoImpl implements ReviewDao {
 				review.setReviewId(rs.getInt(Review.COL_REVIEWID));
 				review.setDescription(rs.getString(Review.COL_DESCRIPTION));
 				review.setProductId(rs.getInt(Review.COL_PRODUCTID));
-				review.setAccountId(rs.getInt(Review.COL_ACCOUNTID));
+				review.setUsername(rs.getString(Review.COL_USERNAME));
 				reviews.add(review);
 			}
 			return reviews;
@@ -95,7 +95,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	public void updateReview(Review review) {
 		String description = review.getDescription();
 		int productId = review.getProductId();
-		int accountId = review.getAccountId();
+		String username = review.getUsername();
 		int reviewId = review.getReviewId();
 		
 		try {
@@ -103,11 +103,11 @@ public class ReviewDaoImpl implements ReviewDao {
 			PreparedStatement ps = con.prepareStatement("UPDATE " + Review.TABLE_REVIEW + " SET " +  
 														Review.COL_DESCRIPTION + " =?," +
 														Review.COL_PRODUCTID + "  =?," +
-														Review.COL_ACCOUNTID + " =?" +
+														Review.COL_USERNAME + " =?" +
 														" WHERE " + Review.COL_REVIEWID + "=?;");
 			ps.setString(1, description);
 			ps.setInt(2, productId);
-			ps.setInt(3, accountId);
+			ps.setString(3, username);
 			ps.setInt(4, reviewId);
 			ps.executeUpdate();
 		} catch (SQLException e) {

@@ -49,20 +49,20 @@ public class AddReviewServlet extends HttpServlet {
 		
 		String description = request.getParameter("reviewDesc");
 		int productId = product.getProductId();
-		int accountId = account.getAccountId();
+		String username = account.getUsername();
 		
 		Review review = new Review();
 		review.setDescription(description);
 		review.setProductId(productId);
-		review.setAccountId(accountId);
+		review.setUsername(username);
 		
 		ReviewDao rd = new ReviewDaoImpl();
 		rd.addReview(review);
 		
-//		ArrayList<Review> reviews = new ArrayList<>();
-//		reviews = (ArrayList<Review>) request.getSession().getAttribute("reviews");
-//		reviews.add(review);
-//		request.setAttribute("reviews", reviews);
+		ArrayList<Review> reviews = new ArrayList<>();
+		reviews = (ArrayList<Review>) request.getSession().getAttribute("reviews");
+		reviews.add(review);
+		request.setAttribute("reviews", reviews);
 		
 		request.getRequestDispatcher("single.jsp").forward(request, response);
 	}

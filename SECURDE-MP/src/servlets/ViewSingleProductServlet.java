@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelAccess.ReviewDao;
 import modelAccessImpl.ProductDaoImpl;
+import modelAccessImpl.ReviewDaoImpl;
 import models.Account;
 import models.Product;
+import models.Review;
 
 /**
  * Servlet implementation class ViewSingleProductServlet
@@ -44,12 +47,22 @@ public class ViewSingleProductServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		Account acct = (Account) request.getSession().getAttribute("account");
 		request.getSession().setAttribute("account", acct);
+		
 		Product p = new Product();
+		
 		ArrayList<Product> products = (ArrayList<Product>) request.getSession().getAttribute("viewproductslist");
 		int index = Integer.parseInt(request.getParameter("index"));
+		int productId = products.get(index).getProductId();
+		
 		ProductDaoImpl pd = new ProductDaoImpl();
-		p = pd.getProduct(products.get(index).getProductId());
+		p = pd.getProduct(productId);
 		request.getSession().setAttribute("product", p);
+		
+		ReviewDao rd = new ReviewDaoImpl();
+		ArrayList<Review> reviews = new ArrayList<>();
+		reviews = rd.getReviews(productId);
+		request.getSession().setAttribute("reviews", reviews);
+		
 		if(acct!=null)
 			if(acct.getType() == 2)
 				request.getRequestDispatcher("editproduct.jsp").forward(request, response);

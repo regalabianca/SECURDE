@@ -244,6 +244,13 @@ $(window).load(function() {
 			</nav>
 	<ul class="cd-tabs-content">
 		<li data-content="add-review" >
+		<form action="AddReviewServlet" method="post">
+							<textarea name="reviewDesc" class="add-re" cols="80" rows="10" value="" onfocus="this.value='';" 
+								onblur="if(this.value == '') {this.value='ENTER YOUR MESSAGE*';}"> 
+								ENTER YOUR REVIEW*
+							</textarea>
+							<input type="submit" value="submit">   
+						</form>
 			<c:choose>
 				<c:when test="${canReview}">
 					<div id="canReview" class="facts">
@@ -267,20 +274,15 @@ $(window).load(function() {
 
 	<li data-content="view-reviews" class="selected">
 		<div class="comments-top-top">
+			<c:forEach var="r" items="${reviews}" varStatus="counter">
 				<div class="top-comment-left">
 					<img class="img-responsive" src="images/co.png" alt="">
 				</div>
-				<div class="top-comment-right">
-					<h6><a href="#">Hendri</a> - September 3, 2014</h6>
-					<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									<p>Wow nice!</p>
+				<div class="top-comment-right" style="margin-bottom:10px;margin-left:0px;">
+					<h5 style="color:red;">${r.username}</h5>
+					<h4>${r.description}</h4>
 				</div>
+			</c:forEach>
 				<div class="clearfix"> </div>
 			</div>
 
