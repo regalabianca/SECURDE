@@ -61,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 						
 						<ul class=" support-right">
-						<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
+						
 						<c:set var="a" value="${account}" scope="request"></c:set>
 							<c:choose>
 	    						<c:when test="${empty account}">
@@ -112,33 +112,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 
 	<div class="banner">
-		<div class="banner-top">
-	         <h2>THIS IS I-WEAR</h2>
-	         <p>Goggles or safety glasses are forms of protective eyewear<span>fthat usually enclose or protect the area surrounding the eye in order to prevent particulates.</span></p>
-</div>
-	<div class="now">
-	         <div class="clearfix"> </div>
-	         </div>
- 	</div>	
- 				<div class="clearfix"> </div>	
-			</div>
+		
  	</div>	
 		<div class="clearfix"> </div>	
 	</div>
-
-<script type="text/javascript">
-		$(document).ready(function() {
-				/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-				};
-				*/
-		$().UItoTop({ easingType: 'easeOutQuart' });
-});
-</script>
 
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 </body>
