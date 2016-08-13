@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,7 +44,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 					<div class="header-top-in">		
 						<ul class=" support-right">
-							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
+							<c:set var="a" value="${account}" scope="request"></c:set>
+							<c:choose>
+	    						<c:when test="${empty account}">
+	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
+	    						</c:when>
+	    						<c:otherwise>
+							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
+							    </c:otherwise>
+							</c:choose>
 							<li><a href="register.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>			
 						</ul>
 						<div class="clearfix"> </div>
@@ -104,8 +113,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="product">
 			<div class="container">
 				<div class="col-md-3 product-price">
-					  
-				
 				<!---->
 				<div class="product-bottom">
 					<div class="of-left-in">
@@ -123,51 +130,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <div class=" cart-items">
 			 <h3>My Shopping Bag</h3>
 			 <div class="in-check" >
+			 <form action="PaymentServlet" method="post">
+			 	
 				  <div>
 					<h4>Billing Address</h4>
-					<form>
+					
 						House # : <br>
-						<input type ="text"><br>
+						<input name="houseNum0" type ="text"><br>
 						Street Name: <br>
-						<input type ="text"><br>
+						<input name="street0" type ="text"><br>
 						Subdivision: <br>
-						<input type ="text"><br>
+						<input name="subdivision0" type ="text"><br>
 						City: <br>
-						<input type ="text"><br>
+						<input name="city0" type ="text"><br>
 						Postal Code: <br>
-						<input type ="text"><br>
+						<input name="postalCode0" type ="text"><br>
 						Country: <br>
-						<input type ="text"><br>
-					</form>
+						<input name="country0" type ="text"><br>
+					
 				 </div>
 				 <div>
 					<h4>Shipping Address</h4>
-					<form>
-						House # : <br>
-						<input type ="text"><br>
-						Street Name: <br>
-						<input type ="text"><br>
-						Subdivision: <br>
-						<input type ="text"><br>
-						City: <br>
-						<input type ="text"><br>
-						Postal Code: <br>
-						<input type ="text"><br>
-						Country: <br>
-						<input type ="text"><br>
-					</form>
+					<input type="checkbox" id="same-check" name="same-check" />
+					Same as billing address.
+					<div id="shipping-ad-form">
+						
+							House # : <br>
+							<input name="houseNum1" type ="text"><br>
+							Street Name: <br>
+							<input name="street1" type ="text"><br>
+							Subdivision: <br>
+							<input name="subdivision1" type ="text"><br>
+							City: <br>
+							<input name="city1" type ="text"><br>
+							Postal Code: <br>
+							<input name="postalCode1" type ="text"><br>
+							Country: <br>
+							<input name="country1" type ="text"><br>
+						
+					</div> <!--  shipping-ad-form -->
 				 </div>	
 				 <div>
-					<h4>Credit Card Information</h4>
-					<form>
-						Name: <br>
-						<input type ="text"><br>
+				 	<h4>Credit Card Information</h4>
+					
+						Credit Card Name: <br>
+						<input name="cardName" type ="text"><br>
 						Credit Card Number: <br>
-						<input type ="text"><br>
-					</form>
-				 </div>	
-				
-				 <a href="#" class="add-cart item_add">CONFIRM PAYMENT</a>
+						<input name="cardNum" type="text"><br>	
+				 </div>
+				 	<input type="submit" value="CONFIRM PAYMENT">
+			 	</form> 
+				 <!--<a href="#" id="confirmPayment" type="submit" class="add-cart item_add">CONFIRM PAYMENT</a>-->
 			</div>
 			 </div>
 					  
@@ -181,7 +194,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 				 <!---->
 <script type="text/javascript">
-		$(document).ready(function() {
+	$(document).ready(function() {
 				/*
 				var defaults = {
 				containerID: 'toTop', // fading element id
@@ -191,7 +204,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				};
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
-});
+	});
+	
+	$("#same-check").click(function(){
+		if(document.getElementById('same-check').checked) 
+		    $("#shipping-ad-form").hide();
+		else 
+		    $("#shipping-ad-form").show();
+	});
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!----> 

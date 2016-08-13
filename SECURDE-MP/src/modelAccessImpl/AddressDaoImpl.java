@@ -20,6 +20,7 @@ public class AddressDaoImpl implements AddressDao {
 		String postalCode = address.getPostalCode();
 		String country = address.getCountry();
 		int type = address.getType();
+		int userId = address.getUserId();
 		
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
@@ -30,7 +31,8 @@ public class AddressDaoImpl implements AddressDao {
 														Address.COL_CITY + " ," +
 														Address.COL_POSTAL + " ," +
 														Address.COL_COUNTRY + " ," +
-														Address.COL_TYPE + " )" + "VALUES(?,?,?,?,?,?,?);");
+														Address.COL_TYPE + " ," +
+														Address.COL_USERID + " )" + "VALUES(?,?,?,?,?,?,?,?);");
 						
 			ps.setInt(1, houseNum);
 			ps.setString(2, street);
@@ -39,6 +41,7 @@ public class AddressDaoImpl implements AddressDao {
 			ps.setString(5, postalCode);
 			ps.setString(6, country);
 			ps.setInt(7, type);
+			ps.setInt(8, userId);
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -50,7 +53,7 @@ public class AddressDaoImpl implements AddressDao {
 	}
 
 	@Override
-	public Address getAddress(int addressId) {
+	public Address getBillingAddress(int addressId) {
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Address.TABLE_ADDRESS + 
@@ -68,6 +71,37 @@ public class AddressDaoImpl implements AddressDao {
 				address.setPostalCode(rs.getString(Address.COL_POSTAL));
 				address.setCountry(rs.getString(Address.COL_COUNTRY));
 				address.setType(rs.getInt(Address.COL_TYPE));
+				address.setUserId(rs.getInt(Address.COL_USERID));
+				return address;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null; 
+	}
+	
+	@Override
+	public Address getShippingAddress(int addressId) {
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Address.TABLE_ADDRESS + 
+														" WHERE " + Address.COL_ADDRESSID + " = ?");
+			ps.setInt(1, addressId);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()){
+				Address address = new Address();
+				address.setAddressid(rs.getInt(Address.COL_ADDRESSID));
+				address.setHouseNum(rs.getInt(Address.COL_HOUSENUM));
+				address.setStreet(rs.getString(Address.COL_STREET));
+				address.setSubdivision(rs.getString(Address.COL_SUBDIVISION));
+				address.setCity(rs.getString(Address.COL_CITY));
+				address.setPostalCode(rs.getString(Address.COL_POSTAL));
+				address.setCountry(rs.getString(Address.COL_COUNTRY));
+				address.setType(rs.getInt(Address.COL_TYPE));
+				address.setUserId(rs.getInt(Address.COL_USERID));
 				return address;
 			}
 		} catch (SQLException e) {
@@ -87,6 +121,7 @@ public class AddressDaoImpl implements AddressDao {
 		String postalCode = address.getPostalCode();
 		String country = address.getCountry();
 		int type = address.getType();
+		int userId = address.getUserId();
 		int addressId = address.getAddressid();
 		
 		try {
@@ -98,7 +133,8 @@ public class AddressDaoImpl implements AddressDao {
 														Address.COL_CITY + "  =?," +
 														Address.COL_POSTAL + "  =?," +
 														Address.COL_COUNTRY + "  =?," +
-														Address.COL_TYPE + " =?," +
+														Address.COL_TYPE + "  =?," +
+														Address.COL_USERID + " =?" +
 														" WHERE " + Address.COL_ADDRESSID + "=?;");
 			ps.setInt(1, houseNum);
 			ps.setString(2, street);
@@ -107,7 +143,8 @@ public class AddressDaoImpl implements AddressDao {
 			ps.setString(5, postalCode);
 			ps.setString(6, country);
 			ps.setInt(7, type);
-			ps.setInt(8, addressId);
+			ps.setInt(8, userId);
+			ps.setInt(9, addressId);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

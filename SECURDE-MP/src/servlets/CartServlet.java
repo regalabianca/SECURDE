@@ -3,12 +3,13 @@ package servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+ 
 import models.Account;
 import models.Product;
  
@@ -48,6 +49,9 @@ public class CartServlet extends HttpServlet {
 			break;
 		case "/EmptyCartServlet":
 			request.getSession().removeAttribute("cart");
+			RequestDispatcher dispatcher =
+					getServletContext().getRequestDispatcher("/checkout.jsp");
+					dispatcher.forward(request,response);
 			break;
 		case "/ViewCartServlet":
 			p = (ArrayList<Product>)request.getSession().getAttribute("cart");

@@ -12,6 +12,7 @@ public class Address {
 	public static String COL_POSTAL = "postal_code";
 	public static String COL_COUNTRY = "country";
 	public static String COL_TYPE = "type";
+	public static String COL_USERID = "user_id";
 	
 	private int addressid;
 	private int houseNum;
@@ -20,6 +21,7 @@ public class Address {
 	private String city;
 	private String postalCode;
 	private String country;
+	private int userId;
 	private int type;
 	
 	public int getAddressid() {
@@ -84,5 +86,13 @@ public class Address {
 	
 	public void setType(int type) {
 		this.type = type;
+	}
+	
+	public int getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 }

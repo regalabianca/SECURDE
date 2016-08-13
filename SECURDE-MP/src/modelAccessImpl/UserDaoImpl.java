@@ -89,7 +89,7 @@ public class UserDaoImpl implements UserDao {
 														User.COL_LNAME + " =?," +
 														User.COL_EMAIL + " =?," +
 														User.COL_BILLING + " =?," +
-														User.COL_SHIPPING + " =?," +
+														User.COL_SHIPPING + " =?" +
 														" WHERE " + User.COL_USERID + "=?;");
 			ps.setString(1, firstName);
 			ps.setString(2, middleInitial);

@@ -103,7 +103,7 @@ public class TransactionDaoImpl implements TransactionDao {
 			PreparedStatement ps = con.prepareStatement("UPDATE " + Transaction.TABLE_TRANSACTION + " SET " +  
 														Transaction.COL_ACCOUNTID + "  =?," +
 														Transaction.COL_CREDIT + "  =?," +
-														Transaction.COL_TOTAL + " =?," +
+														Transaction.COL_TOTAL + " =?" +
 														" WHERE " + Transaction.COL_TRANSACTIONID + "=?;");
 			ps.setInt(1, accountId);
 			ps.setInt(2, creditCard);

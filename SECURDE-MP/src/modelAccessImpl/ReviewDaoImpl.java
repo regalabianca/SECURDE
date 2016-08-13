@@ -103,7 +103,7 @@ public class ReviewDaoImpl implements ReviewDao {
 			PreparedStatement ps = con.prepareStatement("UPDATE " + Review.TABLE_REVIEW + " SET " +  
 														Review.COL_DESCRIPTION + " =?," +
 														Review.COL_PRODUCTID + "  =?," +
-														Review.COL_ACCOUNTID + " =?," +
+														Review.COL_ACCOUNTID + " =?" +
 														" WHERE " + Review.COL_REVIEWID + "=?;");
 			ps.setString(1, description);
 			ps.setInt(2, productId);

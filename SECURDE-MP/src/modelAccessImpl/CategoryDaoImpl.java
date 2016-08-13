@@ -62,7 +62,7 @@ public class CategoryDaoImpl implements CategoryDao {
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE " + Category.TABLE_CATEGORY + " SET " +  
-														Category.COL_NAME + " =?," +
+														Category.COL_NAME + " =?" +
 														" WHERE " + Category.COL_CATEGORYID + "=?;");
 			ps.setString(1, categoryName);
 			ps.setInt(2, categoryId);

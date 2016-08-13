@@ -86,7 +86,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 														Purchase.COL_PRODUCTID + "  =?," +
 														Purchase.COL_UNITPRICE + "  =?," +
 														Purchase.COL_TOTALPRICE + "  =?," +
-														Purchase.COL_TRANSACTIONID + " =?," +
+														Purchase.COL_TRANSACTIONID + " =?" +
 														" WHERE " + Purchase.COL_PURCHASEID + "=?;");
 			ps.setInt(1, quantity);
 			ps.setInt(2, productId);
