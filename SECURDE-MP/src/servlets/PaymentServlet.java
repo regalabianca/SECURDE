@@ -15,6 +15,7 @@ import modelAccessImpl.AddressDaoImpl;
 import modelAccessImpl.TransactionDaoImpl;
 import models.Account;
 import models.Address;
+import models.Product;
 import models.Transaction;
 
 /**
@@ -54,6 +55,13 @@ public class PaymentServlet extends HttpServlet {
 		
 		Account acct = (Account) request.getSession().getAttribute("account");
 		request.setAttribute("account", acct);
+		ArrayList<Product> p = new ArrayList<Product>();
+		p = (ArrayList<Product>) request.getSession().getAttribute("cart");
+		float totalamount=0;
+		for(int i = 0; i < p.size();i++)
+		{
+			totalamount += p.get(i).getPrice();
+		}
 		int userId = acct.getUserId();
 		
 		

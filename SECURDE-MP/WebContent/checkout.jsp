@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="check-out">	 
 					
 				 <div class=" cart-items">
-					 <h3>My Shopping Bag (2)</h3>
+					 <h3>My Shopping Bag</h3>
 						<script>$(document).ready(function(c) {
 							$('.close1').on('click', function(c){
 								$('.cart-header').fadeOut('slow', function(c){
@@ -164,7 +164,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</c:forEach>
 					</div>
-					
+					<form action="PaymentServlet">
+						<input type="submit" value="Check Out"></input>
+					</form>
 					 </div>
 		 		</div>	
 		 			
