@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelAccess.AddressDao;
+import modelAccess.TransactionDao;
 import modelAccessImpl.AddressDaoImpl;
+import modelAccessImpl.TransactionDaoImpl;
 import models.Account;
 import models.Address;
+import models.Transaction;
 
 /**
  * Servlet implementation class PaymentServlet
@@ -53,6 +56,10 @@ public class PaymentServlet extends HttpServlet {
 		request.setAttribute("account", acct);
 		int userId = acct.getUserId();
 		
+		
+		/*****************************************************************************************
+		 * 	FOR ADDRESS TABLE
+		 ****************************************************************************************/
 		if(ad.getAddress(userId).size() < 1)
 			newAddr = true;
 		
@@ -104,6 +111,19 @@ public class PaymentServlet extends HttpServlet {
 				ad.addAddress(address); //add shipping address
 			else
 				ad.updateAddress(address);
+			
+			
+			/*****************************************************************************************
+			 * 	FOR TRANSACTION TABLE
+			 ****************************************************************************************/
+			Transaction transaction = new Transaction();
+			int accountId = acct.getAccountId();
+			float totalPrice = Float.parseFloat(request.getParameter(Transaction.COL_TOTAL));
+			transaction.setAccountId(accountId);
+			transaction.setTotalPrice(totalPrice);
+			
+			TransactionDao td = new TransactionDaoImpl();
+			td.addTransaction(transaction);
 			
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

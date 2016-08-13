@@ -15,19 +15,16 @@ public class TransactionDaoImpl implements TransactionDao {
 	@Override
 	public boolean addTransaction(Transaction transaction) {
 		int accountId = transaction.getAccountId();
-		int creditCard = transaction.getCreditCard();
 		float totalPrice = transaction.getTotalPrice();
 		
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO " + Transaction.TABLE_TRANSACTION + 
 														"(" + Transaction.COL_ACCOUNTID + " ," +
-														Transaction.COL_CREDIT + " ," +
-														Transaction.COL_TOTAL + " )" + "VALUES(?,?,?);");
+														Transaction.COL_TOTAL + " )" + "VALUES(?,?);");
 						
 			ps.setInt(1, accountId);
-			ps.setInt(2, creditCard);
-			ps.setFloat(3, totalPrice);
+			ps.setFloat(2, totalPrice);
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -51,7 +48,6 @@ public class TransactionDaoImpl implements TransactionDao {
 				Transaction transaction = new Transaction();
 				transaction.setTransactionId(rs.getInt(Transaction.COL_TRANSACTIONID));
 				transaction.setAccountId(rs.getInt(Transaction.COL_ACCOUNTID));
-				transaction.setCreditCard(rs.getInt(Transaction.COL_CREDIT));
 				transaction.setTotalPrice(rs.getFloat(Transaction.COL_TOTAL));
 				return transaction;
 			}
@@ -78,7 +74,6 @@ public class TransactionDaoImpl implements TransactionDao {
 				Transaction transaction = new Transaction();
 				transaction.setTransactionId(rs.getInt(Transaction.COL_TRANSACTIONID));
 				transaction.setAccountId(rs.getInt(Transaction.COL_ACCOUNTID));
-				transaction.setCreditCard(rs.getInt(Transaction.COL_CREDIT));
 				transaction.setTotalPrice(rs.getFloat(Transaction.COL_TOTAL));
 				transactions.add(transaction);
 			}
@@ -94,7 +89,6 @@ public class TransactionDaoImpl implements TransactionDao {
 	@Override
 	public void updateTransaction(Transaction transaction) {
 		int accountId = transaction.getAccountId();
-		int creditCard = transaction.getCreditCard();
 		float totalPrice = transaction.getTotalPrice();
 		int transactionId = transaction.getTransactionId();
 		
@@ -102,13 +96,11 @@ public class TransactionDaoImpl implements TransactionDao {
 			Connection con = DBConnection.getConnection().getRawConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE " + Transaction.TABLE_TRANSACTION + " SET " +  
 														Transaction.COL_ACCOUNTID + "  =?," +
-														Transaction.COL_CREDIT + "  =?," +
 														Transaction.COL_TOTAL + " =?" +
 														" WHERE " + Transaction.COL_TRANSACTIONID + "=?;");
 			ps.setInt(1, accountId);
-			ps.setInt(2, creditCard);
-			ps.setFloat(3, totalPrice);
-			ps.setInt(8, transactionId);
+			ps.setFloat(2, totalPrice);
+			ps.setInt(3, transactionId);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
