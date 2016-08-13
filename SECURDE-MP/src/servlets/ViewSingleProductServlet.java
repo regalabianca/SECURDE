@@ -43,15 +43,18 @@ public class ViewSingleProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Account acct = (Account) request.getSession().getAttribute("account");
-		request.setAttribute("account", acct);
+		request.getSession().setAttribute("account", acct);
 		Product p = new Product();
 		ArrayList<Product> products = (ArrayList<Product>) request.getSession().getAttribute("viewproductslist");
 		int index = Integer.parseInt(request.getParameter("index"));
 		ProductDaoImpl pd = new ProductDaoImpl();
 		p = pd.getProduct(products.get(index).getProductId());
 		request.getSession().setAttribute("product", p);
-		if(acct.getType() == 2)
-			request.getRequestDispatcher("editproduct.jsp").forward(request, response);
+		if(acct!=null)
+			if(acct.getType() == 2)
+				request.getRequestDispatcher("editproduct.jsp").forward(request, response);
+			else
+				request.getRequestDispatcher("single.jsp").forward(request, response);
 		else
 			request.getRequestDispatcher("single.jsp").forward(request, response);
 	}

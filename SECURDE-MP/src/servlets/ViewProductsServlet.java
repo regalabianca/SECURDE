@@ -45,7 +45,7 @@ public class ViewProductsServlet extends HttpServlet {
 		ArrayList<Product> p = new ArrayList();
 		ProductDaoImpl pd = new ProductDaoImpl();
 		Account acct = (Account) request.getSession().getAttribute("account");
-		request.setAttribute("account", acct);
+		request.getSession().setAttribute("account", acct);
 		switch (request.getServletPath()){
 			case "/ViewBootsServlet":
 			p = pd.getProducts(1);
