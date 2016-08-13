@@ -130,7 +130,7 @@ public class PaymentServlet extends HttpServlet {
 			
 			Transaction transaction = new Transaction();
 			int accountId = acct.getAccountId();
-			float totalPrice = 1;//Float.parseFloat(request.getParameter(Transaction.COL_TOTAL));
+			float totalPrice = Float.parseFloat(request.getParameter(Transaction.COL_TOTAL));
 			transaction.setAccountId(accountId);
 			transaction.setTotalPrice(totalPrice);
 			
