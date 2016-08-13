@@ -58,6 +58,8 @@ public class ViewSingleProductServlet extends HttpServlet {
 		else
 			request.getRequestDispatcher("single.jsp").forward(request, response);
 	}
-	
+	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
 
 }
