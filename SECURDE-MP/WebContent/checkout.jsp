@@ -86,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!---->
 					<div class="cart box_1">
 						<a href="checkout.jsp">
-						<h3> <div class="total">
+						<h3> <div class="total">	
 							<span class="simpleCart_total"> </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> </span>)</div>
 							<img src="images/cart2-2.png" alt=""/></h3>
 						</a>
@@ -164,9 +164,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</c:forEach>
 					</div>
-					<form action="PaymentServlet">
-						<input type="submit" value="Check Out"></input>
-					</form>
+						<button id="checkout"  onclick="payFunction();">Check Out</button>
 					 </div>
 		 		</div>	
 		 			
@@ -187,6 +185,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				};
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
+		function payFunction(){
+			if($.session.get('account')!=null)
+				$('#pay').submit();
+			else
+				alert("Pls login first");
+		}
 		
 });
 </script>

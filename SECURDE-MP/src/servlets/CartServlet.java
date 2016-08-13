@@ -50,7 +50,6 @@ public class CartServlet extends HttpServlet {
 		case "/EmptyCartServlet":
 			request.getSession().removeAttribute("cart");
 			String path = request.getParameter("hidebtn");
-			System.out.println("helo "+path);
 			request.getRequestDispatcher(path).forward(request, response);
 			break;
 		case "/ViewCartServlet":
