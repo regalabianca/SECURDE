@@ -30,7 +30,7 @@ CREATE TABLE `account` (
   `user_id` int(11) NOT NULL,
   `failedAttempts` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (2,'janine_tan','$2a$12$iHms9k7bGBKF1qZTQkq70uP.KEM.jPhDFkmETMDqaE4eAp9D8M4MG',0,3,0),(3,'ange','$2a$12$ZuVUGyUbXJbx3W4a3Y7qr.B/OeeigZYUCC1D5EELgB4OBlb4pd3IC',1,4,0),(4,'raisa','$2a$12$wCso3mHLOU8CLvC4In0YLOlybJ3RfuCw.zMERAFvXpZGmcrwizncO',2,5,0),(5,'bianca','$2a$12$zY.OgIX89hpRFcJyYxuzcuzZE.9kaijLfdi.BLoL2dBJH32xbKuje',3,6,0),(6,'kris','$2a$12$pFap1SyZz2mUve3wZo3aIO15qK72yy.mKNOLh/f3c.eH/Xe854NZG',2,7,0),(7,'rissa','$2a$12$h5XyD/ptvrGk1x09vYogZ.KtgJciV9dFbR19pY2B61OHD2A6wV4hi',2,8,0),(8,'jj','$2a$12$kob4wJwwtifRRzMWeO0YtupCn5K7/nFbpkSEDRBIs3rJxS1hrF./S',0,9,0),(9,'ke','$2a$12$YglrUkzngqBHvmIYyPxtQ.tcSxOYOygBGNgP4ZAVZ5Xf7aUahJ6Pe',2,10,0),(10,'jk','$2a$12$rzKZePl5jaGLa26w9UoSFecysyPsZhxN.Ag2/QTRMb1P2Ts8n7b/O',0,11,0),(11,'darren','$2a$12$ME8yuBFQ1lcGQ6vRalKXm.kj0xal0qePBGRe37IW41F/3uxpD5RJG',0,12,0),(12,'shayane','$2a$12$WwsP1dSfIS2jd4Pn.fjh0OREE8iHWHqMH1s9okC2kdHe1djvtAilO',0,13,0),(13,'fefe','$2a$12$Dk1eOuWyWsG0SqcB4bTO6uC7fyLWN1IfRdbmvfh0p5d4Xv8I/0qou',2,14,0);
+INSERT INTO `account` VALUES (14,'bianca','$2a$12$3PV1aTy3T7Zg4e6j6h9rFOezQDCbsOFrqU47mevdCbUdS303fNHhK',0,15,0),(15,'meow','$2a$12$z4aKalvF6fUnYdDLqMMvAeXaWon9y50eUI9BYx9YPDsP9lrodUDou',0,16,0),(16,'aa','$2a$12$CSwem1ygr7W2ZvfzOkMRYOv8NttblN/iJym0NaZm/y0inCDgP8h0a',0,17,0);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,9 +58,10 @@ CREATE TABLE `address` (
   `city` varchar(45) NOT NULL,
   `postal_code` varchar(45) NOT NULL,
   `country` varchar(45) NOT NULL,
+  `type` int(1) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`address_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,6 +70,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
+INSERT INTO `address` VALUES (3,5,'e','e','e','e','e',0,15),(4,5,'e','e','e','e','e',1,15);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +163,7 @@ CREATE TABLE `product` (
   `price` float NOT NULL,
   `category_id` int(11) NOT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +172,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'converse',2000,1),(2,'hehehe',2000,2),(3,'hohoho',2000,3),(4,'hihihi',2000,4);
+INSERT INTO `product` VALUES (5,'boot1',1000,1),(6,'boot2',2000,1),(7,'boot3',3000,1),(8,'shoe1',1500,2),(9,'shoe2',2500,2),(10,'shoe3',3500,2),(11,'shoe4',4500,2);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,7 +268,7 @@ CREATE TABLE `user` (
   `shipping_id` int(11) NOT NULL,
   `billing_id` int(11) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -275,7 +277,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (3,'Janine','Mica','Tan','janine_tan14@yahoo.com',0,0),(4,'Angeline','Jao','Tan','ange_tan@dlsu.edu.ph',0,0),(5,'Raisa','Ang','Lee','raisa_lee@gmail.com',0,0),(6,'Bianca','Gee','Regala','bianca_regala@gmail.com',0,0),(7,'Kristoffer','k','Cheng','kris_cheng@gmail.com',0,0),(8,'rissa','a','quindoza','rissa@gmail.com',0,0),(9,'JAJAJA','JAJAj','JAJAJa','janine@gmail.com',0,0),(10,'kekeke','keke','kekeke','ke@gmail.com',0,0),(11,'jkjk','jk','jk','jk@gmail.com',0,0),(12,'darren','dar','espanto','darren@gmail.com',0,0),(13,'shayane','s','tan','shayane_tan@gmail.com',0,0),(14,'fefef','fefe','fefefe','fefefe',0,0);
+INSERT INTO `user` VALUES (15,'cat','c','cat','meow',0,0),(16,'panda','p','panda','cutie',0,0),(17,'a','a','a','a',0,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,4 +294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-13 15:28:13
+-- Dump completed on 2016-08-13 16:17:07
