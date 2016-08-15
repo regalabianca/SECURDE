@@ -60,7 +60,7 @@ public class LogInServlet extends HttpServlet {
 								break;
 						case 1: homepage = "admin index.jsp";
 								break;
-						case 2: homepage = "index.jsp";
+						case 2: homepage = "product manager index.jsp";
 								break;
 						case 3:	homepage = "accounting manager index.jsp";
 								break;	

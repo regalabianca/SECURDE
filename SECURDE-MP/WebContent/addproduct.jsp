@@ -203,24 +203,21 @@ $(window).load(function() {
 					</div>	
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
-						<div>
-							<form>
-								Product Name : <br>
-								<input type ="text"><br>
-								Description: <br>
-								<input type ="text"><br>
+							<form action="AddProductServlet" method="post">
+								Product Description: <br>
+								<input name="description" type ="text"><br>
 								Price: <br>
-								<input type ="text"><br>
+								<input name="price" type ="text"><br>
 								Category: <br>
 								<select name="category">
+								<option value="boots" selected>Boots</option>
   								<option value="shoes">Shoes</option>
  								<option value="sandals">Sandals</option>
 								<option value="slippers">Slippers</option>
-								<option value="bootss">Boots</option>
 								</select>
+							
+								<input type="submit" value="ADD ITEM"></input>
 							</form>
-						 </div>
-								<a href="#" class="add-cart item_add">ADD ITEM</a>
 							
 						</div>
 					</div>
