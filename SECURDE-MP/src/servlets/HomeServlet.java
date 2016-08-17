@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import database.DBManager;
 import modelAccess.AccountDao;
 import modelAccessImpl.AccountDaoImpl;
@@ -61,11 +59,11 @@ public class HomeServlet extends HttpServlet {
 								break;
 						case 2: homepage = "product manager index.jsp";
 								break;
-						case 3:	PurchaseDaoImpl pd = new PurchaseDaoImpl();
+						case 3:	/*PurchaseDaoImpl pd = new PurchaseDaoImpl();
 								pd.getPurchases();
 								Gson g = new Gson();
 								String s = g.toJson(pd);
-								response.setContentType("application/json");
+								response.setContentType("application/json");*/
 								homepage = "accounting manager index.jsp";
 								break;	
 						default: homepage = "index.jsp";
