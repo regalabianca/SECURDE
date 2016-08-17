@@ -122,7 +122,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!---->
 		<div class="container">
 		<div class="register">
-		  	  <form action="SignUpServlet" method="post"> 
+		  	  <form action="ChangePasswordServlet" method="post"> 
 					<div class="mation">
 		<h3>ACCOUNT DETAILS</h3>
 						<div>

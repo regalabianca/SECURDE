@@ -94,15 +94,26 @@ public class AccountDaoImpl implements AccountDao {
 	public boolean addAccount(Account account, String password) {
 		String username = account.getUsername();
 		int type = account.getType();
+		System.out.println("AccountDAO type: "+type);
 		int userid = account.getUserId();
 		
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
-			PreparedStatement ps = con.prepareStatement("INSERT INTO " + Account.TABLE_ACCOUNT + 
+			PreparedStatement ps;
+			if(type != 2 && type !=3){
+				ps = con.prepareStatement("INSERT INTO " + Account.TABLE_ACCOUNT + 
 														"(" + Account.COL_USERNAME + " ," +
 														Account.COL_PASSWORD + " ," +
 														Account.COL_TYPE + " ," +
 														Account.COL_USERID + " )" + "VALUES(?,?,?,?);");
+			}
+			else{
+				ps = con.prepareStatement("INSERT INTO " + Account.TABLE_ACCOUNT + 
+						"(" + Account.COL_USERNAME + " ," +
+						Account.COL_DEFAULTPASS + " ," +
+						Account.COL_TYPE + " ," +
+						Account.COL_USERID + " )" + "VALUES(?,?,?,?);");
+			}
 						
 			ps.setString(1, username);
 			ps.setString(2, password);
@@ -188,6 +199,28 @@ public class AccountDaoImpl implements AccountDao {
 		return null;
 	}
 	
+	public String getDefaultPassword(String username) {
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Account.TABLE_ACCOUNT + 
+														" WHERE " + Account.COL_USERNAME + " = ?");
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()){
+				Account account = new Account();
+				account.setAccountId(rs.getInt(Account.COL_ACCOUNTID));
+				account.setUsername(rs.getString(Account.COL_USERNAME));
+				account.setType(rs.getInt(Account.COL_TYPE));
+				account.setUserId(rs.getInt(Account.COL_USERID));
+				return rs.getString(Account.COL_DEFAULTPASS);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	@Override
 	public void updateAccount(Account account) {
@@ -262,6 +295,22 @@ public class AccountDaoImpl implements AccountDao {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public boolean setPassword(String username, String password) {
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("UPDATE " + Account.TABLE_ACCOUNT + " SET " + Account.COL_PASSWORD + "=? "
+														+ "WHERE " + Account.COL_USERNAME + " = ?");
+			ps.setString(1, password);
+			ps.setString(2, username);
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

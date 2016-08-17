@@ -46,17 +46,27 @@ public class LogInServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+		String genpass;
 		Password pass = new Password();
 	
 		DBManager dbmanager = new DBManager();
+		AccountDao ad = new AccountDaoImpl();
+		
 		String hashpassword = dbmanager.getPassword(username);
-		if(hashpassword != null && dbmanager.getAttempts(username) < 5){
-			if(pass.checkPassword(password, hashpassword)){
+		String defaultpassword = null;
+		if(hashpassword == null){
+			defaultpassword = ad.getDefaultPassword(username);
+			genpass = defaultpassword;
+		}else
+			genpass = hashpassword;
+		
+		
+		if(hashpassword != null || defaultpassword!=null && dbmanager.getAttempts(username) < 5){
+			if(pass.checkPassword(password, genpass)){
 				Account account = dbmanager.login(username);
 				dbmanager.setAttempts(username);
 					request.getSession().setAttribute("account", account);
-					AccountDao ad = new AccountDaoImpl();
+					
 					int acctType = ad.getType(account.getAccountId());
 					
 					String homepage = "";
@@ -65,9 +75,17 @@ public class LogInServlet extends HttpServlet {
 								break;
 						case 1: homepage = "admin index.jsp";
 								break;
-						case 2: homepage = "product manager index.jsp";
+						case 2: if(hashpassword == null){
+									homepage = "changepassword.jsp";
+								}else{
+									homepage = "product manager index.jsp";
+								}
 								break;
-						case 3:	homepage = "accounting manager index.jsp";
+						case 3:	if(hashpassword == null){
+									homepage = "changepassword.jsp";
+								}else{
+									homepage = "accounting manager index.jsp";
+								}
 								break;	
 						default: homepage = "index.jsp";
 					}

@@ -10,6 +10,7 @@ public class Account {
 	public static final String COL_PASSWORD = "password";
 	public static final String COL_TYPE = "type";
 	public static final String COL_ATTEMPTS = "failedAttempts";
+	public static final String COL_DEFAULTPASS = "defaultpass";
 	
 	private int userId;
 	private String username;

@@ -15,4 +15,6 @@ public interface AccountDao {
 	public void updateLastAttempt(String username);
 	public int getAttempts(String username);
 	public void setAttempts(String username);
+	public String getDefaultPassword(String username);
+	public boolean setPassword(String username, String password);
 }
