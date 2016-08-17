@@ -96,8 +96,37 @@ public class PurchaseDaoImpl implements PurchaseDao {
 		}
 		
 		return null;
-	}
+	} 
 
+	public ArrayList<Purchase> getPurchases(int purchaseId) {
+		ArrayList<Purchase> purchases = new ArrayList<>();
+		
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Purchase.TABLE_PURCHASE +
+														" WHERE " + Purchase.COL_PURCHASEID + " = ?");
+			ps.setInt(1, purchaseId);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()){
+				Purchase purchase = new Purchase();
+				purchase.setPurchaseId(rs.getInt(Purchase.COL_PURCHASEID));
+				purchase.setQuantity(rs.getInt(Purchase.COL_QUANTITY));
+				purchase.setProductId(rs.getInt(Purchase.COL_PRODUCTID));
+				purchase.setUnitPrice(rs.getFloat(Purchase.COL_UNITPRICE));
+				purchase.setTotalPrice(rs.getFloat(Purchase.COL_TOTALPRICE));
+				purchase.setTransactionId(rs.getInt(Purchase.COL_TRANSACTIONID));
+				purchases.add(purchase);
+			}
+			return purchases;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 	@Override
 	public void updatePurchase(Purchase purchase) {
 		int quantity = purchase.getQuantity();

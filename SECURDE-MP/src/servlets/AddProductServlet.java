@@ -39,21 +39,34 @@ public class AddProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 		Product product = new Product();
 		product.setDescription(request.getParameter("description"));
 		product.setPrice(Float.parseFloat(request.getParameter("price")));
 		String c = request.getParameter("category");
-		if(c.equals("boots"))
+		String servlet="";
+		if(c.equals("boots")){
 			product.setCategoryId(1);
+			servlet="/ViewBootsServlet";
+		}
 		else if(c.equals("shoes"))
+		{
 			product.setCategoryId(2);
+			servlet ="/ViewShoesServlet";
+		}
 		else if (c.equals("sandals"))
+		{
 			product.setCategoryId(3);
+			servlet ="/ViewSandalsServlet";
+		}
 		else if(c.equals("slippers"))
+		{
 			product.setCategoryId(4);
+			servlet ="/ViewSlippersServlet";
+		}
 		ProductDao pd = new ProductDaoImpl();
 		pd.addProduct(product);
+		request.getSession().setAttribute("account", request.getSession().getAttribute("account"));
+		request.getRequestDispatcher(servlet).forward(request, response);
 	}
 
 }

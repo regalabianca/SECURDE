@@ -10,4 +10,5 @@ public interface PurchaseDao {
 	public ArrayList<Purchase> getPurchases ();
 	public void updatePurchase (Purchase purchase);
 	public void deletePurchase (int purchaseId);
+	public ArrayList<Purchase> getPurchases(int productId);
 }
