@@ -71,15 +71,12 @@ public class PurchaseDaoImpl implements PurchaseDao {
 		return null;
 	}
 	
-	@Override
-	public ArrayList<Purchase> getPurchases(int productId) {
+	public ArrayList<Purchase> getPurchases() {
 		ArrayList<Purchase> purchases = new ArrayList<>();
 		
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Purchase.TABLE_PURCHASE + 
-														" WHERE " + Purchase.COL_PRODUCTID + " = ?");
-			ps.setInt(1, productId);
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Purchase.TABLE_PURCHASE);
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()){

@@ -7,9 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import database.DBManager;
 import modelAccess.AccountDao;
 import modelAccessImpl.AccountDaoImpl;
+import modelAccessImpl.ProductDaoImpl;
+import modelAccessImpl.PurchaseDaoImpl;
 import models.Account;
 import models.Password;
 
@@ -67,7 +71,12 @@ public class LogInServlet extends HttpServlet {
 								break;
 						case 2: homepage = "product manager index.jsp";
 								break;
-						case 3:	homepage = "accounting manager index.jsp";
+						case 3:	PurchaseDaoImpl pd = new PurchaseDaoImpl();
+								pd.getPurchases();
+								Gson g = new Gson();
+								String s = g.toJson(pd);
+								response.setContentType("application/json");
+								homepage = "accounting manager index.jsp";
 								break;	
 						default: homepage = "index.jsp";
 					}
