@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.DBManager;
+import modelAccess.AccountDao;
 import modelAccess.ReviewDao;
+import modelAccessImpl.AccountDaoImpl;
 import modelAccessImpl.ProductDaoImpl;
 import modelAccessImpl.ReviewDaoImpl;
 import models.Account;
@@ -68,12 +70,15 @@ public class ViewSingleProductServlet extends HttpServlet {
 		boolean valid = dbm.checkIfValidForReview(acct.getAccountId(), productId);
 		request.getSession().setAttribute("canReview", valid);
 		
-		if(acct!=null)
-			if(acct.getType() == 2)
+		if(acct!=null){
+			AccountDao ad = new AccountDaoImpl();
+			int acctType = ad.getType(acct.getAccountId());
+			
+			if(acctType == 2)
 				request.getRequestDispatcher("editproduct.jsp").forward(request, response);
 			else
 				request.getRequestDispatcher("single.jsp").forward(request, response);
-		else
+		}else
 			request.getRequestDispatcher("single.jsp").forward(request, response);
 	}
 	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

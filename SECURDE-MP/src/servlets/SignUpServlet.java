@@ -76,9 +76,12 @@ public class SignUpServlet extends HttpServlet {
 			Account currentAccount  = (Account) request.getSession().getAttribute("account");
 			
 			if(added && currentAccount == null){
-				request.getSession().setAttribute("account", account);
+				request.getSession().setAttribute("account", currentAccount);
+				int acctType = ad.getType(currentAccount.getAccountId());
+				System.out.println("mmmmmmmm >> signup acctType = "+acctType);
+				
 				String homepage = "";
-				switch (account.getType()){
+				switch (acctType){
 					case 0: homepage = "index.jsp";
 							break;
 					case 1: homepage = "admin index.jsp";

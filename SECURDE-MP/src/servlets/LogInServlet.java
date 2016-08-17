@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.DBManager;
+import modelAccess.AccountDao;
+import modelAccessImpl.AccountDaoImpl;
 import models.Account;
 import models.Password;
 
@@ -54,8 +56,11 @@ public class LogInServlet extends HttpServlet {
 				Account account = dbmanager.login(username);
 				dbmanager.setAttempts(username);
 					request.getSession().setAttribute("account", account);
+					AccountDao ad = new AccountDaoImpl();
+					int acctType = ad.getType(account.getAccountId());
+					
 					String homepage = "";
-					switch (account.getType()){
+					switch (acctType){
 						case 0: homepage = "index.jsp";
 								break;
 						case 1: homepage = "admin index.jsp";

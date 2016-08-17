@@ -57,6 +57,26 @@ public class AccountDaoImpl implements AccountDao {
 		return false;
 	}
 	
+	@Override
+	public int getType (int accountId){
+		try {
+			Connection con = DBConnection.getConnection().getRawConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Account.TABLE_ACCOUNT + 
+														" WHERE " + Account.COL_ACCOUNTID + " = ?");
+			ps.setInt(1, accountId);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next())
+				return rs.getInt(Account.COL_TYPE);
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return -999;
+	}
+	
 	public void updateLastAttempt(String username){
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
