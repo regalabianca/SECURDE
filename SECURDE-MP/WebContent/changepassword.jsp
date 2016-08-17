@@ -117,45 +117,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 <!---->
 <div class="back">
-	<h2>Register</h2>
+	<h2>Change Password</h2>
 </div>
 		<!---->
 		<div class="container">
 		<div class="register">
-		<h3>PERSONAL INFORMATION</h3>
 		  	  <form action="SignUpServlet" method="post"> 
 					<div class="mation">
+		<h3>ACCOUNT DETAILS</h3>
 						<div>
-							<span>First Name</span>
-							<input type="text" name="first_name"> 
+							<span>Old Password</span>
+							<input type="password" name="oldPass">						 
 						</div>
 						<div>
-							<span>Middle Initial</span>
-							<input type="text" name="middle_initial"> 
+							<span>New Password</span>
+							<input type="password" name="newPass">						 
 						</div>
 						<div>
-							<span>Last Name</span>
-							<input type="text" name="last_name"> 
-						 </div>
-						 <div>
-							 <span>Email Address</span>
-							 <input type="text" name="email">
-						</div>
-						<h3>ACCOUNT DETAILS</h3>
-						<div>
-							<span>Username</span>
-							<input type="text" name="username">						 
-						</div>
-						<div>
-							<span>Password</span>
-							<input type="password" name="password">						 
-						</div>
-						<div>
-							<span>Confirm Password</span>
+							<span>Confirm New Password</span>
 							<input type="password" name="confirmPass">						 
-						</div>
-						<div>
-							<input type="hidden" name="type" value="0">		 
 						</div>
 					 </div>
 				     <input type="submit" value="submit">
