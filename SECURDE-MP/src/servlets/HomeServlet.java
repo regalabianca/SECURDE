@@ -1,16 +1,18 @@
 package servlets;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import database.DBManager;
 import modelAccess.AccountDao;
 import modelAccessImpl.AccountDaoImpl;
+import modelAccessImpl.ProductDaoImpl;
 import modelAccessImpl.PurchaseDaoImpl;
 import models.Account;
 import models.Password;
@@ -18,14 +20,14 @@ import models.Password;
 /**
  * Servlet implementation class LogInServlet
  */
-@WebServlet("/LogInServlet")
-public class LogInServlet extends HttpServlet {
+@WebServlet("/HomeServlet")
+public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogInServlet() {
+    public HomeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,29 +48,9 @@ public class LogInServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String genpass;
-		Password pass = new Password();
-	
-		DBManager dbmanager = new DBManager();
-		AccountDao ad = new AccountDaoImpl();
-		
-		String hashpassword = dbmanager.getPassword(username);
-		String defaultpassword = null;
-		if(hashpassword == null){
-			defaultpassword = ad.getDefaultPassword(username);
-			genpass = defaultpassword;
-		}else
-			genpass = hashpassword;
-		
-		
-		if(hashpassword != null || defaultpassword!=null && dbmanager.getAttempts(username) < 5){
-			if(pass.checkPassword(password, genpass)){
-				Account account = dbmanager.login(username);
-				dbmanager.setAttempts(username);
+		Account account = (Account) request.getSession().getAttribute("account");
 					request.getSession().setAttribute("account", account);
-					
+					AccountDao ad = new AccountDaoImpl();
 					int acctType = ad.getType(account.getAccountId());
 					
 					String homepage = "";
@@ -77,34 +59,17 @@ public class LogInServlet extends HttpServlet {
 								break;
 						case 1: homepage = "admin index.jsp";
 								break;
-						case 2: if(hashpassword == null){
-									homepage = "changepassword.jsp";
-								}else{
-									homepage = "product manager index.jsp";
-								}
+						case 2: homepage = "product manager index.jsp";
 								break;
-						case 3:	if(hashpassword == null){
-									homepage = "changepassword.jsp";
-								}else{
-									/*PurchaseDaoImpl pd = new PurchaseDaoImpl();
-									pd.getPurchases();
-									Gson g = new Gson();
-									String s = g.toJson(pd);
-									response.setContentType("application/json");*/
-									homepage = "accounting manager index.jsp";
-								}
-
+						case 3:	PurchaseDaoImpl pd = new PurchaseDaoImpl();
+								pd.getPurchases();
+								Gson g = new Gson();
+								String s = g.toJson(pd);
+								response.setContentType("application/json");
+								homepage = "accounting manager index.jsp";
 								break;	
 						default: homepage = "index.jsp";
 					}
 					request.getRequestDispatcher(homepage).forward(request, response);
-			}else{
-				dbmanager.increaseAttempts(username);
-				response.sendRedirect("account.jsp");
-			}
-		}else{
-			response.sendRedirect("account.jsp");
-		}
 	}
-
 }
