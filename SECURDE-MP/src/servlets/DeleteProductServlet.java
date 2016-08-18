@@ -39,11 +39,13 @@ public class DeleteProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.getSession().setAttribute("account", request.getSession().getAttribute("account"));
 		int productId = Integer.parseInt(request.getParameter("productId"));
 //		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-		
+		//System.out.println(productId);
 		ProductDao pd = new ProductDaoImpl();
 		pd.deleteProduct(productId);
+		request.getRequestDispatcher("product manager index.jsp").forward(request, response);
 	}
 
 }

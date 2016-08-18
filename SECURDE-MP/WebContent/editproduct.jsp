@@ -201,8 +201,9 @@ $(window).load(function() {
 					</div>	
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
+						<form method = "post" action ="DeleteProductServlet">
 						<c:set var="p" value="${product}" scope="request"></c:set>
-						<input type="hidden" id="productId" value = "${p.productId}"></input>
+						<input type="hidden" id="productId" name="productId" value = "${p.productId}"></input>
 						<h4 id="description"><c:out value="${p.description}"/></h4>
 						<input id="editDesc" type="text" style="display:none;">
 							<div class="star-on">
@@ -228,14 +229,16 @@ $(window).load(function() {
 								<h5 id="price" class="item_price" style="display:inline-block;"> <c:out value="${p.price}"/></h5>
 								<input id="editPrice" type="text" style="display:none;">
 							</div>
-							<div class="available">
-						</div>
-								<a href="#" id="btnEdit" class="add-cart item_add">EDIT PRODUCT INFORMATION</a>
-								<a href="#" id="btnDelete" type="submit" class="add-cart item_add">DELETE PRODUCT</a>
-								<a href="#" id="btnSave" type="submit" style="display:none;" class="add-cart item_add">SAVE</a>
-								<a href="#" id="btnCancel" style="display:none;" class="add-cart item_add">CANCEL</a>
+						
+							<a href="#" id="btnEdit" class="add-cart item_add">EDIT PRODUCT INFORMATION</a>
+							
+								<input href="#" id="btnDelete" type="submit" class="add-cart item_add" value="DELETE PRODUCT"></input>
+							</form>
+							</div>
+							<a href="#" id="btnSave" type="submit" style="display:none;" class="add-cart item_add">SAVE</a>
+							<a href="#" id="btnCancel" style="display:none;" class="add-cart item_add">CANCEL</a>
 
-						</div>
+						
 					</div>
 				<div class="clearfix"> </div>
 			<!---->

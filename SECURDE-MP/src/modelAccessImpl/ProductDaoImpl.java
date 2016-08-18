@@ -160,7 +160,7 @@ public class ProductDaoImpl implements ProductDao {
 			PreparedStatement ps = con.prepareStatement("DELETE FROM " + Product.TABLE_PRODUCT + 
 														" WHERE " + Product.COL_PRODUCTID + "=?;");
 			ps.setInt(1, productId);
-			ps.executeQuery();
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
