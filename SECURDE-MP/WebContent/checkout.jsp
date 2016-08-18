@@ -144,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					
 					<div class="in-check" >
-					
+					<form action="CheckoutServlet" method="post">
 					  <ul class="unit">
 						<li><span>Item</span></li>
 						<li><span>Product Name</span></li>		
@@ -163,8 +163,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="clearfix"> </div>
 						</ul>
 					</c:forEach>
-					</div>
-						<button id="checkout"  onclick="payFunction();">Check Out</button>
+						<input type ="submit" id="checkout" value="Check Out"></input>
+						</form>
+						</div>
 					 </div>
 		 		</div>	
 		 			
@@ -186,6 +187,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
 		function payFunction(){
+			alert('Hi');
 			if($.session.get('account')!=null)
 				$('#pay').submit();
 			else
