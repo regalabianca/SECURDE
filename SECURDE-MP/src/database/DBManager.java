@@ -33,7 +33,7 @@ public class DBManager {
 		productDao = new ProductDaoImpl();
 	}
 	
-	public boolean signup(User user, Account account, String password){
+	public Account signup(User user, Account account, String password){
 		Account acc = null;
 		
 		boolean usernameExists = accountDao.checkIfUsernameExists(account.getUsername());
@@ -50,7 +50,7 @@ public class DBManager {
 			}
 		}
 		
-		return false;	
+		return null;	
 	}
 	
 	public String getPassword(String username){

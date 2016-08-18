@@ -71,34 +71,22 @@ public class SignUpServlet extends HttpServlet {
 			user.setEmail(email);
 			
 			DBManager dbmanager = new DBManager();
-			boolean added = dbmanager.signup(user, account, password);
+			account = dbmanager.signup(user, account, password);
 			
 			Account currentAccount  = (Account) request.getSession().getAttribute("account");
 			
-			if(added && currentAccount == null){
+			if(account != null && currentAccount == null){
 				request.getSession().setAttribute("account", account);
-				int acctType = ad.getType(account.getAccountId());
-				System.out.println("mmmmmmmm >> signup acctType = "+acctType);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 				
-				String homepage = "";
-				switch (acctType){
-					case 0: homepage = "index.jsp";
-							break;
-					case 1: homepage = "admin index.jsp";
-							break;
-					case 2: homepage = "product manager index.jsp";
-							break;
-					case 3:	homepage = "accounting manager index.jsp";
-							break;	
-					default: homepage = "index.jsp";
-				}
-				request.getRequestDispatcher(homepage).forward(request, response);
-			} else if(added && currentAccount.getType() == 1 ){
+			} else if(account !=null && currentAccount.getType() == 1 ){
 				response.sendRedirect("admin index.jsp");
+				
 			}else{
 				response.sendRedirect("register.jsp");
 			}
 		} else {
+			
 			response.sendRedirect("register.jsp");
 		}
 	}

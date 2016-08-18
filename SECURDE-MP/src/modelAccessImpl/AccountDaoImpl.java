@@ -91,10 +91,10 @@ public class AccountDaoImpl implements AccountDao {
 	}
 	
 	@Override
-	public boolean addAccount(Account account, String password) {
+	public Account addAccount(Account account, String password) {
 		String username = account.getUsername();
 		int type = account.getType();
-		System.out.println("AccountDAO type: "+type);
+		System.out.println("AccountDAO type: " + type);
 		int userid = account.getUserId();
 		
 		try {
@@ -120,12 +120,12 @@ public class AccountDaoImpl implements AccountDao {
 			ps.setInt(3, type);
 			ps.setInt(4, userid);
 			ps.executeUpdate();
-			return true;
+			return account;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 
 	@Override
