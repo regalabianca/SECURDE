@@ -68,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
 	    						</c:when>
 	    						<c:otherwise>
-							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
+							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i><c:out value="${a.username}"/></a></li>
 							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
 							    </c:otherwise>
 							</c:choose>
@@ -203,7 +203,7 @@ $(window).load(function() {
 						<div class="single-para ">
 						<c:set var="p" value="${product}" scope="request"></c:set>
 						<input type="hidden" id="productId" value = "${p.productId}"></input>
-						<h4 id="description">${p.description}</h4>
+						<h4 id="description"><c:out value="${p.description}"/></h4>
 						<input id="editDesc" type="text" style="display:none;">
 							<div class="star-on">
 								<ul class="star-footer">
@@ -214,7 +214,7 @@ $(window).load(function() {
 										<li><a href="#"><i> </i></a></li>
 									</ul>
 								<div class="review">
-								<p id="category">${p.categoryId}</p>
+								<p id="category"><c:out value="${p.categoryId}"/></p>
 								<input id="editCateg" type="text" style="display:none;">
 								<br>
 									<a href="#"> 1 customer review </a>
@@ -225,7 +225,7 @@ $(window).load(function() {
 							
 							<div>
 								<h5 class="item_price" style="display:inline-block;">P</h5>
-								<h5 id="price" class="item_price" style="display:inline-block;"> ${p.price}</h5>
+								<h5 id="price" class="item_price" style="display:inline-block;"> <c:out value="${p.price}"/></h5>
 								<input id="editPrice" type="text" style="display:none;">
 							</div>
 							<div class="available">

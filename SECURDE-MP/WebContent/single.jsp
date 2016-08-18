@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
 	    						</c:when> 
 	    						<c:otherwise>
-							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
+							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i><c:out value="${a.username}"/></a></li>
 							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
 							    </c:otherwise>
 							</c:choose>		
@@ -208,7 +208,7 @@ $(window).load(function() {
 						<div class="single-para ">
 						<form action ="AddCartServlet"> 
 						<c:set var="p" value="${product}" scope="request"></c:set>
-						<h4>${p.description}</h4>
+						<h4><c:out value="${p.description}"/></h4>
 							<div class="star-on">
 								<ul class="star-footer">
 										<li><a href="#"><i> </i></a></li>
@@ -218,12 +218,13 @@ $(window).load(function() {
 										<li><a href="#"><i> </i></a></li>
 									</ul>
 								<div class="review">
-									<a href="#"> ${fn:length(reviews)} customer review(s) </a>
+									<a href="#"> <c:out value="${fn:length(reviews)}"/> customer review(s) </a>
+									<!-- <a href="#"> ${fn:length(reviews)} customer review(s) </a> -->
 									
 								</div>
 							<div class="clearfix"> </div>
 							</div>
-							<h5 class="item_price">P ${p.price}</h5>
+							<h5 class="item_price">P <c:out value="${p.price}"/></h5>
 							<div class="available">
 						</div>
 							<div class="cart-add">
@@ -239,7 +240,8 @@ $(window).load(function() {
 			<nav>
 				<ul class="cd-tabs-navigation">
 					<li><a data-content="add-review"  href="#0">Add Review </a></li>
-					<li><a data-content="view-reviews" href="#0" class="selected ">Reviews (${fn:length(reviews)})</a></li>
+					<li><a data-content="view-reviews" href="#0" class="selected ">Reviews (<c:out value="${fn:length(reviews)}"/>)</a></li>
+					<!-- <li><a data-content="view-reviews" href="#0" class="selected ">Reviews (${fn:length(reviews)})</a></li> -->
 					
 				</ul> 
 			</nav>
@@ -282,8 +284,8 @@ $(window).load(function() {
 							<img class="img-responsive" src="images/co.png" alt="">
 						</div>
 						<div class="top-comment-right" style="margin-bottom:10px;margin-left:0px;">
-							<h5 style="color:red;">${r.username}</h5>
-							<h4>${r.description}</h4>
+							<h5 style="color:red;"><c:out value="${r.username}"/></h5>
+							<h4><c:out value="${r.description}"/></h4>
 						</div>
 					</c:forEach>
 					<div class="clearfix"> </div>

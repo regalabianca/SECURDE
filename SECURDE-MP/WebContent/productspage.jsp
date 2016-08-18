@@ -51,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    							<li><a href="register.jsp"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>	
 	    						</c:when>
 	    						<c:otherwise>
-							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
+							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i><c:out value="${a.username}"/></a></li>
 							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
 							    </c:otherwise>
 							</c:choose>		
@@ -202,7 +202,7 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 	   		     		<div class="grid-chain-bottom ">
 	   		     		
 	   		     		<form method="post" action="ViewSingleProductServlet">
-	   		     			<a>${p.description}</a>
+	   		     			<a><c:out value="${p.description}"/></a>
 	   		     			<input type="hidden" name="index" value = "${counter.index}"></input>
 	   		     			<input type="submit" value="VIEW DETAILS"></input>
 	   		     			</form>
@@ -217,7 +217,7 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 									</ul>
 									</div>
 									<div class="price-at-bottom ">
-										<span class="item_price">P${p.price}</span>
+										<span class="item_price">P<c:out value="${p.price}"/></span>
 									</div>
 									
 	   		     				<div class="clearfix"> </div>

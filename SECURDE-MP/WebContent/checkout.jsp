@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
 	    						</c:when>
 	    						<c:otherwise>
-							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
+							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i><c:out value="${a.username}"/></a></li>
 							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
 							    </c:otherwise>
 							</c:choose>			
@@ -158,8 +158,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					   
 						<li class="ring-in"><a href="single.jsp" ><img src="images/f1.jpg" class="img-responsive" alt=""></a>
 						</li>
-						<li><span>${p.description}</span></li>
-						<li><span>${p.price}</span></li>
+						<li><span><c:out value="${p.description}"/></span></li>
+						<li><span><c:out value="${p.price}"/></span></li>
 						<div class="clearfix"> </div>
 						</ul>
 					</c:forEach>
