@@ -66,9 +66,15 @@ public class ViewSingleProductServlet extends HttpServlet {
 		reviews = rd.getReviews(productId);
 		request.getSession().setAttribute("reviews", reviews);
 		
-		DBManager dbm = new DBManager();
-		boolean valid = dbm.checkIfValidForReview(acct.getAccountId(), productId);
-		request.getSession().setAttribute("canReview", valid);
+		boolean validForReview;
+		
+		if(acct!=null){
+			DBManager dbm = new DBManager();
+			validForReview = dbm.checkIfValidForReview(acct.getAccountId(), productId);
+			request.getSession().setAttribute("canReview", validForReview);
+		}else{
+			validForReview = false;
+		}
 		
 		if(acct!=null){
 			AccountDao ad = new AccountDaoImpl();
