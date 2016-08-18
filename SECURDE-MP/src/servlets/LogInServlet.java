@@ -90,7 +90,8 @@ public class LogInServlet extends HttpServlet {
 									pd.getPurchases();
 									Gson g = new Gson();
 									String s = g.toJson(pd);
-									response.setContentType("application/json");*/
+									response.setContentType("application/json");
+									response.getWriter().write(s);*/
 									homepage = "accounting manager index.jsp";
 								}
 
