@@ -124,15 +124,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span>Password</span>
 					<input type="text" name="password"> 
 				  </div>
-				  <a class="forgot" href="#">Forgot Your Password?</a>
 				  <input type="submit" value="Login">
 			    </form>
 			   </div>	
-			    <div class=" login-left">
-			  	 <h3>NEW CUSTOMERS</h3>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-				 <a class="acount-btn" href="register.jsp">Create an Account</a>
-			   </div>
 			
 			 </div>
 		

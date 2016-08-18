@@ -56,7 +56,7 @@ public class ChangePasswordServlet extends HttpServlet{
 		String hashpassword = ad.getDefaultPassword(account.getUsername());
 		
 		
-		if(newPass.equals(confirmPass)){
+		if(newPass.equals(confirmPass) && !(oldPass.equals(newPass))){
 			if(pass.checkPassword(oldPass, hashpassword)){
 				ad.setPassword(account.getUsername(), pass.hashPassword(newPass));
 				if(ad.getType(account.getAccountId()) == 2)
