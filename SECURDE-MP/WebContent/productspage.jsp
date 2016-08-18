@@ -190,8 +190,7 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 		        		<div class="col-md-4 chain-grid  simpleCart_shelfItem">
 		        			<div class="grid-span-1">	
 		        			<c:forEach var="p" items="${viewproductslist}" varStatus="counter"> 
-		        					<a  href="/ViewSingleProductServlet">
-	   		     		<img class="img-responsive " src="images/n1.jpg" alt=" ">
+	   		     			<img class="img-responsive " src="images/n1.jpg" alt=" ">
 	   		     			<div class="link">
 	   		     			<ul >
 										<li><i class="glyphicon glyphicon-search"> </i></li>
