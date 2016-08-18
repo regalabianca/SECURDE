@@ -41,9 +41,12 @@ public class ChangePasswordServlet extends HttpServlet{
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String oldPass = request.getParameter("oldPass");
 		String newPass = request.getParameter("newPass");
 		String confirmPass = request.getParameter("confirmPass");
+		
+		System.out.println("change");
 	
 		
 		Account account = (Account) request.getSession().getAttribute("account");
@@ -56,8 +59,10 @@ public class ChangePasswordServlet extends HttpServlet{
 		if(newPass.equals(confirmPass)){
 			if(pass.checkPassword(oldPass, hashpassword)){
 				ad.setPassword(account.getUsername(), pass.hashPassword(newPass));
-				request.getSession().invalidate();
-				response.sendRedirect("account.jsp");
+				if(ad.getType(account.getAccountId()) == 2)
+					response.sendRedirect("product manager index.jsp");
+				else if(ad.getType(account.getAccountId()) == 3)
+					response.sendRedirect("accounting manager index.jsp");
 			}else{
 				response.sendRedirect("changepassword.jsp");
 			}
@@ -65,5 +70,4 @@ public class ChangePasswordServlet extends HttpServlet{
 			response.sendRedirect("changepassword.jsp");
 		}
 	}
-
 }

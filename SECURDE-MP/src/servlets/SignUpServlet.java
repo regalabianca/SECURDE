@@ -76,8 +76,8 @@ public class SignUpServlet extends HttpServlet {
 			Account currentAccount  = (Account) request.getSession().getAttribute("account");
 			
 			if(added && currentAccount == null){
-				request.getSession().setAttribute("account", currentAccount);
-				int acctType = ad.getType(currentAccount.getAccountId());
+				request.getSession().setAttribute("account", account);
+				int acctType = ad.getType(account.getAccountId());
 				System.out.println("mmmmmmmm >> signup acctType = "+acctType);
 				
 				String homepage = "";
@@ -94,7 +94,7 @@ public class SignUpServlet extends HttpServlet {
 				}
 				request.getRequestDispatcher(homepage).forward(request, response);
 			} else if(added && currentAccount.getType() == 1 ){
-				request.getRequestDispatcher("admin index.jsp").forward(request, response);
+				response.sendRedirect("admin index.jsp");
 			}else{
 				response.sendRedirect("register.jsp");
 			}

@@ -22,6 +22,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!--//fonts-->
 <!-- start menu -->
 
@@ -79,36 +80,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-bottom">
 			<div class="container">			
 				<div class="logo">
-					<h1><a href="index.jsp">I-<span>wear</span></a></h1>
+					<h1><a href="#">I-<span>wear</span></a></h1>
 				</div>
 		 <!---->
 		 
 			<div class="top-nav">
-				<ul class="memenu skyblue"><li  class="active"><a href="HomeServlet">Home</a></li>
-					<li class="grid"><a href="boots page.jsp">Boots</a>
-					</li>
-					<li class="grid"><a href="shoes page.jsp">Shoes</a>
-					</li>
-					<li class="grid"><a href="sandals page.jsp">Sandals</a>
-					</li>
-					<li class="grid"><a href="slippers page.jsp">Slippers</a>
-					</li>
-				</ul>
 				<div class="clearfix"> </div>
 			</div>
-					<!---->
-					<div class="cart box_1">
-						<a href="checkout.jsp">
-						<h3> <div class="total">
-							<span class="simpleCart_total"> </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> </span>)</div>
-							<img src="images/cart2-2.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-						<div class="clearfix"> </div>
-					</div>
-
-<div class="clearfix"> </div>
-					<!---->
 				</div>
 			<div class="clearfix"> </div>
 		</div>

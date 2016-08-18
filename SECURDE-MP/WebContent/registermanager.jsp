@@ -22,6 +22,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!--//fonts-->
 <!-- start menu -->
 
@@ -54,25 +55,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body> 
 <!--header-->
-		<div class="header-info">
+			<div class="header-info">
 			<div class="container">
 					<div class="header-top-in">
 						<ul class=" support-right">
 							<c:set var="a" value="${account}" scope="request"></c:set>
-							<c:choose>
-	    						<c:when test="${empty account}">
-	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
-	    						</c:when>
-	    						<c:otherwise>
 							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>${a.username}</a></li>
-							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
-							    </c:otherwise>
-							</c:choose>
+							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>	
 						</ul>
 						<div class="clearfix"> </div>
 					</div>
-				</div>
-			</div>		
+			</div>
+	</div>	
 <div class="header header5">
 	<div class="header-top">
 
