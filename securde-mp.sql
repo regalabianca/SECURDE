@@ -25,12 +25,14 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `account_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
-  `password` varchar(200) NOT NULL,
+  `password` varchar(200) DEFAULT NULL,
   `type` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `failedAttempts` int(11) NOT NULL DEFAULT '0',
+  `lastLogin` date DEFAULT NULL,
+  `defaultpass` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +41,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (14,'bianca','$2a$12$3PV1aTy3T7Zg4e6j6h9rFOezQDCbsOFrqU47mevdCbUdS303fNHhK',0,15,0),(15,'meow','$2a$12$z4aKalvF6fUnYdDLqMMvAeXaWon9y50eUI9BYx9YPDsP9lrodUDou',0,16,0),(16,'aa','$2a$12$CSwem1ygr7W2ZvfzOkMRYOv8NttblN/iJym0NaZm/y0inCDgP8h0a',0,17,0);
+INSERT INTO `account` VALUES (14,'bianca','$2a$12$3PV1aTy3T7Zg4e6j6h9rFOezQDCbsOFrqU47mevdCbUdS303fNHhK',0,15,0,NULL,NULL),(15,'meow','$2a$12$z4aKalvF6fUnYdDLqMMvAeXaWon9y50eUI9BYx9YPDsP9lrodUDou',0,16,0,NULL,NULL),(16,'aa','$2a$12$CSwem1ygr7W2ZvfzOkMRYOv8NttblN/iJym0NaZm/y0inCDgP8h0a',0,17,0,NULL,NULL),(17,'janine_tan','$2a$12$ynSR3B4a/n3u4VZA1GZ9Y.TjeIKf3Tm2BNDxnB.iGZLbvRW9YQR7O',0,18,0,NULL,NULL),(20,'ange_tan','$2a$12$FEHrZiureWNgCqYe61kxAeVvQFWZ1EEYXrclQxzumT.yzql2Pk.oO',2,21,0,NULL,'$2a$12$1i4.YQulUbmKchb1nxyK5O4IMQgdEuFHxYXPzNfjggvgvcolBnquS'),(21,'cedric','$2a$12$YvT3OMBKPHLoYHfO7FkXYeAiHLgc/ez7YHJWULM.gKAhEi7vLGJbW',0,23,0,NULL,NULL),(22,'bianca_regala','$2a$12$ftSYsb3Z8mrzmGCUe/zekuiqDFQCqj8VnpIGrvsyTyD3kVMx7rcem',0,24,0,NULL,NULL),(23,'raisa_lee','$2a$12$eEfKotR7aTEw8c64Ofd4bu0uJXs0i7L5YD5HntPabidlkTmjW8ooi',2,25,0,NULL,'$2a$12$hARczNLc.DGjBKgAJ1Ot5OfK2Qk4KPbV3MEFcT0ysTCD8U6vbCI56');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,7 +272,7 @@ CREATE TABLE `user` (
   `shipping_id` int(11) NOT NULL,
   `billing_id` int(11) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,13 +281,9 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (15,'cat','c','cat','meow',0,0),(16,'panda','p','panda','cutie',0,0),(17,'a','a','a','a',0,0);
+INSERT INTO `user` VALUES (15,'cat','c','cat','meow',0,0),(16,'panda','p','panda','cutie',0,0),(17,'a','a','a','a',0,0),(18,'Janine','Mica','Tan','janine_tan@dlsu.edu.ph',0,0),(19,'angeline','jao','tan','ange_tan@gmail.com',0,0),(20,'Janine','Mica','Tan','janine_tan@gmail.com',0,0),(21,'Angeline','Jao','Tan','ange_tan@dlsu.edu.ph',0,0),(22,'Angeline','Jao','Tan','ange_tan@dlsu.edu.ph',0,0),(23,'Cedric','C','Choa','cedric_choa@gmail.com',0,0),(24,'Bianca','G','Regala','bianca_regala@gmail.com',0,0),(25,'Raisa','A','Lee','raisa_lee@gmail.com',0,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'securde-mp'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -296,4 +294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-13 22:32:43
+-- Dump completed on 2016-08-18 16:22:08
