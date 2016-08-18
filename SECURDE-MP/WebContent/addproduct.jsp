@@ -164,13 +164,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!---->
 				<div class="col-md-9 product-price1">
 				<div class="col-md-5 single-top">	
-				<div class="pictureholder">
-				Upload Image
-				</div>
-				<a href="#" class="add-cart item_add">UPLOAD IMAGE</a>
-				
-
-
 						<!-- <div class="flexslider">
 							<ul class="slides">
 								<li data-thumb="images/si.jpg">
