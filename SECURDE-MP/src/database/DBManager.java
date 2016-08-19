@@ -72,7 +72,7 @@ public class DBManager {
 		ArrayList<Integer> trans = new ArrayList<>();
 		
 		PurchaseDao pd = new PurchaseDaoImpl();
-		purch = pd.getPurchases(productId);
+		purch = pd.getProductPurchases(productId);
 		
 		for(int i=0; i<purch.size(); i++)
 			trans.add(purch.get(i).getTransactionId());
