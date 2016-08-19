@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import database.DBManager;
 import modelAccess.AccountDao;
 import modelAccessImpl.AccountDaoImpl;
@@ -96,7 +98,11 @@ public class LogInServlet extends HttpServlet {
 									PurchaseDaoImpl pd = new PurchaseDaoImpl();
 									ArrayList<Purchase> p = new ArrayList<Purchase>();
 									p = pd.getPurchases();
-									System.out.println(p.get(0).getProductId());
+//									Gson g = new Gson();
+//									String s = g.toJson(pd);
+//									response.setContentType("application/json");
+//									response.getWriter().write(s);
+//									request.getSession().setAttribute("purchases",s);
 									request.getSession().setAttribute("purchases",p);
 									homepage = "accounting manager index.jsp";
 								}

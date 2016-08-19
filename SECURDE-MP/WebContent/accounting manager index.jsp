@@ -83,11 +83,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h1><a href="HomeServlet">I-<span>wear</span></a></h1>
 				</div>
 
-				<div class="clearfix"> </div>
-					<!-- <table id="acc-man-table" class="display" cellspacing="0" width="100%">
-					</table> -->
+				<!-- <div class="clearfix"> </div>
+					<table id="acc-man-table" class="display" cellspacing="0" width="100%">
+					</table>
 					
-				</div>
+				</div> -->
 			<div class="clearfix"> </div>
 		</div>
 		</div>
@@ -116,5 +116,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<script>
+$(function() {
+    var dataset = ${purchases};
+    var jsonString = JSON.stringify(dataset);
+    console.log(jsonString);
+	changeAccManContext(dataset);
+});
+</script>
+
 </body>
 </html>
