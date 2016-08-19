@@ -68,9 +68,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h1><a href="index.jsp">I-<span>wear</span></a></h1>
 				</div>
 				
-				
-				
-		 
 			<div class="top-nav">
 				<ul class="memenu skyblue"><li><a href="HomeServlet">Home</a></li>
 					<li class="grid"><a href="ViewBootsServlet">Boots</a>
@@ -130,47 +127,87 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!--<input type="hidden" name="purchase_list" value ="${purchaselist}"></input>-->
 				</div>
 				<br>
-				  <div>
-					<h4>Billing Address</h4>
-					
-						House # : <br>
-						<input name="houseNum0" type ="text"><br>
-						Street Name: <br>
-						<input name="street0" type ="text"><br>
-						Subdivision: <br>
-						<input name="subdivision0" type ="text"><br>
-						City: <br>
-						<input name="city0" type ="text"><br>
-						Postal Code: <br>
-						<input name="postalCode0" type ="text"><br>
-						Country: <br>
-						<input name="country0" type ="text"><br>
-					
-				 </div>
-				 <div>
-					<h4>Shipping Address</h4>
-					<input type="checkbox" id="same-check" name="same-check" />
-					Same as billing address.
-					<div id="shipping-ad-form">
+				<c:choose>
+					<c:when test="${address}">
+						<c:set var="badr" value="${badr}" scope="request"></c:set>
+						<c:set var="sadr" value="${sadr}" scope="request"></c:set>
 						
-							House # : <br>
-							<input name="houseNum1" type ="text"><br>
-							Street Name: <br>
-							<input name="street1" type ="text"><br>
-							Subdivision: <br>
-							<input name="subdivision1" type ="text"><br>
-							City: <br>
-							<input name="city1" type ="text"><br>
-							Postal Code: <br>
-							<input name="postalCode1" type ="text"><br>
-							Country: <br>
-							<input name="country1" type ="text"><br>
-						
-					</div> <!--  shipping-ad-form -->
-				 </div>	
+						<div>
+								<h4>Billing Address</h4>
+								House # : <br>
+								<input name="houseNum0" type ="text" value="${badr.houseNum}"><br>
+								Street Name: <br>
+								<input name="street0" type ="text"  value="${badr.street}"><br>
+								Subdivision: <br>
+								<input name="subdivision0" type ="text" value="${badr.subdivision}"><br>
+								City: <br>
+								<input name="city0" type ="text" value="${badr.city}"><br>
+								Postal Code: <br>
+								<input name="postalCode0" type ="text" value="${badr.postalCode}"><br>
+								Country: <br>
+								<input name="country0" type ="text" value="${badr.country}"><br>	
+						</div>
+				 		<div>
+								<h4>Shipping Address</h4>
+								<input type="checkbox" id="same-check" name="same-check" />
+								Same as billing address.
+								<div id="shipping-ad-form">
+									House # : <br>
+									<input name="houseNum1" type ="text" value="${sadr.houseNum}"><br>
+									Street Name: <br>
+									<input name="street1" type ="text" value="${sadr.street}"><br>
+									Subdivision: <br>
+									<input name="subdivision1" type ="text" value="${sadr.subdivision}"><br>
+									City: <br>
+									<input name="city1" type ="text" value="${sadr.city}"><br>
+									Postal Code: <br>
+									<input name="postalCode1" type ="text" value="${sadr.postalCode}"><br>
+									Country: <br>
+									<input name="country1" type ="text"  value="${sadr.country}"><br>
+								</div> <!--  shipping-ad-form -->
+				 		</div>
+					</c:when>
+					<c:otherwise>
+						<div>
+								<h4>Billing Address</h4>
+								House # : <br>
+								<input name="houseNum0" type ="text"><br>
+								Street Name: <br>
+								<input name="street0" type ="text"><br>
+								Subdivision: <br>
+								<input name="subdivision0" type ="text"><br>
+								City: <br>
+								<input name="city0" type ="text"><br>
+								Postal Code: <br>
+								<input name="postalCode0" type ="text"><br>
+								Country: <br>
+								<input name="country0" type ="text"><br>	
+						</div>
+				 		<div>
+								<h4>Shipping Address</h4>
+								<input type="checkbox" id="same-check" name="same-check" />
+								Same as billing address.
+								<div id="shipping-ad-form">
+									House # : <br>
+									<input name="houseNum1" type ="text"><br>
+									Street Name: <br>
+									<input name="street1" type ="text"><br>
+									Subdivision: <br>
+									<input name="subdivision1" type ="text"><br>
+									City: <br>
+									<input name="city1" type ="text"><br>
+									Postal Code: <br>
+									<input name="postalCode1" type ="text"><br>
+									Country: <br>
+									<input name="country1" type ="text"><br>
+								</div> <!--  shipping-ad-form -->
+				 		</div>
+					</c:otherwise>
+				</c:choose>
+				  
+				
 				 <div>
 				 	<h4>Credit Card Information</h4>
-					
 						Credit Card Name: <br>
 						<input name="cardName" type ="text"><br>
 						Credit Card Number: <br>
