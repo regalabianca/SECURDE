@@ -219,6 +219,8 @@ $(window).load(function() {
 										<li><a href="#"><i> </i></a></li>
 									</ul>
 								<div class="review">
+									<p id="category"><c:out value="${category}"/></p>
+									<br>
 									<a href="#"> <c:out value="${fn:length(reviews)}"/> customer review(s) </a>
 									<!-- <a href="#"> ${fn:length(reviews)} customer review(s) </a> -->
 									
@@ -296,10 +298,7 @@ $(window).load(function() {
 				<br>Sorry. There are no reviews yet for this product.
 				<br><br><br>
 			</c:otherwise>
-		</c:choose>
-		
-		
-
+		</c:choose>	
 	</li>
 <div class="clearfix"></div>
 	</ul> 

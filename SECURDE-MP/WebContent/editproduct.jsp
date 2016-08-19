@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -245,7 +246,6 @@ $(window).load(function() {
 									</c:choose>
 								</select>
 									<br>
-									<a href="#"> 1 customer review </a>
 								</div>
 							<div class="clearfix"> </div>
 							</div>
@@ -268,25 +268,6 @@ $(window).load(function() {
 					</div>
 				<div class="clearfix"> </div>
 			<!---->
-
-		<div class="comments-top-top">
-				<div class="top-comment-left">
-					<img class="img-responsive" src="images/co.png" alt="">
-				</div>
-				<div class="top-comment-right">
-					<h6><a href="#">Hendri</a> - September 3, 2014</h6>
-					<ul class="star-footer">
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-										<li><a href="#"><i> </i></a></li>
-									</ul>
-									<p>Wow nice!</p>
-				</div>
-				<div class="clearfix"> </div>
-				<a class="add-re" href="#">ADD REVIEW</a>
-			</div>
 			<!---->
 <script type="text/javascript">
 		$(document).ready(function() {
