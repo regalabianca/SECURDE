@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import database.DBConnection;
 import modelAccess.PurchaseDao;
+import models.Product;
 import models.Purchase;
 
 public class PurchaseDaoImpl implements PurchaseDao {
@@ -76,7 +77,11 @@ public class PurchaseDaoImpl implements PurchaseDao {
 		
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM " + Purchase.TABLE_PURCHASE);
+			PreparedStatement ps = con.prepareStatement("SELECT "+Purchase.COL_PURCHASEID +","+Purchase.COL_QUANTITY+","
+														+Purchase.TABLE_PURCHASE+"."+Purchase.COL_PRODUCTID+","+Purchase.COL_UNITPRICE+","+Purchase.COL_TOTALPRICE
+														+ "," + Purchase.COL_TRANSACTIONID+","+Product.COL_CATEGORYID
+														+" FROM " + Purchase.TABLE_PURCHASE+","+Product.TABLE_PRODUCT 
+														+" WHERE purchase."+Purchase.COL_PRODUCTID +" = product."+ Product.COL_PRODUCTID);
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()){
@@ -87,6 +92,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 				purchase.setUnitPrice(rs.getFloat(Purchase.COL_UNITPRICE));
 				purchase.setTotalPrice(rs.getFloat(Purchase.COL_TOTALPRICE));
 				purchase.setTransactionId(rs.getInt(Purchase.COL_TRANSACTIONID));
+				purchase.setCategoryId(rs.getInt(Product.COL_CATEGORYID));
 				purchases.add(purchase);
 			}
 			return purchases;

@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,7 @@ import modelAccessImpl.AccountDaoImpl;
 import modelAccessImpl.PurchaseDaoImpl;
 import models.Account;
 import models.Password;
+import models.Purchase;
 
 /**
  * Servlet implementation class LogInServlet
@@ -91,12 +93,11 @@ public class LogInServlet extends HttpServlet {
 						case 3:	if(hashpassword == null){
 									homepage = "changepassword.jsp";
 								}else{
-									/*PurchaseDaoImpl pd = new PurchaseDaoImpl();
-									pd.getPurchases();
-									Gson g = new Gson();
-									String s = g.toJson(pd);
-									response.setContentType("application/json");
-									response.getWriter().write(s);*/
+									PurchaseDaoImpl pd = new PurchaseDaoImpl();
+									ArrayList<Purchase> p = new ArrayList<Purchase>();
+									p = pd.getPurchases();
+									System.out.println(p.get(0).getProductId());
+									request.getSession().setAttribute("purchases",p);
 									homepage = "accounting manager index.jsp";
 								}
 

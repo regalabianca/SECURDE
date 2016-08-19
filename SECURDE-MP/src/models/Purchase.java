@@ -16,6 +16,7 @@ public class Purchase {
 	private float unitPrice;
 	private float totalPrice;
 	private int transactionId;
+	private int categoryId;
 	
 	public int getPurchaseId() {
 		return purchaseId;
@@ -63,5 +64,13 @@ public class Purchase {
 	
 	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 }

@@ -186,10 +186,10 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 				<div class="col-md-9 product-price1">
 		        <div class="product-right-top">
 		        	<div class="top-product">
-		        	
+		        	<c:forEach var="p" items="${viewproductslist}" varStatus="counter"> 
 		        		<div class="col-md-4 chain-grid  simpleCart_shelfItem">
 		        			<div class="grid-span-1">	
-		        			<c:forEach var="p" items="${viewproductslist}" varStatus="counter"> 
+		        			
 	   		     			<img class="img-responsive " src="images/n1.jpg" alt=" ">
 	   		     			<div class="link">
 	   		     			<ul >
@@ -221,17 +221,17 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 									
 	   		     				<div class="clearfix"> </div>
 							</div>
-							
-							</c:forEach>
 	   		     		</div>
 	   		     		
 	   		     	</div>
+	   		     	</c:forEach>
 	   		     	<div class="col-md-4 chain-grid simpleCart_shelfItem">
 					
 	   		     		
 				<div class="clearfix"> </div>
 				</div>
-					
+				</div>
+				</div>
 				</div>
 
 <script src="js/simpleCart.min.js"> </script>

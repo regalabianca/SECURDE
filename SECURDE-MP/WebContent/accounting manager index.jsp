@@ -82,34 +82,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="logo">
 					<h1><a href="HomeServlet">I-<span>wear</span></a></h1>
 				</div>
-		 <!---->
-		 
-			<div class="top-nav">
-				<ul class="memenu skyblue"><li class="active"><a href="HomeServlet">Home</a></li>
-					<li class="grid"><a href="ViewBootsServlet">Boots</a>
-					</li>
-					<li class="grid"><a href="ViewShoesServlet">Shoes</a>
-					</li>
-					<li class="grid"><a href="ViewSandalsServlet">Sandals</a>
-					</li>
-					<li class="grid"><a href="ViewSlippersServlet">Slippers</a>
-					</li>
-				</ul>
-				</ul>
-				<div class="clearfix"> </div>
-			</div>
-					<!---->
 
 				<div class="clearfix"> </div>
-					<table id="acc-man-table" class="display" cellspacing="0" width="100%">
-					</table>
+					<!-- <table id="acc-man-table" class="display" cellspacing="0" width="100%">
+					</table> -->
+					
 				</div>
 			<div class="clearfix"> </div>
 		</div>
 		</div>
 
-	<div class="banner">
-		
+	<div>
+		<c:forEach var="p" items="${purchases}" varStatus="counter">
+					<table class="display" cellspacing="0" width="100%">
+					<tr>
+					    <th>Product ID</th>
+					    <th>Category ID</th> 
+					    <th>Unit Price</th>
+					    <th>Quantity</th>
+					    <th>Total Price</th>
+					</tr>
+					<tr>
+					    <td>${p.productId}</td>
+					    <td>${p.categoryId}</td> 
+					    <td>${p.unitPrice}</td>
+					    <td>${p.quantity}</td>
+					    <td>${p.totalPrice}</td>
+					</tr>
+					</table>
+		</c:forEach>
  	</div>	
 		<div class="clearfix"> </div>	
 	</div>
