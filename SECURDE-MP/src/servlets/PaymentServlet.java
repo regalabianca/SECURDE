@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -66,13 +67,38 @@ public class PaymentServlet extends HttpServlet {
 		int userId = acct.getUserId();
 		
 		Password p = new Password();
-		
-		
+	
 		String password = request.getParameter("confirmPassword");
 		DBManager dbmanager = new DBManager();
 		String hashpass = dbmanager.getPassword(acct.getUsername());
 		
-		if(p.checkPassword(password, hashpass)){
+		boolean cardValid = false;
+		
+		String cardName = request.getParameter("cardName");
+		String cardNum = request.getParameter("cardNum");
+		String cardExpiry = request.getParameter("cardExpiry");
+		
+		String[] parts = cardExpiry.split("/");
+		int year = Integer.parseInt(parts[2]);
+		int day = Integer.parseInt(parts[1]);
+		int month = Integer.parseInt(parts[0]);
+		
+		if(year > Calendar.getInstance().get(Calendar.YEAR)){
+			System.out.println("valid year");
+			cardValid = true;
+		} else if (year == Calendar.getInstance().get(Calendar.YEAR)){
+			if(month > (Calendar.getInstance().get(Calendar.MONTH)+1)){
+				System.out.println("valid year, month");
+				cardValid = true;
+			}else if (month == Calendar.getInstance().get(Calendar.MONTH)+1){
+				if(day >= Calendar.getInstance().get(Calendar.DAY_OF_MONTH)){
+					System.out.println("valid year, month, day");
+					cardValid = true;
+				}
+			}
+		}
+		
+		if(p.checkPassword(password, hashpass) && cardValid){
 			
 			System.out.println("====================== ENTERED CORRECT PASSWORD PAYMENT");
 			
@@ -84,10 +110,6 @@ public class PaymentServlet extends HttpServlet {
 		
 		Address address = new Address();
 		address.setUserId(userId);
-		
-		String cardName = request.getParameter("cardName");
-		String cardNum = request.getParameter("cardNum");
-		String cardExpiry = request.getParameter("cardExpiry");
 		
 		int houseNum0 = Integer.parseInt(request.getParameter("houseNum0"));
 		String street0 = request.getParameter("street0");
