@@ -48,13 +48,15 @@ public class UpdateProductServlet extends HttpServlet {
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		String description = request.getParameter("description");
 		float price = Float.valueOf(request.getParameter("price"));
-//		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 		
 		Product product = new Product();
 		product.setProductId(productId);
 		product.setDescription(description);
 		product.setPrice(price);
-//		product.setCategoryId(categoryId);
+		product.setCategoryId(categoryId);
+		
+		System.out.println("bbbbbbb >> categoryId = "+categoryId);
 		
 		ProductDao pd = new ProductDaoImpl();
 		pd.updateProduct(product);

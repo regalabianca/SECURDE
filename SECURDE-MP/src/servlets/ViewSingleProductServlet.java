@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.DBManager;
 import modelAccess.AccountDao;
+import modelAccess.CategoryDao;
 import modelAccess.ReviewDao;
 import modelAccessImpl.AccountDaoImpl;
+import modelAccessImpl.CategoryDaoImpl;
 import modelAccessImpl.ProductDaoImpl;
 import modelAccessImpl.ReviewDaoImpl;
 import models.Account;
@@ -60,6 +62,9 @@ public class ViewSingleProductServlet extends HttpServlet {
 		ProductDaoImpl pd = new ProductDaoImpl();
 		p = pd.getProduct(productId);
 		request.getSession().setAttribute("product", p);
+		
+		CategoryDao cd = new CategoryDaoImpl();
+		request.getSession().setAttribute("category", cd.getCategory(p.getCategoryId()).getCategoryName());
 		
 		ReviewDao rd = new ReviewDaoImpl();
 		ArrayList<Review> reviews = new ArrayList<>();

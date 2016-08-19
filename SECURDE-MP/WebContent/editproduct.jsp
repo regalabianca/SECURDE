@@ -215,11 +215,37 @@ $(window).load(function() {
 										<li><a href="#"><i> </i></a></li>
 									</ul>
 								<div class="review">
-								<p id="category"><c:out value="${p.categoryId}"/></p>
-								<input id="editCateg" type="text" style="display:none;">
-								<br>
+								<p id="category"><c:out value="${category}"/></p>
+								<select id="editCateg" style="display:none;">
+  									<c:choose>
+    									<c:when test="${p.categoryId == 1}">
+        									<option selected value="1">Boots</option>
+ 											<option value="2">Shoes</option>
+ 											<option value="3">Sandals</option>
+ 											<option value="4">Slippers</option>
+    									</c:when>
+    									<c:when test="${p.categoryId == 2}">
+        									<option value="1">Boots</option>
+ 											<option selected value="2">Shoes</option>
+ 											<option value="3">Sandals</option>
+ 											<option value="4">Slippers</option>
+    									</c:when>
+    									<c:when test="${p.categoryId == 3}">
+        									<option value="1">Boots</option>
+ 											<option value="2">Shoes</option>
+ 											<option selected value="3">Sandals</option>
+ 											<option value="4">Slippers</option>
+    									</c:when>
+    									<c:when test="${p.categoryId == 4}">
+        									<option value="1">Boots</option>
+ 											<option value="2">Shoes</option>
+ 											<option value="3">Sandals</option>
+ 											<option selected value="4">Slippers</option>
+    									</c:when>    
+									</c:choose>
+								</select>
+									<br>
 									<a href="#"> 1 customer review </a>
-									
 								</div>
 							<div class="clearfix"> </div>
 							</div>
@@ -292,9 +318,9 @@ $(window).load(function() {
 			$('#description').hide();
 			//$('#editDesc').text('').append(input);
 			
-			var text1 = $('#category').text();
-			var textbox1 = document.getElementById('editCateg');
-			textbox1.value=text1;
+			//var text1 = $('#category').text();
+			//var textbox1 = document.getElementById('editCateg');
+			//textbox1.value=text1;
 			$('#editCateg').show();
 			$('#category').hide();
 			//$('#editCateg').text('').append(input);
@@ -311,8 +337,12 @@ $(window).load(function() {
 			$("#btnCancel").show();
 			
 			$("#btnSave").click(function(){
+				
+				
+				
 				var params = {
 					productId: document.getElementById('productId').value,
+					categoryId: document.getElementById('editCateg').value,
 					description: document.getElementById('editDesc').value,
 					price: document.getElementById('editPrice').value
 				};
@@ -321,9 +351,18 @@ $(window).load(function() {
 					 $('#description').show();
 					 $('#description').text('').append(textbox.value);
 					 $('#editDesc').hide();
-
+					 
+					 var c = document.getElementById('editCateg').value;
+					 var ct = "";
+					 
+					 if (c == 1) 		ct = "Boots";
+					 else if (c == 2)	ct = "Shoes";
+					 else if (c == 3)	ct = "Sandals";
+					 else if (c == 4)	ct = "Slippers";
+					 
 					 $('#category').show();
-					 $('#category').text('').append(textbox1.value);
+					 $('#category').text('').append(ct);
+					 //$('#category').text('').append(textbox1.value);
 					 $('#editCateg').hide();
 					 
 					 $('#price').show();

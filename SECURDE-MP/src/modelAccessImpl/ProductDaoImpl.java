@@ -127,24 +127,15 @@ public class ProductDaoImpl implements ProductDao {
 		
 		try {
 			Connection con = DBConnection.getConnection().getRawConnection();
-			/*PreparedStatement ps = con.prepareStatement("UPDATE " + Product.TABLE_PRODUCT + " SET " +  
+			PreparedStatement ps = con.prepareStatement("UPDATE " + Product.TABLE_PRODUCT + " SET " +  
 														Product.COL_DESCRIPTION + "  =?," +
 														Product.COL_PRICE + "  =?," +
 														Product.COL_CATEGORYID + " =?" +
-														" WHERE " + Product.COL_PRODUCTID + "=?;");*/
-			PreparedStatement ps = con.prepareStatement("UPDATE " + Product.TABLE_PRODUCT + " SET " +  
-														Product.COL_DESCRIPTION + "  =?," +
-														Product.COL_PRICE + "  =?" +
 														" WHERE " + Product.COL_PRODUCTID + "=?;");
-			/*ps.setString(1, description);
-			ps.setFloat(2, price);
-			ps.setInt(3, categoryId);
-			ps.setInt(4, productId);*/
-			
 			ps.setString(1, description);
 			ps.setFloat(2, price);
-			ps.setInt(3, productId);
-			
+			ps.setInt(3, categoryId);
+			ps.setInt(4, productId);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
