@@ -203,7 +203,7 @@ $(window).load(function() {
 						<div class="single-para ">
 						<form method = "post" action ="DeleteProductServlet">
 						<c:set var="p" value="${product}" scope="request"></c:set>
-						<input type="hidden" id="productId" name="productId" value = "${p.productId}"></input>
+						<input type="hidden" id="productId" name="productId" value="<c:out value="${p.productId}"/>"></input>
 						<h4 id="description"><c:out value="${p.description}"/></h4>
 						<input id="editDesc" type="text" style="display:none;">
 							<div class="star-on">

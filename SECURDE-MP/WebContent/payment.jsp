@@ -143,17 +143,17 @@ $( function() {
 						<div>
 								<h4>Billing Address</h4>
 								House # : <br>
-								<input name="houseNum0" type ="text" value="${badr.houseNum}"><br>
+								<input name="houseNum0" type ="text" value="<c:out value="${badr.houseNum}"/>"><br>
 								Street Name: <br>
-								<input name="street0" type ="text"  value="${badr.street}"><br>
+								<input name="street0" type ="text"  value="<c:out value="${badr.street}"/>"><br>
 								Subdivision: <br>
-								<input name="subdivision0" type ="text" value="${badr.subdivision}"><br>
+								<input name="subdivision0" type ="text" value="<c:out value="${badr.subdivision}"/>"><br>
 								City: <br>
-								<input name="city0" type ="text" value="${badr.city}"><br>
+								<input name="city0" type ="text" value="<c:out value="${badr.city}"/>"><br>
 								Postal Code: <br>
-								<input name="postalCode0" type ="text" value="${badr.postalCode}"><br>
+								<input name="postalCode0" type ="text" value="<c:out value="${badr.postalCode}"/>"><br>
 								Country: <br>
-								<input name="country0" type ="text" value="${badr.country}"><br>	
+								<input name="country0" type ="text" value="<c:out value="${badr.country}"/>"><br>	
 						</div>
 				 		<div>
 								<h4>Shipping Address</h4>
@@ -161,17 +161,17 @@ $( function() {
 								Same as billing address.
 								<div id="shipping-ad-form">
 									House # : <br>
-									<input name="houseNum1" type ="text" value="${sadr.houseNum}"><br>
+									<input name="houseNum1" type ="text" value="<c:out value="${sadr.houseNum}"/>"><br>
 									Street Name: <br>
-									<input name="street1" type ="text" value="${sadr.street}"><br>
+									<input name="street1" type ="text" value="<c:out value="${sadr.street}"/>"><br>
 									Subdivision: <br>
-									<input name="subdivision1" type ="text" value="${sadr.subdivision}"><br>
+									<input name="subdivision1" type ="text" value="<c:out value="${sadr.subdivision}"/>"><br>
 									City: <br>
-									<input name="city1" type ="text" value="${sadr.city}"><br>
+									<input name="city1" type ="text" value="<c:out value="${sadr.city}"/>"><br>
 									Postal Code: <br>
-									<input name="postalCode1" type ="text" value="${sadr.postalCode}"><br>
+									<input name="postalCode1" type ="text" value="<c:out value="${sadr.postalCode}"/>"><br>
 									Country: <br>
-									<input name="country1" type ="text"  value="${sadr.country}"><br>
+									<input name="country1" type ="text"  value="<c:out value="${sadr.country}"/>"><br>
 								</div> <!--  shipping-ad-form -->
 				 		</div>
 					</c:when>

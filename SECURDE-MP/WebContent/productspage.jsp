@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>I-wear A Ecommerce Category Flat Bootstarp Resposive Website Template | Product :: w3layouts</title>
+<title>I-wear</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -202,7 +202,7 @@ $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + 
 	   		     		
 	   		     		<form method="post" action="ViewSingleProductServlet">
 	   		     			<a><c:out value="${p.description}"/></a>
-	   		     			<input type="hidden" name="index" value = "${counter.index}"></input>
+	   		     			<input type="hidden" name="index" value="<c:out value="${counter.index}"/>"></input>
 	   		     			<input type="submit" value="VIEW DETAILS"></input>
 	   		     			</form>
 	   		     			<div class="star-price">
