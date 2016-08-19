@@ -1,7 +1,10 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import database.DBManager;
 import modelAccess.AddressDao;
 import modelAccess.PurchaseDao;
 import modelAccess.TransactionDao;
@@ -17,6 +21,7 @@ import modelAccessImpl.PurchaseDaoImpl;
 import modelAccessImpl.TransactionDaoImpl;
 import models.Account;
 import models.Address;
+import models.Password;
 import models.Product;
 import models.Purchase;
 import models.Transaction;
@@ -60,7 +65,17 @@ public class PaymentServlet extends HttpServlet {
 		request.setAttribute("account", acct);
 		int userId = acct.getUserId();
 		
+		Password p = new Password();
 		
+		
+		String password = request.getParameter("confirmPassword");
+		DBManager dbmanager = new DBManager();
+		String hashpass = dbmanager.getPassword(acct.getUsername());
+		
+		if(p.checkPassword(password, hashpass)){
+			
+			System.out.println("====================== ENTERED CORRECT PASSWORD PAYMENT");
+			
 		/*****************************************************************************************
 		 * 	FOR ADDRESS TABLE
 		 ****************************************************************************************/
@@ -72,6 +87,7 @@ public class PaymentServlet extends HttpServlet {
 		
 		String cardName = request.getParameter("cardName");
 		String cardNum = request.getParameter("cardNum");
+		String cardExpiry = request.getParameter("cardExpiry");
 		
 		int houseNum0 = Integer.parseInt(request.getParameter("houseNum0"));
 		String street0 = request.getParameter("street0");
@@ -169,6 +185,10 @@ public class PaymentServlet extends HttpServlet {
 //			}
 			
 		request.getRequestDispatcher("index.jsp").forward(request, response);
+		}else{
+			System.out.println("====================== ERROR!!! PASSWORD PAYMENT");
+			request.getRequestDispatcher("payment.jsp").forward(request, response);
+		}
 	}
 
 }

@@ -13,6 +13,7 @@ import modelAccess.AddressDao;
 import modelAccessImpl.AddressDaoImpl;
 import models.Account;
 import models.Address;
+import models.Product;
 
 /**
  * Servlet implementation class CheckoutServlet
@@ -58,6 +59,16 @@ public class CheckoutServlet extends HttpServlet {
 		}
 		
 		request.getSession().setAttribute("cart", request.getSession().getAttribute("cart"));
+		
+		ArrayList<Product> c = new ArrayList<Product>();
+		c = (ArrayList<Product>) request.getSession().getAttribute("cart");
+		
+		float totalPrice = 0;
+		int cart_size = c.size();
+		for(int i = 0; i < cart_size; i++)
+			totalPrice += c.get(i).getPrice();
+		
+		request.getSession().setAttribute("totalPrice", totalPrice);
 		
 		request.getRequestDispatcher("payment.jsp").forward(request, response);
 		

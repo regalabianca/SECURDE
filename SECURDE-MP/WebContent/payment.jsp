@@ -36,6 +36,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- js -->
 		 <script src="js/bootstrap.js"></script>
 	<!-- js -->
+	
+<!-- datepicker -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script>
+$( function() {
+  $( "#datepicker" ).datepicker();
+} );
+</script>
 
 </head>
 <body> 
@@ -120,10 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 <div class="in-check" >
 			   <form action="PaymentServlet" method="post"> 
 			 	<div class="product-bottom">
-					<p>Shipping Fee: </p>
-					<div class="clearfix"> </div>
-					<p>Total Price: </p>
-					<input type="hidden" name="total_price" value ="${totalPrice}"></input>
+					Total Price: P <c:out value="${totalPrice}"/>
 					<!--<input type="hidden" name="purchase_list" value ="${purchaselist}"></input>-->
 				</div>
 				<br>
@@ -205,13 +213,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</c:otherwise>
 				</c:choose>
 				  
-				
 				 <div>
 				 	<h4>Credit Card Information</h4>
 						Credit Card Name: <br>
 						<input name="cardName" type ="text"><br>
 						Credit Card Number: <br>
 						<input name="cardNum" type="text"><br>	
+						Credit Card Expiry: <br>
+						<input name="cardExpiry" type="text" id="datepicker"><br>
+				 </div>
+				 
+				 <div>
+				 	<h4>Confirm Password</h4>	
+						Password: <br>
+						<input name="confirmPassword" type="text"><br>
 				 </div>
 				 	<input type="submit" value="CONFIRM PAYMENT">
 			 	</form> 
