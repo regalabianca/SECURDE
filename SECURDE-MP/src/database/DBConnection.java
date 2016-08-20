@@ -25,7 +25,7 @@ public final class DBConnection {
 		dbName = "securde-mp";
 		driver = "com.mysql.jdbc.Driver"; 
 		userName = "root"; 
-		password = "1861096";
+		password = "sasukeandlen";
 		conn = null;
 		
 		try{

@@ -40,7 +40,7 @@ public class AuthenticationFilter implements Filter {
 		HttpSession session = req.getSession(false);
 			
 		if(session !=null){
-			if(session.getAttribute("account")== null && (uri.endsWith("payment.jsp")|| uri.endsWith("PaymentServlet"))){
+			if(session.getAttribute("account")== null && !(uri.endsWith("ViewBootsServlet") || uri.endsWith("ViewShoesServlet")|| uri.endsWith("ViewSandalsServlet")|| uri.endsWith("ViewSlippersServlet")|| uri.endsWith("ViewSingleProductServlet")|| uri.endsWith("SignUpServlet")|| uri.endsWith("HomeServlet")|| uri.endsWith("LogInServlet")|| uri.endsWith("SearchServlet") || uri.endsWith("account.jsp")|| uri.endsWith("AddCartServlet")|| uri.endsWith("EmptyCartServlet")|| uri.endsWith("ViewCartServlet")|| uri.endsWith(""))){
 				this.context.log("Unauthorized access request");
 				res.sendRedirect("account.jsp");
 			}else if(session.getAttribute("account")!= null){
@@ -52,6 +52,14 @@ public class AuthenticationFilter implements Filter {
 					this.context.log("Unauthorized access request");
 					res.sendRedirect("account.jsp");
 				}else if(acctType == 2 && !(uri.endsWith("LogInServlet")|| uri.endsWith("ChangePasswordServlet") || uri.endsWith("product%20manager520index.jsp") || uri.endsWith("addproduct.jsp") || uri.endsWith("AddProductServlet") || uri.endsWith("ViewSingleProductServlet") || uri.endsWith("DeleteProductServlet") || uri.endsWith("ViewShoesServlet") || uri.endsWith("ViewSandalsServlet") || uri.endsWith("ViewSandalsServlet") || uri.endsWith("ViewSlippersServlet") || uri.endsWith("ViewBootsServlet")|| uri.endsWith("HomeServlet") ||uri.endsWith("SearchServlet") || uri.endsWith("UpdateProductServlet") )){
+					session.invalidate();
+					this.context.log("Unauthorized access request");
+					res.sendRedirect("account.jsp");
+				}else if(acctType == 0 && !(uri.endsWith("LogInServlet")|| uri.endsWith("ChangePasswordServlet")|| uri.endsWith("PaymentServlet")||uri.endsWith("ViewBootsServlet") || uri.endsWith("ViewShoesServlet")|| uri.endsWith("ViewSandalsServlet")|| uri.endsWith("ViewSlippersServlet")|| uri.endsWith("ViewSingleProductServlet")|| uri.endsWith("SignUpServlet")|| uri.endsWith("HomeServlet")|| uri.endsWith("LogInServlet")|| uri.endsWith("LogOutServlet")|| uri.endsWith("SearchServlet") || uri.endsWith("account.jsp")|| uri.endsWith("AddCartServlet")|| uri.endsWith("EmptyCartServlet")|| uri.endsWith("ViewCartServlet")|| uri.endsWith(""))){
+					session.invalidate();
+					this.context.log("Unauthorized access request");
+					res.sendRedirect("account.jsp");
+				}else if(acctType == 3 && !(uri.endsWith("LogInServlet")|| uri.endsWith("ChangePasswordServlet") || uri.endsWith("SearchPurchaseServlet")|| uri.endsWith("HomeServlet"))){
 					session.invalidate();
 					this.context.log("Unauthorized access request");
 					res.sendRedirect("account.jsp");
