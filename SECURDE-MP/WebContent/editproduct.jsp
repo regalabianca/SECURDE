@@ -106,7 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!---->
 					<c:set var="a" value="${type}" scope="request"></c:set>
 							<c:choose>
-	    						<c:when test=2>
+	    						<c:when test="2">
 	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
 	    						</c:when>
 	    						<c:otherwise>
