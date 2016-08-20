@@ -45,32 +45,33 @@ public class CheckoutServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		Account account = (Account) request.getSession().getAttribute("account");
 		request.getSession().setAttribute("account", account);
-		
-		ArrayList<Address> address = new ArrayList<>();
-		AddressDao ad = new AddressDaoImpl();
-		address = ad.getAddress(account.getUserId());
-		
-		if(address.size() > 0){
-			request.getSession().setAttribute("address", "true");
-			request.getSession().setAttribute("badr", address.get(0));
-			request.getSession().setAttribute("sadr", address.get(1));
-		}else{
-			request.getSession().setAttribute("address", "false");
+		if(account!=null){
+			ArrayList<Address> address = new ArrayList<>();
+			AddressDao ad = new AddressDaoImpl();
+			address = ad.getAddress(account.getUserId());
+			
+			if(address.size() > 0){
+				request.getSession().setAttribute("address", "true");
+				request.getSession().setAttribute("badr", address.get(0));
+				request.getSession().setAttribute("sadr", address.get(1));
+			}else{
+				request.getSession().setAttribute("address", "false");
+			}
+			
+			request.getSession().setAttribute("cart", request.getSession().getAttribute("cart"));
+			
+			ArrayList<Product> c = new ArrayList<Product>();
+			c = (ArrayList<Product>) request.getSession().getAttribute("cart");
+			
+			float totalPrice = 0;
+			int cart_size = c.size();
+			for(int i = 0; i < cart_size; i++)
+				totalPrice += c.get(i).getPrice();
+			
+			request.getSession().setAttribute("totalPrice", totalPrice);
+			
+			request.getRequestDispatcher("payment.jsp").forward(request, response);
 		}
-		
-		request.getSession().setAttribute("cart", request.getSession().getAttribute("cart"));
-		
-		ArrayList<Product> c = new ArrayList<Product>();
-		c = (ArrayList<Product>) request.getSession().getAttribute("cart");
-		
-		float totalPrice = 0;
-		int cart_size = c.size();
-		for(int i = 0; i < cart_size; i++)
-			totalPrice += c.get(i).getPrice();
-		
-		request.getSession().setAttribute("totalPrice", totalPrice);
-		
-		request.getRequestDispatcher("payment.jsp").forward(request, response);
 		
 	}
 
