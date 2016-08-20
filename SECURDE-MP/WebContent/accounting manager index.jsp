@@ -83,20 +83,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h1><a href="HomeServlet">I-<span>wear</span></a></h1>
 				</div>
 
-				<div class="clearfix"> </div>
-					<!-- <table id="acc-man-table" class="display" cellspacing="0" width="100%">
-					</table> -->
+				<!-- <div class="clearfix"> </div>
+					<table id="acc-man-table" class="display" cellspacing="0" width="100%">
+					</table>
 					
-				</div>
+				</div> -->
 			<div class="clearfix"> </div>
 		</div>
 		</div>
-
-	<div>
+	</div>
+	
+	<form action="SearchPurchaseServlet" method="post">
+		Search By: 
+		<select id="target" class="target" name="target" onchange="targetchange()">
+			<option value = "1">Product Description</option>
+			<option value = "2">Category</option>
+		</select>
+		<select id="editCateg" name ="editCateg"style="display:none;">
+			<option selected value="1">Boots</option>
+			<option value="2">Shoes</option>
+			<option value="3">Sandals</option>
+			<option value="4">Slippers</option>
+		</select>
+		<input id="searchString" type="text" name="searchString"></input>
+		<input type="submit" value="Go"></input>
+	</form>
+	<div class="clearfix"></div>
 		<c:forEach var="p" items="${purchases}" varStatus="counter">
 					<table class="display" cellspacing="0" width="100%">
 					<tr>
 					    <th>Product ID</th>
+					    <th>Description</th>
 					    <th>Category ID</th> 
 					    <th>Unit Price</th>
 					    <th>Quantity</th>
@@ -104,6 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</tr>
 					<tr>
 					    <td>${p.productId}</td>
+					    <td>${p.description}</td>
 					    <td>${p.categoryId}</td> 
 					    <td>${p.unitPrice}</td>
 					    <td>${p.quantity}</td>
@@ -116,5 +134,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<script>
+$(function() {
+	console.log("hi");
+});
+function targetchange()
+{
+	var x = document.getElementById("target").value;
+	if(x == 1){
+		$('#editCateg').hide();
+		$('#searchString').show();
+	}
+	else if(x == 2){
+		$('#editCateg').show();
+		$('#searchString').hide();
+	}
+}
+
+
+</script>
+
 </body>
 </html>

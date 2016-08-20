@@ -84,7 +84,7 @@ public class ViewSingleProductServlet extends HttpServlet {
 		if(acct!=null){
 			AccountDao ad = new AccountDaoImpl();
 			int acctType = ad.getType(acct.getAccountId());
-			
+			request.getSession().setAttribute("type", acctType);
 			if(acctType == 2)
 				request.getRequestDispatcher("editproduct.jsp").forward(request, response);
 			else
