@@ -61,7 +61,7 @@ $( function() {
 	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
 	    						</c:when>
 	    						<c:otherwise>
-							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i><c:out value="${a.username}"/></a></li>
+							        <li><a href="#"><i class="glyphicon glyphicon-user" class="men"> </i><c:out value="${a.username}"/></a></li>
 							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
 							    </c:otherwise>
 							</c:choose>			
