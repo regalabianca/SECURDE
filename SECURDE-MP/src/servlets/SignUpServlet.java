@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import database.DBManager;
 import modelAccess.AccountDao;
 import modelAccessImpl.AccountDaoImpl;
+import modelAccessImpl.LogDao;
 import models.Account;
 import models.Password;
 import models.User;
@@ -55,6 +56,7 @@ public class SignUpServlet extends HttpServlet {
 		String email = request.getParameter(User.COL_EMAIL);
 	
 		AccountDao ad = new AccountDaoImpl();
+		LogDao log = new LogDao();
 		
 		if (password.equals(confirmPass) && ad.isPasswordValid(password)){
 			
@@ -75,11 +77,14 @@ public class SignUpServlet extends HttpServlet {
 			
 			Account currentAccount  = (Account) request.getSession().getAttribute("account");
 			
+			
 			if(account != null && currentAccount == null){
+				log.addLog(request.getRemoteAddr(), "New Account Created", currentAccount.getAccountId());
 				request.getSession().setAttribute("account", account);
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 				
 			} else if(account !=null && currentAccount.getType() == 1 ){
+				log.addLog(request.getRemoteAddr(), "New Account Created by admin with account id" +currentAccount.getAccountId(), account.getAccountId());
 				response.sendRedirect("admin index.jsp");
 				
 			}else{

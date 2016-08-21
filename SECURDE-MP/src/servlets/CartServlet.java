@@ -46,17 +46,20 @@ public class CartServlet extends HttpServlet {
 			Product temp = new Product();
 			temp = (Product) request.getSession().getAttribute("product");
 			p.add(temp);
+			log.addLog(request.getRemoteAddr(), "Added "+ temp.getDescription() + "to cart", acct.getAccountId());
 			request.getSession().setAttribute("cart", p);
 			request.getRequestDispatcher("single.jsp").forward(request, response);
 			break;
 		case "/EmptyCartServlet":
 			request.getSession().removeAttribute("cart");
 			String path = request.getParameter("hidebtn");
+			log.addLog(request.getRemoteAddr(), "Emptied Cart", acct.getAccountId());
 			request.getRequestDispatcher(path).forward(request, response);
 			break;
 		case "/ViewCartServlet":
 			p = (ArrayList<Product>)request.getSession().getAttribute("cart");
 			request.setAttribute("cart", request.getSession().getAttribute("cart"));
+			log.addLog(request.getRemoteAddr(), "Viewed Cart", acct.getAccountId());
 			request.getRequestDispatcher("checkout.jsp").forward(request, response);
 			break;
 		}

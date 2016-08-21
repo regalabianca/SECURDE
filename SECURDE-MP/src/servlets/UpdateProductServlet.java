@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.DBManager;
 import modelAccess.ProductDao;
+import modelAccessImpl.LogDao;
 import modelAccessImpl.ProductDaoImpl;
+import models.Account;
 import models.Product;
 
 /**
@@ -44,11 +46,12 @@ public class UpdateProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("aaaaaaaaa || Hello from <<UPDATE PRODUCT SERVLET>>");
-		
+		Account account = (Account) request.getSession().getAttribute("account");
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		String description = request.getParameter("description");
 		float price = Float.valueOf(request.getParameter("price"));
 		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		LogDao log = new LogDao();
 		
 		Product product = new Product();
 		product.setProductId(productId);
@@ -60,6 +63,7 @@ public class UpdateProductServlet extends HttpServlet {
 		
 		ProductDao pd = new ProductDaoImpl();
 		pd.updateProduct(product);
+		log.addLog(request.getRemoteAddr(), "Updated Product with product id"+ product.getProductId() , account.getAccountId());
 	}
 
 }

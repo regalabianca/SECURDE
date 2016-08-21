@@ -35,6 +35,7 @@ public class AuthenticationFilter implements Filter {
 		AccountDao ad = new AccountDaoImpl();
 		
 		
+		
 		String uri = req.getRequestURI();
 		this.context.log("Requested Resource::"+uri);
 		
@@ -52,11 +53,11 @@ public class AuthenticationFilter implements Filter {
 					session.invalidate();
 					this.context.log("Unauthorized access request");
 					res.sendRedirect("account.jsp");
-				}else if(acctType == 2 && !(uri.endsWith("LogInServlet")|| uri.endsWith("ChangePasswordServlet") || uri.endsWith("product%20manager520index.jsp") || uri.endsWith("addproduct.jsp") || uri.endsWith("AddProductServlet") || uri.endsWith("ViewSingleProductServlet") || uri.endsWith("DeleteProductServlet") || uri.endsWith("ViewShoesServlet") || uri.endsWith("ViewSandalsServlet") || uri.endsWith("ViewSandalsServlet") || uri.endsWith("ViewSlippersServlet") || uri.endsWith("ViewBootsServlet")|| uri.endsWith("HomeServlet") ||uri.endsWith("SearchServlet") || uri.endsWith("UpdateProductServlet") )){
+				}else if(acctType == 2 && !(uri.endsWith("LogInServlet")|| uri.endsWith("ChangePasswordServlet") || uri.endsWith("/product%20manager%20index.jsp") || uri.endsWith("addproduct.jsp") || uri.endsWith("AddProductServlet") || uri.endsWith("ViewSingleProductServlet") || uri.endsWith("DeleteProductServlet") || uri.endsWith("ViewShoesServlet") || uri.endsWith("ViewSandalsServlet") || uri.endsWith("ViewSandalsServlet") || uri.endsWith("ViewSlippersServlet") || uri.endsWith("ViewBootsServlet")|| uri.endsWith("HomeServlet") ||uri.endsWith("SearchServlet") || uri.endsWith("UpdateProductServlet") )){
 					session.invalidate();
 					this.context.log("Unauthorized access request");
 					res.sendRedirect("account.jsp");
-				}else if(acctType == 0 && !(uri.endsWith("LogInServlet")|| uri.endsWith("ChangePasswordServlet")|| uri.endsWith("PaymentServlet")||uri.endsWith("ViewBootsServlet") || uri.endsWith("ViewShoesServlet")|| uri.endsWith("ViewSandalsServlet")|| uri.endsWith("ViewSlippersServlet")|| uri.endsWith("ViewSingleProductServlet")|| uri.endsWith("SignUpServlet")|| uri.endsWith("HomeServlet")|| uri.endsWith("LogInServlet")|| uri.endsWith("LogOutServlet")|| uri.endsWith("SearchServlet") || uri.endsWith("account.jsp")|| uri.endsWith("AddCartServlet")|| uri.endsWith("EmptyCartServlet")|| uri.endsWith("ViewCartServlet")|| uri.endsWith(""))){
+				}else if(acctType == 0 && !(uri.endsWith("LogInServlet")|| uri.endsWith("ChangePasswordServlet")|| uri.endsWith("PaymentServlet")||uri.endsWith("ViewBootsServlet") || uri.endsWith("ViewShoesServlet")|| uri.endsWith("ViewSandalsServlet")|| uri.endsWith("ViewSlippersServlet")|| uri.endsWith("ViewSingleProductServlet")|| uri.endsWith("SignUpServlet")|| uri.endsWith("HomeServlet")|| uri.endsWith("LogInServlet")|| uri.endsWith("LogOutServlet")|| uri.endsWith("SearchServlet") || uri.endsWith("account.jsp")|| uri.endsWith("AddCartServlet")|| uri.endsWith("EmptyCartServlet")|| uri.endsWith("ViewCartServlet"))){
 					session.invalidate();
 					this.context.log("Unauthorized access request");
 					res.sendRedirect("account.jsp");

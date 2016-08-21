@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import modelAccess.AddressDao;
 import modelAccessImpl.AddressDaoImpl;
+import modelAccessImpl.LogDao;
 import models.Account;
 import models.Address;
 import models.Product;
@@ -48,6 +49,7 @@ public class CheckoutServlet extends HttpServlet {
 		if(account!=null){
 			ArrayList<Address> address = new ArrayList<>();
 			AddressDao ad = new AddressDaoImpl();
+			LogDao log = new LogDao();
 			address = ad.getAddress(account.getUserId());
 			
 			if(address.size() > 0){
@@ -69,6 +71,7 @@ public class CheckoutServlet extends HttpServlet {
 				totalPrice += c.get(i).getPrice();
 			
 			request.getSession().setAttribute("totalPrice", totalPrice);
+			log.addLog(request.getRemoteAddr(), "Checked Out", account.getAccountId());
 			
 			request.getRequestDispatcher("payment.jsp").forward(request, response);
 		}

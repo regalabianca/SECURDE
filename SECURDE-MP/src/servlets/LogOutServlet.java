@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.DBManager;
+import modelAccessImpl.LogDao;
 import models.Account;
 import models.Password;
 
@@ -31,7 +32,10 @@ public class LogOutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		LogDao log = new LogDao();
 		if(request.getSession() != null){
+			Account account = (Account) request.getSession().getAttribute("account");
+			log.addLog(request.getRemoteAddr(), "Logged Out", account.getAccountId());
 			request.getSession().invalidate();
 			response.sendRedirect("account.jsp");
 		}

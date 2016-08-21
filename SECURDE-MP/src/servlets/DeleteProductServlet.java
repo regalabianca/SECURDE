@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelAccess.ProductDao;
+import modelAccessImpl.LogDao;
 import modelAccessImpl.ProductDaoImpl;
+import models.Account;
 import models.Product;
 
 /**
@@ -41,7 +43,8 @@ public class DeleteProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getSession().setAttribute("account", request.getSession().getAttribute("account"));
+		Account account  = (Account) request.getSession().getAttribute("account");
+		request.getSession().setAttribute("account", account);
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		ArrayList<Product> p = new ArrayList<Product>();
 		Product product = (Product) request.getSession().getAttribute("product");
@@ -49,6 +52,8 @@ public class DeleteProductServlet extends HttpServlet {
 		//System.out.println(productId);
 		ProductDao pd = new ProductDaoImpl();
 		pd.deleteProduct(productId);
+		LogDao log = new LogDao();
+		log.addLog(request.getRemoteAddr(), "Deleted Product "+product.getDescription(), account.getAccountId());
 		switch(product.getCategoryId()){
 			case 1:
 			p = pd.getProducts(1);
