@@ -98,11 +98,6 @@ public class LogInServlet extends HttpServlet {
 									PurchaseDaoImpl pd = new PurchaseDaoImpl();
 									ArrayList<Purchase> p = new ArrayList<Purchase>();
 									p = pd.getPurchases();
-//									Gson g = new Gson();
-//									String s = g.toJson(pd);
-//									response.setContentType("application/json");
-//									response.getWriter().write(s);
-//									request.getSession().setAttribute("purchases",s);
 									request.getSession().setAttribute("purchases",p);
 									homepage = "accounting manager index.jsp";
 								}

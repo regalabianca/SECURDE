@@ -76,7 +76,7 @@ $( function() {
 			<div class="header-bottom">
 			<div class="container">			
 				<div class="logo">
-					<h1><a href="index.jsp">I-<span>wear</span></a></h1>
+					<h1><a href="HomeServlet">I-<span>wear</span></a></h1>
 				</div>
 				
 			<div class="top-nav">
