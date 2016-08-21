@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import database.DBManager;
 import modelAccess.AccountDao;
 import modelAccessImpl.AccountDaoImpl;
+import modelAccessImpl.LogDao;
 import models.Account;
 import models.Password;
 
@@ -45,6 +46,7 @@ public class ChangePasswordServlet extends HttpServlet{
 		String oldPass = request.getParameter("oldPass");
 		String newPass = request.getParameter("newPass");
 		String confirmPass = request.getParameter("confirmPass");
+		LogDao log = new LogDao();
 		
 		System.out.println("change");
 	
@@ -59,12 +61,14 @@ public class ChangePasswordServlet extends HttpServlet{
 		if(newPass.equals(confirmPass) && !(oldPass.equals(newPass)) && ad.isPasswordValid(newPass)){
 			if(pass.checkPassword(oldPass, hashpassword)){
 				ad.setPassword(account.getUsername(), pass.hashPassword(newPass));
+				log.addLog(request.getRemoteAddr(), "Successfully Changed Password", account.getAccountId());
 				if(ad.getType(account.getAccountId()) == 2)
 					response.sendRedirect("product manager index.jsp");
 				else if(ad.getType(account.getAccountId()) == 3)
 					response.sendRedirect("accounting manager index.jsp");
 			}else{
 				response.sendRedirect("changepassword.jsp");
+				log.addLog(request.getRemoteAddr(), "Password Inputted does not match the default password", account.getAccountId());
 			}
 		}else{
 			response.sendRedirect("changepassword.jsp");
