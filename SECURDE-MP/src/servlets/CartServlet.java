@@ -9,7 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
+
+import modelAccessImpl.LogDao;
 import models.Account;
 import models.Product;
  
@@ -34,13 +35,14 @@ public class CartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		LogDao log = new LogDao();
 		ArrayList<Product> p = new ArrayList<Product>();
 		Account acct = (Account) request.getSession().getAttribute("account");
 		request.setAttribute("account", acct);
 		switch(request.getServletPath()){
 		case "/AddCartServlet":
 			if((ArrayList<Product>) request.getSession().getAttribute("cart")!=null)
-				p=(ArrayList<Product>) request.getSession().getAttribute("cart");
+				p = (ArrayList<Product>) request.getSession().getAttribute("cart");
 			Product temp = new Product();
 			temp = (Product) request.getSession().getAttribute("product");
 			p.add(temp);
