@@ -34,13 +34,14 @@ public class AuthenticationFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		AccountDao ad = new AccountDaoImpl();
 		
+		
 		String uri = req.getRequestURI();
 		this.context.log("Requested Resource::"+uri);
 		
 		HttpSession session = req.getSession(false);
 			
 		if(session !=null){
-			if(session.getAttribute("account")== null && !(uri.endsWith("ViewBootsServlet") || uri.endsWith("ViewShoesServlet")|| uri.endsWith("ViewSandalsServlet")|| uri.endsWith("ViewSlippersServlet")|| uri.endsWith("ViewSingleProductServlet")|| uri.endsWith("SignUpServlet")|| uri.endsWith("HomeServlet")|| uri.endsWith("LogInServlet")|| uri.endsWith("SearchServlet") || uri.endsWith("account.jsp")|| uri.endsWith("AddCartServlet")|| uri.endsWith("EmptyCartServlet")|| uri.endsWith("ViewCartServlet")|| uri.endsWith(""))){
+			if(session.getAttribute("account")== null && !(uri.endsWith("ViewBootsServlet") || uri.endsWith("ViewShoesServlet")|| uri.endsWith("ViewSandalsServlet")|| uri.endsWith("ViewSlippersServlet")|| uri.endsWith("ViewSingleProductServlet")|| uri.endsWith("SignUpServlet")|| uri.endsWith("HomeServlet")|| uri.endsWith("LogInServlet")|| uri.endsWith("SearchServlet") || uri.endsWith("account.jsp")|| uri.endsWith("AddCartServlet")|| uri.endsWith("EmptyCartServlet")|| uri.endsWith("ViewCartServlet") || uri.endsWith("/SECURDE-MP/"))){
 				this.context.log("Unauthorized access request");
 				res.sendRedirect("account.jsp");
 			}else if(session.getAttribute("account")!= null){

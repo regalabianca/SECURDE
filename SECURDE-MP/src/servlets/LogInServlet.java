@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import database.DBManager;
 import modelAccess.AccountDao;
 import modelAccessImpl.AccountDaoImpl;
+import modelAccessImpl.LogDao;
 import modelAccessImpl.PurchaseDaoImpl;
 import models.Account;
 import models.Password;
@@ -62,6 +63,7 @@ public class LogInServlet extends HttpServlet {
 	
 		DBManager dbmanager = new DBManager();
 		AccountDao ad = new AccountDaoImpl();
+		LogDao log = new LogDao();
 		
 		String hashpassword = dbmanager.getPassword(username);
 		String defaultpassword = null;
@@ -71,43 +73,54 @@ public class LogInServlet extends HttpServlet {
 		}else
 			genpass = hashpassword;
 		
-		
-		if(hashpassword != null || defaultpassword!=null && dbmanager.getAttempts(username) < 5){
-			if(pass.checkPassword(password, genpass)){
-				Account account = dbmanager.login(username);
-				dbmanager.setAttempts(username);
-					request.getSession().setAttribute("account", account);
-					
-					int acctType = ad.getType(account.getAccountId());
-					
-					String homepage = "";
-					switch (acctType){
-						case 0: homepage = "index.jsp";
-								break;
-						case 1: homepage = "admin index.jsp";
-								break;
-						case 2: if(hashpassword == null){
-									homepage = "changepassword.jsp";
-								}else{
-									homepage = "product manager index.jsp";
-								}
-								break;
-						case 3:	if(hashpassword == null){
-									homepage = "changepassword.jsp";
-								}else{
-									PurchaseDaoImpl pd = new PurchaseDaoImpl();
-									ArrayList<Purchase> p = new ArrayList<Purchase>();
-									p = pd.getPurchases();
-									request.getSession().setAttribute("purchases",p);
-									homepage = "accounting manager index.jsp";
-								}
-
-								break;	
-						default: homepage = "index.jsp";
-					}
-					request.getRequestDispatcher(homepage).forward(request, response);
+		if(hashpassword != null || defaultpassword!=null){
+			if(dbmanager.getAttempts(username) < 5){
+				if(pass.checkPassword(password, genpass)){
+					Account account = dbmanager.login(username);
+					dbmanager.setAttempts(username);
+						request.getSession().setAttribute("account", account);
+						
+						int acctType = ad.getType(account.getAccountId());
+						
+						String homepage = "";
+						switch (acctType){
+							case 0: homepage = "index.jsp";
+									break;
+							case 1: homepage = "admin index.jsp";
+									break;
+							case 2: if(hashpassword == null){
+										homepage = "changepassword.jsp";
+									}else{
+										homepage = "product manager index.jsp";
+									}
+									break;
+							case 3:	if(hashpassword == null){
+										homepage = "changepassword.jsp";
+									}else{
+										PurchaseDaoImpl pd = new PurchaseDaoImpl();
+										ArrayList<Purchase> p = new ArrayList<Purchase>();
+										p = pd.getPurchases();
+	//									Gson g = new Gson();
+	//									String s = g.toJson(pd);
+	//									response.setContentType("application/json");
+	//									response.getWriter().write(s);
+	//									request.getSession().setAttribute("purchases",s);
+										request.getSession().setAttribute("purchases",p);
+										homepage = "accounting manager index.jsp";
+									}
+	
+									break;	
+							default: homepage = "index.jsp";
+						}
+						request.getRequestDispatcher(homepage).forward(request, response);
+						log.addLog(request.getRemoteAddr(), "User Logged In",ad.getAccount(username).getAccountId());
+				}else{
+					log.addLog(request.getRemoteAddr(), "Wrong Password Input",ad.getAccount(username).getAccountId());
+					dbmanager.increaseAttempts(username);
+					response.sendRedirect("account.jsp");
+				}
 			}else{
-				dbmanager.increaseAttempts(username);
+				log.addLog(request.getRemoteAddr(), "Account Lockedout", ad.getAccount(username).getAccountId());
 				response.sendRedirect("account.jsp");
 			}
 		}else{
