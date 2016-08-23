@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +16,7 @@ import modelAccessImpl.ProductDaoImpl;
 import modelAccessImpl.PurchaseDaoImpl;
 import models.Account;
 import models.Password;
+import models.Purchase;
 
 /**
  * Servlet implementation class LogInServlet
@@ -49,11 +52,10 @@ public class HomeServlet extends HttpServlet {
 						break;
 				case 2: homepage = "product manager index.jsp";
 						break;
-				case 3:	/*PurchaseDaoImpl pd = new PurchaseDaoImpl();
-						pd.getPurchases();
-						Gson g = new Gson();
-						String s = g.toJson(pd);
-						response.setContentType("application/json");*/
+				case 3:	PurchaseDaoImpl pd = new PurchaseDaoImpl();
+						ArrayList<Purchase> p = new ArrayList<Purchase>();
+						p = pd.getPurchases();
+						request.getSession().setAttribute("purchases",p);
 						homepage = "accounting manager index.jsp";
 						break;	
 				default: homepage = "index.jsp";

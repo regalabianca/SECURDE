@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelAccess.ProductDao;
+import modelAccessImpl.LogDao;
 import modelAccessImpl.ProductDaoImpl;
+import models.Account;
 import models.Product;
 
 /**
@@ -44,6 +46,8 @@ public class AddProductServlet extends HttpServlet {
 		product.setPrice(Float.parseFloat(request.getParameter("price")));
 		String c = request.getParameter("category");
 		String servlet="";
+		Account account = (Account) request.getAttribute("account");
+		LogDao log = new LogDao();
 		if(c.equals("boots")){
 			product.setCategoryId(1);
 			servlet="/ViewBootsServlet";
@@ -65,6 +69,7 @@ public class AddProductServlet extends HttpServlet {
 		}
 		ProductDao pd = new ProductDaoImpl();
 		pd.addProduct(product);
+		log.addLog(request.getRemoteAddr(), "Added Product " +request.getParameter("description") ,account.getAccountId());
 		request.getSession().setAttribute("account", request.getSession().getAttribute("account"));
 		request.getRequestDispatcher(servlet).forward(request, response);
 	}

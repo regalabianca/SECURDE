@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelAccess.ReviewDao;
+import modelAccessImpl.LogDao;
 import modelAccessImpl.ReviewDaoImpl;
 import models.Account;
 import models.Product;
@@ -47,6 +48,8 @@ public class AddReviewServlet extends HttpServlet {
 		Product product = (Product) request.getSession().getAttribute("product");
 		request.setAttribute("product", product);
 		
+		LogDao log = new LogDao();
+		
 		String description = request.getParameter("reviewDesc");
 		int productId = product.getProductId();
 		String username = account.getUsername();
@@ -58,6 +61,8 @@ public class AddReviewServlet extends HttpServlet {
 		
 		ReviewDao rd = new ReviewDaoImpl();
 		rd.addReview(review);
+		
+		log.addLog(request.getRemoteAddr(), "Added Review " + description ,account.getAccountId());
 		
 		ArrayList<Review> reviews = new ArrayList<>();
 		reviews = (ArrayList<Review>) request.getSession().getAttribute("reviews");

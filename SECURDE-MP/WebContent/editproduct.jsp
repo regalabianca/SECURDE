@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
 	    						</c:when>
 	    						<c:otherwise>
-							        <li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i><c:out value="${a.username}"/></a></li>
+							        <li><a href="#"><i class="glyphicon glyphicon-user" class="men"> </i><c:out value="${a.username}"/></a></li>
 							        <li><a href="LogOutServlet"><i class="glyphicon glyphicon-user" class="men"> </i>Logout</a></li>
 							    </c:otherwise>
 							</c:choose>
@@ -105,15 +105,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 					<!---->
-					<div class="cart box_1">
-						<a href="checkout.jsp">
-						<h3> <div class="total">
-							<span class="simpleCart_total"> </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> </span>)</div>
-							<img src="images/cart2-2.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-						<div class="clearfix"> </div>
-					</div>
+					<c:set var="a" value="${type}" scope="request"></c:set>
+							<c:choose>
+	    						<c:when test="2">
+	    							<li><a href="account.jsp"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
+	    						</c:when>
+	    						<c:otherwise>
+									<div class="cart box_1">
+										<a href="ViewCartServlet">
+										<h3> <div class="total">
+											<span class="simpleCart_total"> </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> </span>)</div>
+											<img src="images/cart2-2.png" alt=""/></h3>
+										</a>
+										<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+										<div class="clearfix"> </div>
+									</div>
+							</c:otherwise>
+						</c:choose>
 
 <div class="clearfix"> </div>
 					<!---->

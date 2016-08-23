@@ -17,6 +17,7 @@ public class Purchase {
 	private float totalPrice;
 	private int transactionId;
 	private int categoryId;
+	private String description;
 	
 	public int getPurchaseId() {
 		return purchaseId;
@@ -72,5 +73,13 @@ public class Purchase {
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
