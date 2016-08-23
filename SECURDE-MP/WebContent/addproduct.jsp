@@ -7,6 +7,7 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -19,10 +20,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-<!--fonts-->
-<link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
-<!--//fonts-->
+
+		<!-- BOOTSTRAP -->
+		<link rel="stylesheet" href="library/bootstrap/css/bootstrap.min.css"/>
+		<script src="library/bootstrap/js/bootstrap.min.js"></script>
+		<script src="library/bootstrap/js/validator.js"></script>
+		<!-- PNOTIFY -->
+		<link rel="stylesheet" type="text/css" href="library/pnotify/pnotify.custom.min.css"/>
+		<script src="library/pnotify/pnotify.custom.min.js"></script>
+		
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- start menu -->
 <!-- start menu -->
@@ -197,19 +203,26 @@ $(window).load(function() {
 					</div>	
 					<div class="col-md-7 single-top-in simpleCart_shelfItem">
 						<div class="single-para ">
-							<form action="AddProductServlet" method="post">
-								Product Description: <br>
-								<input name="description" type ="text"><br>
-								Price: <br>
-								<input name="price" type ="text"><br>
-								Category: <br>
-								<select name="category">
-								<option value="boots" selected>Boots</option>
-  								<option value="shoes">Shoes</option>
- 								<option value="sandals">Sandals</option>
-								<option value="slippers">Slippers</option>
-								</select>
-							
+							<form action="AddProductServlet" method="post" class="form-horizontal" role="form" data-toggle="validator">
+								<div class="form-group">
+									Product Description: <br>
+									<input type ="text" class="form-control" name="description" required pattern="[A-z !@#\$%\^&\*\.0-9]+" data-pattern-error="Character input only accepts letters from A-z and selected special symbols." maxlength="100"></input>
+									<div class="help-block with-errors"></div>
+								</div>
+								<div class="form-group">
+									Price: <br>
+									<input type ="number" class="form-control" name="price" required min="1"></input>
+									<div class="help-block with-errors"></div>
+								</div>
+								<div class="form-group">
+									Category: <br>
+									<select name="category">
+									<option value="boots" selected>Boots</option>
+									<option value="shoes">Shoes</option>
+									<option value="sandals">Sandals</option>
+									<option value="slippers">Slippers</option>
+									</select>
+								</div>
 								<input type="submit" value="ADD ITEM"></input>
 							</form>
 							

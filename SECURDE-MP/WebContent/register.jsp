@@ -29,7 +29,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<link rel="stylesheet" type="text/css" href="library/pnotify/pnotify.custom.min.css"/>
 		<script src="library/pnotify/pnotify.custom.min.js"></script>
 		
-<!--//fonts-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- start menu -->
 
@@ -135,38 +134,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="mation">
 						<div class="form-group">
 							<span>First Name</span> 
-							<input type="text" class="form-control" name="first_name" required pattern="[A-z ]+" data-error="Please enter text with A-z."></input>
+							<input type="text" class="form-control" name="first_name" required pattern="[A-z ]+" maxlength="45" data-pattern-error="Please enter text with A-z."></input>
 							<div class="help-block with-errors"></div>
 						</div>
 						<div class="form-group">
 							<span>Middle Initial</span>
-							<input type="text" class="form-control" name="middle_initial" required pattern="[A-z ]+" data-error="Please enter text with A-z."></input>
+							<input type="text" class="form-control" name="middle_initial" required pattern="[A-z ]+" maxlength="45" data-pattern-error="Please enter text with A-z."></input>
 							<div class="help-block with-errors"></div>
 						</div>
 						<div class="form-group">
 							<span>Last Name</span>
-							<input type="text" class="form-control" name="last_name" required pattern="[A-z ]+" data-error="Please enter text with A-z."></input>
+							<input type="text" class="form-control" name="last_name" required pattern="[A-z ]+"maxlength="45" data-pattern-error="Please enter text with A-z."></input>
 							<div class="help-block with-errors"></div>
 						 </div>
 						 <div class="form-group">
 							 <span>Email Address</span>
-							<input type="text" class="form-control" name="email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" data-error="Please enter correct email format. Ex. maria_christine@gmail.com"></input>
+							<input type="text" class="form-control" name="email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" maxlength="45" data-pattern-error="Please enter correct email format. Ex. maria_christine@gmail.com"></input>
 							<div class="help-block with-errors"></div>
 						</div>
 						<h3>ACCOUNT DETAILS</h3>
 						<div class="form-group">
 							<span>Username</span>
-							<input type="text" class="form-control" name="username" required pattern="[A-z ]+" data-error="Please enter text with A-z."></input>
+							<input type="text" class="form-control" name="username" required pattern="[A-z ]+" maxlength="45" data-pattern-error="Please enter text with A-z."></input>
 							<div class="help-block with-errors"></div>
 						</div>
 						<div class="form-group">
 							<span>Password</span> 
-							<input type="password" class="form-control" name="password" required pattern="[A-z ]+" id="password" data-error="Please enter text with A-z."></input>
+							<input type="password" class="form-control" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" maxlength="30" id="password" data-pattern-error="Note that a password is at least 8 characters long. Has at least 1 of each: uppercase letter, 1 lowercase letter, number and special symbol."></input>
 							<div class="help-block with-errors"></div>
 						</div>
 						<div class="form-group">
 							<span>Confirm Password</span>
-							<input type="password" class="form-control" name="confirmPass" required pattern="[A-z ]+" data-match="#password" data-match-error="Whoops, these don't match."></input>
+							<input type="password" class="form-control" name="confirmPass" required data-match="#password" data-match-error="Whoops, these don't match."></input>
 							<div class="help-block with-errors"></div>
 						</div>
 						<div>

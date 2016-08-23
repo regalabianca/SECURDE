@@ -23,10 +23,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/datatable-manager.js"></script>
-<!--fonts-->
-<link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
-<!--//fonts-->
 <!-- start menu -->
 <!--//slider-script-->
 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
