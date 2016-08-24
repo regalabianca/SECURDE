@@ -7,6 +7,7 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -19,9 +20,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-<!--fonts-->
-<link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
+
+		<!-- BOOTSTRAP -->
+		<link rel="stylesheet" href="library/bootstrap/css/bootstrap.min.css"/>
+		<script src="library/bootstrap/js/bootstrap.min.js"></script>
+		<script src="library/bootstrap/js/validator.js"></script>
+		<!-- PNOTIFY -->
+		<link rel="stylesheet" type="text/css" href="library/pnotify/pnotify.custom.min.css"/>
+		<script src="library/pnotify/pnotify.custom.min.js"></script>
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!--//fonts-->
 <!-- start menu -->
@@ -100,20 +107,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!---->
 		<div class="container">
 		<div class="register">
-		  	  <form action="ChangePasswordServlet" method="post"> 
+		  	  <form action="ChangePasswordServlet" method="post" class="form-horizontal" role="form" data-toggle="validator">  
 					<div class="mation">
 		<h3>ACCOUNT DETAILS</h3>
-						<div>
+						<div class="form-group">
 							<span>Old Password</span>
-							<input type="password" name="oldPass">						 
+							<input type="password" name="oldPass" class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{1,}" maxlength="30" ></input>
+							<div class="help-block with-errors"></div>
 						</div>
-						<div>
+						<div class="form-group">
 							<span>New Password</span>
-							<input type="password" name="newPass">						 
+							<input type="password" name="newPass" class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" maxlength="30" id="newpass" data-pattern-error="Note that a password is at least 8 characters long. Has at least 1 of each: uppercase letter, 1 lowercase letter, number and special symbol."></input>
+							<div class="help-block with-errors"></div>
 						</div>
-						<div>
+						<div class="form-group">
 							<span>Confirm New Password</span>
-							<input type="password" name="confirmPass">						 
+							<input type="password" name="confirmPass" class="form-control" data-match="#newpass" data-match-error="Whoops, these don't match.">
+							<div class="help-block with-errors"></div>
 						</div>
 					 </div>
 				     <input type="submit" value="submit">

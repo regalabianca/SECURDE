@@ -7,6 +7,7 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -19,9 +20,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-<!--fonts-->
-<link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
+
+		<!-- BOOTSTRAP -->
+		<link rel="stylesheet" href="library/bootstrap/css/bootstrap.min.css"/>
+		<script src="library/bootstrap/js/bootstrap.min.js"></script>
+		<script src="library/bootstrap/js/validator.js"></script>
+		<!-- PNOTIFY -->
+		<link rel="stylesheet" type="text/css" href="library/pnotify/pnotify.custom.min.css"/>
+		<script src="library/pnotify/pnotify.custom.min.js"></script>
+		
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!--//fonts-->
 <!-- start menu -->
@@ -96,36 +103,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="register">
 		<h3>PERSONAL INFORMATION</h3>
-		  	  <form action="SignUpServlet" method="post"> 
+		  	  <form action="SignUpServlet" method="post" class="form-horizontal" role="form" data-toggle="validator">
 					<div class="mation">
-						<div>
+						<div class="form-group">
 							<span>First Name</span>
-							<input type="text" name="first_name"> 
+							<input type="text" class="form-control" name="first_name" required pattern="[A-z ]+" maxlength="45" data-pattern-error="Please enter text with A-z."></input>
+							<div class="help-block with-errors"></div>
 						</div>
-						<div>
+						<div class="form-group">
 							<span>Middle Initial</span>
-							<input type="text" name="middle_initial"> 
+							<input type="text" class="form-control" name="middle_initial" required pattern="[A-z ]+" maxlength="45" data-pattern-error="Please enter text with A-z."></input>
+							<div class="help-block with-errors"></div>
 						</div>
-						<div>
+						<div class="form-group">
 							<span>Last Name</span>
-							<input type="text" name="last_name"> 
+							<input type="text" class="form-control" name="last_name" required pattern="[A-z ]+"maxlength="45" data-pattern-error="Please enter text with A-z."></input>
+							<div class="help-block with-errors"></div>
 						 </div>
-						 <div>
+						 <div class="form-group">
 							 <span>Email Address</span>
-							 <input type="text" name="email">
+							 <input type="text" class="form-control" name="email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" maxlength="45" data-pattern-error="Please enter correct email format. Ex. maria_christine@gmail.com"></input>
+							<div class="help-block with-errors"></div>
 						</div>
-						<h3>ACCOUNT DETAILS<h3>
-						<div>
+						<h3>ACCOUNT DETAILS</h3>
+						<div class="form-group">
 							<span>Username</span>
-							<input type="text" name="username">						 
+							<input type="text" class="form-control" name="username" required pattern="[A-z ]+" maxlength="45" data-pattern-error="Please enter text with A-z."></input>
+							<div class="help-block with-errors"></div>					 
 						</div>
-						<div>
+						<div class="form-group">
 							<span>Password</span>
-							<input type="password" name="password">						 
+							<input type="password" class="form-control" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" maxlength="30" id="password" data-pattern-error="Note that a password is at least 8 characters long. Has at least 1 of each: uppercase letter, 1 lowercase letter, number and special symbol."></input>
+							<div class="help-block with-errors"></div>					 
 						</div>
-						<div>
+						<div class="form-group">
 							<span>Confirm Password</span>
-							<input type="password" name="confirmPass">						 
+							<input type="password" class="form-control" name="confirmPass" required data-match="#password" data-match-error="Whoops, these don't match."></input>
+							<div class="help-block with-errors"></div>						 
 						</div>
 						<div>
 							<span>Type</span>
